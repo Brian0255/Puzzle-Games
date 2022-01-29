@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="PuzzleGames"/>
+  <qresource prefix="battleshipPicture">
+    <file>battleshipPicture.png</file>
+  </qresource>
+  <qresource prefix="minesweeperPicture">
+    <file>minesweeperPicture.png</file>
+  </qresource>
+</RCC>
