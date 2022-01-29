@@ -85,6 +85,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BattleshipEngine.cpp" />
+    <ClCompile Include="BattleshipShip.cpp" />
+    <ClCompile Include="BattleshipTile.cpp" />
     <ClCompile Include="QDifferentClicks.cpp" />
     <ClCompile Include="Utilities.cpp" />
     <QtRcc Include="PuzzleGames.qrc" />
@@ -102,6 +105,9 @@
     <QtUic Include="PuzzleGames.ui" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="BattleshipEngine.h" />
+    <ClInclude Include="BattleshipShip.h" />
+    <ClInclude Include="BattleshipTile.h" />
     <ClInclude Include="ColorConstants.h" />
     <QtMoc Include="GameEngine.h" />
     <QtMoc Include="MinesweeperEngine.h" />

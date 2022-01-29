@@ -3,6 +3,7 @@
 #include<qregularexpression.h>
 #include"Utilities.h"
 #include"MinesweeperEngine.h"
+#include"BattleshipEngine.h"
 #include"qt_windows.h"
 
 PuzzleGames::PuzzleGames(QWidget *parent)
@@ -11,11 +12,16 @@ PuzzleGames::PuzzleGames(QWidget *parent)
     currentGame = NULL;
     ui.setupUi(this);
     ui.MSweeperPlayBtn->installEventFilter(this);
+    ui.BShipPlayBtn->installEventFilter(this);
     ui.GoBackButton->installEventFilter(this);
     ui.ResetButton->installEventFilter(this);
     connect(ui.MSweeperPlayBtn, &QPushButton::released, this, &PuzzleGames::darkButtonRelease);
     connect(ui.MSweeperPlayBtn, &QPushButton::pressed, this, &PuzzleGames::darkButtonPress);
     connect(ui.MSweeperPlayBtn, &QPushButton::clicked, this, &PuzzleGames::minesweeperPlayBtnClick);
+
+    connect(ui.BShipPlayBtn, &QPushButton::released, this, &PuzzleGames::darkButtonRelease);
+    connect(ui.BShipPlayBtn, &QPushButton::pressed, this, &PuzzleGames::darkButtonPress);
+    connect(ui.BShipPlayBtn, &QPushButton::clicked, this, &PuzzleGames::battleshipPlayBtnClick);
 
     connect(ui.ResetButton, &QPushButton::released, this, &PuzzleGames::darkButtonRelease);
     connect(ui.ResetButton, &QPushButton::pressed, this, &PuzzleGames::darkButtonPress);
@@ -41,6 +47,12 @@ void PuzzleGames::updateStatusLabel(QString newLabel) {
 QDifferentClicksButton* PuzzleGames::createMinesweeperButton(int row, int col) {
     QDifferentClicksButton* newButton = new QDifferentClicksButton(ui.MSweeperTileFrame);
     ui.MSweeperMainGrid->addWidget(newButton, row, col);
+    return newButton;
+}
+
+QDifferentClicksButton* PuzzleGames::createBattleshipButton(int row, int col) {
+    QDifferentClicksButton* newButton = new QDifferentClicksButton(ui.BShipTileFrame);
+    ui.BShipMainGrid->addWidget(newButton, row, col);
     return newButton;
 }
 
@@ -76,10 +88,21 @@ void PuzzleGames::minesweeperPlayBtnClick() {
     ui.MainStackedWidget->setCurrentIndex(1);
     ui.GameStackedWidget->setCurrentIndex(0);
     currentGame = new MinesweeperEngine(this);
+    connectAndStartGame();
+}
+
+void PuzzleGames::connectAndStartGame() {
     connect(currentGame, &GameEngine::sendStatusLabelUpdate, this, &PuzzleGames::updateStatusLabel);
     connect(currentGame, &GameEngine::sendTopLeftLabelUpdate, this, &PuzzleGames::updateTopLeftLabel);
     connect(currentGame, &GameEngine::sendTopRightLabelUpdate, this, &PuzzleGames::updateTopRightLabel);
     currentGame->startEngine();
+}
+
+void PuzzleGames::battleshipPlayBtnClick() {
+    ui.MainStackedWidget->setCurrentIndex(1);
+    ui.GameStackedWidget->setCurrentIndex(1);
+    currentGame = new BattleshipEngine(this);
+    connectAndStartGame();
 }
 
 void PuzzleGames::resetBtnClick() {

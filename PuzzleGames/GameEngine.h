@@ -6,10 +6,12 @@ signals:
 	void sendTopLeftLabelUpdate(QString newText);
 	void sendTopRightLabelUpdate(QString newText);
 	void sendStatusLabelUpdate(QString newText);
+
 public:
 	virtual void startEngine();
 	virtual void resetGame();
 	GameEngine();
 	virtual ~GameEngine();
+	bool eventFilter(QObject* watched, QEvent* event);
 };
 

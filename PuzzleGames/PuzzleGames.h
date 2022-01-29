@@ -13,10 +13,13 @@ public:
     bool eventFilter(QObject* watched, QEvent* event);
     PuzzleGames(QWidget *parent = Q_NULLPTR);
     QDifferentClicksButton* createMinesweeperButton(int row, int col);
+    QDifferentClicksButton* createBattleshipButton(int row, int col);
 public slots:
     void darkButtonPress();
     void darkButtonRelease();
     void minesweeperPlayBtnClick();
+    void connectAndStartGame();
+    void battleshipPlayBtnClick();
     void resetBtnClick();
     void goBackBtnClick();
     void updateTopLeftLabel(QString newLabel);

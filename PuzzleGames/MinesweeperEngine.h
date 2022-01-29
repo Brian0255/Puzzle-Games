@@ -18,7 +18,6 @@ public:
     void resetGame();
     void gameOver(QPushButton*);
 
-    bool eventFilter(QObject* watched, QEvent* event);
 
     void revealTile(QPushButton* button);
 
