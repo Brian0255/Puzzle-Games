@@ -38,6 +38,12 @@ void PuzzleGames::updateStatusLabel(QString newLabel) {
     ui.StatusLabel->setText(newLabel);
 }
 
+QDifferentClicksButton* PuzzleGames::createMinesweeperButton(int row, int col) {
+    QDifferentClicksButton* newButton = new QDifferentClicksButton(ui.MSweeperTileFrame);
+    ui.MSweeperMainGrid->addWidget(newButton, row, col);
+    return newButton;
+}
+
 bool PuzzleGames::eventFilter(QObject* watched, QEvent* event) {
     QPushButton* btn = static_cast<QPushButton*>(watched);
     
@@ -69,7 +75,10 @@ void PuzzleGames::darkButtonRelease() {
 void PuzzleGames::minesweeperPlayBtnClick() {
     ui.MainStackedWidget->setCurrentIndex(1);
     ui.GameStackedWidget->setCurrentIndex(0);
-    currentGame = new MinesweeperEngine(&ui);
+    currentGame = new MinesweeperEngine(this);
+    connect(currentGame, &GameEngine::sendStatusLabelUpdate, this, &PuzzleGames::updateStatusLabel);
+    connect(currentGame, &GameEngine::sendTopLeftLabelUpdate, this, &PuzzleGames::updateTopLeftLabel);
+    connect(currentGame, &GameEngine::sendTopRightLabelUpdate, this, &PuzzleGames::updateTopRightLabel);
     currentGame->startEngine();
 }
 

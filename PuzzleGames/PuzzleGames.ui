@@ -137,7 +137,13 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QFrame" name="FillSquaresSelectFrame">
+          <widget class="QFrame" name="MSweeperSelectFrame">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="minimumSize">
             <size>
              <width>172</width>
@@ -160,7 +166,7 @@ border-radius: 10px;</string>
            <property name="frameShadow">
             <enum>QFrame::Raised</enum>
            </property>
-           <widget class="QLabel" name="FillSquaresLabel">
+           <widget class="QLabel" name="MSweeperSelectLabel">
             <property name="geometry">
              <rect>
               <x>10</x>
@@ -179,13 +185,13 @@ border-radius: 10px;</string>
              <string notr="true">color: rgb(255, 255, 255);</string>
             </property>
             <property name="text">
-             <string>Fill the Squares</string>
+             <string>Minesweeper</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
             </property>
            </widget>
-           <widget class="QPushButton" name="FillSquaresPlayBtn">
+           <widget class="QPushButton" name="MSweeperPlayBtn">
             <property name="geometry">
              <rect>
               <x>20</x>
@@ -193,6 +199,12 @@ border-radius: 10px;</string>
               <width>131</width>
               <height>41</height>
              </rect>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
             </property>
             <property name="minimumSize">
              <size>
@@ -222,7 +234,7 @@ background-color: rgb(80,80,80);</string>
              <bool>true</bool>
             </property>
            </widget>
-           <widget class="QFrame" name="FillSquaresPicFrame">
+           <widget class="QFrame" name="MSweeperPicFrame">
             <property name="geometry">
              <rect>
               <x>30</x>
@@ -241,7 +253,7 @@ border-radius: 0px;</string>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
-            <widget class="QLabel" name="FilLSquaresPic">
+            <widget class="QLabel" name="MSweeperPic">
              <property name="geometry">
               <rect>
                <x>10</x>
@@ -252,6 +264,9 @@ border-radius: 0px;</string>
              </property>
              <property name="text">
               <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="PuzzleGames.qrc">:/minesweeperPicture/minesweeperPicture.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
@@ -388,13 +403,7 @@ border-radius: 0px;</string>
           </widget>
          </item>
          <item>
-          <widget class="QFrame" name="MSweeperSelectFrame">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
+          <widget class="QFrame" name="FillSquaresSelectFrame">
            <property name="minimumSize">
             <size>
              <width>172</width>
@@ -417,7 +426,7 @@ border-radius: 10px;</string>
            <property name="frameShadow">
             <enum>QFrame::Raised</enum>
            </property>
-           <widget class="QLabel" name="MSweeperSelectLabel">
+           <widget class="QLabel" name="FillSquaresLabel">
             <property name="geometry">
              <rect>
               <x>10</x>
@@ -436,13 +445,13 @@ border-radius: 10px;</string>
              <string notr="true">color: rgb(255, 255, 255);</string>
             </property>
             <property name="text">
-             <string>Minesweeper</string>
+             <string>Fill the Squares</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
             </property>
            </widget>
-           <widget class="QPushButton" name="MSweeperPlayBtn">
+           <widget class="QPushButton" name="FillSquaresPlayBtn">
             <property name="geometry">
              <rect>
               <x>20</x>
@@ -450,12 +459,6 @@ border-radius: 10px;</string>
               <width>131</width>
               <height>41</height>
              </rect>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
             </property>
             <property name="minimumSize">
              <size>
@@ -485,7 +488,7 @@ background-color: rgb(80,80,80);</string>
              <bool>true</bool>
             </property>
            </widget>
-           <widget class="QFrame" name="MSweeperPicFrame">
+           <widget class="QFrame" name="FillSquaresPicFrame">
             <property name="geometry">
              <rect>
               <x>30</x>
@@ -504,7 +507,7 @@ border-radius: 0px;</string>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
-            <widget class="QLabel" name="MSweeperPic">
+            <widget class="QLabel" name="FilLSquaresPic">
              <property name="geometry">
               <rect>
                <x>10</x>
@@ -515,9 +518,6 @@ border-radius: 0px;</string>
              </property>
              <property name="text">
               <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap resource="PuzzleGames.qrc">:/minesweeperPicture/minesweeperPicture.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>

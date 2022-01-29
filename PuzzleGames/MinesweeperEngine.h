@@ -1,18 +1,19 @@
 #pragma once
 #include<qobject.h>
+#include"PuzzleGames.h"
 #include"GameEngine.h"
 #include"qpushbutton.h"
 #include"MinesweeperTile.h"
-#include"ui_PuzzleGames.h"
 #include<array>
 
 class MinesweeperEngine : public GameEngine {
     Q_OBJECT
 
 public:
-    MinesweeperEngine(Ui::PuzzleGamesClass* ui);
+    MinesweeperEngine(PuzzleGames* controller);
     ~MinesweeperEngine();
     void startEngine();
+    void setupTiles();
     void startGame(QPushButton*, int);
     void resetGame();
     void gameOver(QPushButton*);
@@ -31,9 +32,8 @@ public slots:
     void tileRightClick();
     void tileMiddleClick();
     void resetButtonClick();
-    
 private:
-    Ui::PuzzleGamesClass* ui;
+    PuzzleGames* controller;
     int bombs;
     int bombStartAmount{ 30 };
     std::array<std::array<MinesweeperTile, 16>, 16> tiles;

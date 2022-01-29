@@ -3,6 +3,7 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_PuzzleGames.h"
 #include"GameEngine.h"
+#include"QDifferentClicksButton.h"
 
 class PuzzleGames : public QMainWindow
 {
@@ -11,6 +12,7 @@ class PuzzleGames : public QMainWindow
 public:
     bool eventFilter(QObject* watched, QEvent* event);
     PuzzleGames(QWidget *parent = Q_NULLPTR);
+    QDifferentClicksButton* createMinesweeperButton(int row, int col);
 public slots:
     void darkButtonPress();
     void darkButtonRelease();

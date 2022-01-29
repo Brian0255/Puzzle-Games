@@ -3,7 +3,7 @@
 #include"ColorConstants.h"
 #include"Utilities.h"
 
-MinesweeperEngine::MinesweeperEngine(Ui::PuzzleGamesClass* ui) :ui{ ui } {};
+MinesweeperEngine::MinesweeperEngine(PuzzleGames* controller) : controller{ controller } {};
 
 
 bool MinesweeperEngine::eventFilter(QObject* watched, QEvent* event) {
@@ -34,12 +34,14 @@ MinesweeperEngine::~MinesweeperEngine() {
 void MinesweeperEngine::startEngine() {
     srand(time(0));
     bombs = bombStartAmount;
-    ui->TopRightLabel->setText("Bombs: " + QString::number(bombs));
+    emit sendTopRightLabelUpdate("Bombs: " + QString::number(bombs));
+    setupTiles();
+}
 
-    QGridLayout* mainGrid = ui->MSweeperMainGrid;
+void MinesweeperEngine::setupTiles() {
     for (int i = 0; i < 16; ++i) {
         for (int j = 0; j < 16; ++j) {
-            QDifferentClicksButton* tileBtn = new QDifferentClicksButton(ui->MSweeperTileFrame);
+            QDifferentClicksButton* tileBtn = controller->createMinesweeperButton(i, j);
             tileBtn->setStyleSheet(
                 "border: 0px;"
                 "background-color: rgb(200,200,200);"
@@ -50,17 +52,15 @@ void MinesweeperEngine::startEngine() {
             tileBtn->setFixedSize(32, 32);
             tileBtn->installEventFilter(this);
             MinesweeperTile tile = MinesweeperTile(true, tileBtn, TILE_TYPE::HIDDEN, 0);
-            bool connected = connect(tileBtn, &QDifferentClicksButton::leftClicked, this, &MinesweeperEngine::tileButtonClick);
+            connect(tileBtn, &QDifferentClicksButton::leftClicked, this, &MinesweeperEngine::tileButtonClick);
             connect(tileBtn, &QDifferentClicksButton::rightClicked, this, &MinesweeperEngine::tileRightClick);
             connect(tileBtn, &QDifferentClicksButton::middleClicked, this, &MinesweeperEngine::tileMiddleClick);
             std::array<int, 2> coords = { i,j };
             tiles[i][j] = tile;
             bombCoordsUsed.insert({ { i,j }, false });
             buttonCoords.insert({ tileBtn, coords });
-            mainGrid->addWidget(tileBtn, i, j);
         }
     }
-    ui->MSweeperTileFrame->show();
 }
 
 void MinesweeperEngine::startGame(QPushButton* firstBtnClicked, int numBombs) {
@@ -78,7 +78,7 @@ void MinesweeperEngine::startGame(QPushButton* firstBtnClicked, int numBombs) {
             }
         }
     }
-    ui->TopRightLabel->setText("Bombs: " + QString::number(bombs));
+    emit sendTopRightLabelUpdate("Bombs: " + QString::number(bombs));
 }
 
 void MinesweeperEngine::tileRightClick() {
@@ -89,7 +89,7 @@ void MinesweeperEngine::tileRightClick() {
         button->setText((button->text() == "X") ? "" : "X");
         bombs += (button->text() == "X") ? -1 : 1;
         tiles[coords[0]][coords[1]].changeFlag();
-        ui->TopRightLabel->setText("Bombs: " + QString::number(bombs));
+        emit sendTopRightLabelUpdate("Bombs: " + QString::number(bombs));
     }
 }
 
@@ -172,9 +172,9 @@ void MinesweeperEngine::resetGame() {
             gameActive = false;
         }
     }
-    ui->StatusLabel->setText("");
+    emit sendStatusLabelUpdate("");
     bombs = bombStartAmount;
-    ui->TopRightLabel->setText("Bombs: " + QString::number(bombs));
+    emit sendTopRightLabelUpdate("Bombs: " + QString::number(bombs));
 }
 
 void MinesweeperEngine::gameOver(QPushButton* hit) {
@@ -189,7 +189,7 @@ void MinesweeperEngine::gameOver(QPushButton* hit) {
             }
         }
     }
-    ui->StatusLabel->setText("Game over!");
+    emit sendStatusLabelUpdate("Game over!");
 }
 
 void MinesweeperEngine::disableButtons() {
@@ -211,7 +211,7 @@ void MinesweeperEngine::checkIfWin() {
     }
     if (win) {
         disableButtons();
-        ui->StatusLabel->setText("You win!");
+        emit sendStatusLabelUpdate("You win!");
     }
 }
 
