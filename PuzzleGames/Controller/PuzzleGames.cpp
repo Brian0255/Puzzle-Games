@@ -12,6 +12,7 @@ PuzzleGames::PuzzleGames(QWidget *parent)
 {
     currentGame = NULL;
     ui.setupUi(this);
+    setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
     darkButtons = { ui.MSweeperPlayBtn, ui.BShipPlayBtn,ui.GoBackButton,ui.ResetButton, ui.FillSquaresPlayBtn };
     for (QPushButton* button : darkButtons) {
         setupDarkButtonPressRelease(button);
