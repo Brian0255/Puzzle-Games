@@ -17,4 +17,9 @@ public:
 	static const QString BATTLESHIP_CROSS_OFF_COLOR;
 
 	static const QString MINESWEEPER_HIT_BOMB_COLOR;
+
+	static const QString FILL_SQUARES_FILL_COLOR;
+	static const QString FILL_SQUARES_HEAD_COLOR;
+	static const QString FILL_SQUARES_BEFORE_HEAD_COLOR;
+	static const QString FILL_SQUARES_X_COLOR;
 };

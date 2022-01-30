@@ -17,6 +17,7 @@ MinesweeperEngine::~MinesweeperEngine() {
 void MinesweeperEngine::startEngine() {
     srand(time(0));
     bombs = bombStartAmount;
+    emit sendTopLeftLabelUpdate("");
     emit sendTopRightLabelUpdate("Bombs: " + QString::number(bombs));
     setupTiles();
 }

@@ -11,6 +11,7 @@ const int SHIP_START_AMOUNT{ 12 };
 const int CLICK_START_AMOUNT{ 60 };
 const int GRID_SIZE{ 10 };
 
+
 BattleshipEngine::~BattleshipEngine() {
 	for (auto& tileArray : tiles) {
 		for (BattleshipTile tile : tileArray) {
@@ -21,9 +22,14 @@ BattleshipEngine::~BattleshipEngine() {
 }
 
 void BattleshipEngine::startEngine(){
+	setupTiles();
+	startGame();
+}
+
+void BattleshipEngine::setupTiles() {
 	for (int i = 0; i < GRID_SIZE; ++i) {
 		for (int j = 0; j < GRID_SIZE; ++j) {
-			QDifferentClicksButton* tileBtn = controller->createBattleshipButton(i,j);
+			QDifferentClicksButton* tileBtn = controller->createBattleshipButton(i, j);
 			tileBtn->setStyleSheet(
 				"border: 0px;"
 				"background-color: rgb(200,200,200);"
@@ -41,16 +47,6 @@ void BattleshipEngine::startEngine(){
 			buttonCoords.insert({ tileBtn, coords });
 		}
 	}
-	startGame();
-}
-
-void BattleshipEngine::changeColor(QWidget* mbutton, const QString color) {
-	mbutton->ensurePolished();
-	QString sheet = mbutton->styleSheet();
-	QRegularExpression re = QRegularExpression("background-color.*?;");
-	sheet.replace(re, color);
-	mbutton->setStyleSheet(sheet);
-
 }
 
 void BattleshipEngine::startGame() {
@@ -77,9 +73,9 @@ void BattleshipEngine::revealTile(QPushButton* button) {
 	int row = coords[0];
 	int col = coords[1];
 	tiles[row][col].reveal();
-	changeColor(button, ColorConstants::TILE_UNCOVERED_COLOR);
+	Utilities::changeColor(button, ColorConstants::TILE_UNCOVERED_COLOR);
 	if (tiles[row][col].isShip) {
-		changeColor(button, ColorConstants::HIT_PART_OF_SHIP_COLOR);
+		Utilities::changeColor(button, ColorConstants::HIT_PART_OF_SHIP_COLOR);
 	}
 	button->setEnabled(false);
 	button->removeEventFilter(this);
@@ -90,7 +86,7 @@ void BattleshipEngine::resetGame() {
 	for (int i = 0; i < tiles.size(); ++i) {
 		for (int j = 0; j < tiles.size(); ++j) {
 			BattleshipTile* tile = &tiles[i][j];
-			changeColor(tile->button, ColorConstants::TILE_DEFAULT_COLOR);
+			Utilities::changeColor(tile->button, ColorConstants::TILE_DEFAULT_COLOR);
 			tile->button->installEventFilter(this);
 			tile->button->setEnabled(true);
 			tile->button->setText("");
@@ -124,22 +120,18 @@ void BattleshipEngine::checkIfWin() {
 	}
 }
 
-void BattleshipEngine::resetButtonClick() {
-	resetGame();
-}
-
 void BattleshipEngine::tileRightClick() {
 	QPushButton* button = qobject_cast<QPushButton*>(sender());
 	std::array<int, 2> coords = buttonCoords.at(button);
 	BattleshipTile* tile = &tiles[coords[0]][coords[1]];
 	if (tile->hidden) {
 		if (!tile->crossedOff) {
-			changeColor(button, ColorConstants::BATTLESHIP_CROSS_OFF_COLOR);
+			Utilities::changeColor(button, ColorConstants::BATTLESHIP_CROSS_OFF_COLOR);
 			tile->crossedOff = true;
 			button->removeEventFilter(this);
 		}
 		else {
-			changeColor(button, ColorConstants::TILE_DEFAULT_COLOR);
+			Utilities::changeColor(button, ColorConstants::TILE_DEFAULT_COLOR);
 			tile->crossedOff = false;
 			button->installEventFilter(this);
 		}
@@ -168,7 +160,7 @@ bool BattleshipEngine::shipUncovered(BattleshipShip ship) {
 		for (std::array coord : ship.coords) {
 			int row = coord[0];
 			int col = coord[1];
-			changeColor(tiles[row][col].button, ColorConstants::HIT_SHIP_COLOR);
+			Utilities::changeColor(tiles[row][col].button, ColorConstants::HIT_SHIP_COLOR);
 		}
 	}
 	return uncovered;
@@ -263,13 +255,13 @@ void BattleshipEngine::addShip(BattleshipShip& potentialShip) {
 void BattleshipEngine::tileButtonPress() {
 	QPushButton* button = qobject_cast<QPushButton*>(sender());
 	if (button->isEnabled())
-		changeColor(button, ColorConstants::TILE_PRESS_COLOR);
+		Utilities::changeColor(button, ColorConstants::TILE_PRESS_COLOR);
 }
 
 void BattleshipEngine::tileButtonClick() {
 	QPushButton* button = qobject_cast<QPushButton*>(sender());
 	if (button->isEnabled()) {
-		changeColor(button, ColorConstants::TILE_UNCOVERED_COLOR);
+		Utilities::changeColor(button, ColorConstants::TILE_UNCOVERED_COLOR);
 		std::array<int, 2> coords = buttonCoords.at(button);
 		BattleshipTile tile = tiles[coords[0]][coords[1]];
 		--clicksLeft;

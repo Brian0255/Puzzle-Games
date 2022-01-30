@@ -11,7 +11,7 @@ public:
     BattleshipEngine(PuzzleGames* controller);
     ~BattleshipEngine();
     void startEngine();
-    void changeColor(QWidget* mbutton, const QString color);
+    void setupTiles();
     void startGame();
     void revealTile(QPushButton* button);
     void resetGame();
@@ -22,7 +22,6 @@ public:
 public slots:
     void tileButtonPress();
     void tileButtonClick();
-    void resetButtonClick();
     void tileRightClick();
 private:
     PuzzleGames* controller;

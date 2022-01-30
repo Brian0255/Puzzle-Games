@@ -23,82 +23,109 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="PuzzleGames.qrc">
+    <QtRcc Include="View\PuzzleGames.qrc">
       <Filter>Header Files\Resource Files</Filter>
     </QtRcc>
-    <ClCompile Include="PuzzleGames.cpp">
+    <ClCompile Include="Controller\PuzzleGames.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="Controller\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ColorConstants.cpp">
+    <ClCompile Include="Model\ColorConstants.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameEngine.cpp">
+    <ClCompile Include="Controller\GameEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MinesweeperEngine.cpp">
+    <ClCompile Include="Controller\MinesweeperEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MinesweeperTile.cpp">
+    <ClCompile Include="Model\Minesweeper\MinesweeperTile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Utilities.cpp">
+    <ClCompile Include="Model\Utilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="QDifferentClicks.cpp">
+    <ClCompile Include="Model\QDifferentClicks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BattleshipEngine.cpp">
+    <ClCompile Include="Controller\BattleshipEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BattleshipTile.cpp">
+    <ClCompile Include="Model\Battleship\BattleshipTile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BattleshipShip.cpp">
+    <ClCompile Include="Model\Battleship\BattleshipShip.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\FillTheSquares\FillSquareConstants.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\FillTheSquares\FillSquareLayout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\FillSquaresEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\FillTheSquares\FillSquaresTile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="PuzzleGames.h">
+    <QtMoc Include="Controller\PuzzleGames.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="QDifferentClicksButton.h">
+    <QtMoc Include="Model\QDifferentClicksButton.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="MinesweeperEngine.h">
+    <QtMoc Include="Controller\MinesweeperEngine.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="GameEngine.h">
+    <QtMoc Include="Controller\GameEngine.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="BattleshipEngine.h">
+    <QtMoc Include="Controller\BattleshipEngine.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="PuzzleGames.ui">
+    <QtUic Include="View\PuzzleGames.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ColorConstants.h">
+    <ClInclude Include="Model\ColorConstants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MinesweeperTile.h">
+    <ClInclude Include="Model\Minesweeper\MinesweeperTile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Utilities.h">
+    <ClInclude Include="Model\Utilities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BattleshipTile.h">
+    <ClInclude Include="Model\Battleship\BattleshipTile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BattleshipShip.h">
+    <ClInclude Include="Model\Battleship\BattleshipShip.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Model\FillTheSquares\FillSquareConstants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\FillTheSquares\FillSquareLayout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\FillSquaresEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\FillTheSquares\FillSquaresTile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

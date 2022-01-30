@@ -15,3 +15,7 @@ const QString ColorConstants::BATTLESHIP_CROSS_OFF_COLOR{ "background-color: rgb
 
 const QString ColorConstants::MINESWEEPER_HIT_BOMB_COLOR{ "background-color: rgb(255,0,0);" };
 
+const QString ColorConstants::FILL_SQUARES_FILL_COLOR{ "background-color: rgb(46,102,186);" };
+const QString ColorConstants::FILL_SQUARES_BEFORE_HEAD_COLOR{ "background-color: rgb(51,141,215);" };
+const QString ColorConstants::FILL_SQUARES_HEAD_COLOR{ "background-color: rgb(56,185,255);" };
+const QString ColorConstants::FILL_SQUARES_X_COLOR{ "background-color: rgb(60,60,60);" };

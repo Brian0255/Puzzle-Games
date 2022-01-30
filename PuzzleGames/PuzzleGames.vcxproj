@@ -58,6 +58,16 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
   </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\FillTheSquares;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Minesweeper;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Battleship;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Controller;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\View;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\FillTheSquares;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Minesweeper;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Battleship;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Controller;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\View;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -85,35 +95,46 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BattleshipEngine.cpp" />
-    <ClCompile Include="BattleshipShip.cpp" />
-    <ClCompile Include="BattleshipTile.cpp" />
-    <ClCompile Include="QDifferentClicks.cpp" />
-    <ClCompile Include="Utilities.cpp" />
-    <QtRcc Include="PuzzleGames.qrc" />
-    <ClCompile Include="ColorConstants.cpp" />
-    <ClCompile Include="GameEngine.cpp" />
-    <ClCompile Include="MinesweeperEngine.cpp" />
-    <ClCompile Include="MinesweeperTile.cpp" />
-    <ClCompile Include="PuzzleGames.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Controller\BattleshipEngine.cpp" />
+    <ClCompile Include="Controller\FillSquaresEngine.cpp" />
+    <ClCompile Include="Model\FillTheSquares\FillSquaresTile.cpp" />
+    <ClCompile Include="Model\FillTheSquares\FillSquareLayout.cpp" />
+    <ClCompile Include="Model\FillTheSquares\FillSquareConstants.cpp" />
+    <ClCompile Include="Model\Battleship\BattleshipShip.cpp" />
+    <ClCompile Include="Model\Battleship\BattleshipTile.cpp" />
+    <ClCompile Include="Model\QDifferentClicks.cpp" />
+    <ClCompile Include="Model\Utilities.cpp" />
+    <QtRcc Include="View\PuzzleGames.qrc" />
+    <ClCompile Include="Model\ColorConstants.cpp" />
+    <ClCompile Include="Controller\GameEngine.cpp" />
+    <ClCompile Include="Controller\MinesweeperEngine.cpp" />
+    <ClCompile Include="Model\Minesweeper\MinesweeperTile.cpp" />
+    <ClCompile Include="Controller\PuzzleGames.cpp" />
+    <ClCompile Include="Controller\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="PuzzleGames.h" />
+    <QtMoc Include="Controller\PuzzleGames.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="PuzzleGames.ui" />
+    <QtUic Include="View\PuzzleGames.ui" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="BattleshipEngine.h" />
-    <ClInclude Include="BattleshipShip.h" />
-    <ClInclude Include="BattleshipTile.h" />
-    <ClInclude Include="ColorConstants.h" />
-    <QtMoc Include="GameEngine.h" />
-    <QtMoc Include="MinesweeperEngine.h" />
-    <ClInclude Include="MinesweeperTile.h" />
-    <QtMoc Include="QDifferentClicksButton.h" />
-    <ClInclude Include="Utilities.h" />
+    <QtMoc Include="Controller\BattleshipEngine.h" />
+    <ClInclude Include="Controller\FillSquaresEngine.h" />
+    <ClInclude Include="Model\FillTheSquares\FillSquaresTile.h" />
+    <ClInclude Include="Model\FillTheSquares\FillSquareLayout.h" />
+    <ClInclude Include="Model\FillTheSquares\FillSquareConstants.h" />
+    <ClInclude Include="Model\Battleship\BattleshipShip.h" />
+    <ClInclude Include="Model\Battleship\BattleshipTile.h" />
+    <ClInclude Include="Model\ColorConstants.h" />
+    <QtMoc Include="Controller\GameEngine.h" />
+    <QtMoc Include="Controller\MinesweeperEngine.h" />
+    <ClInclude Include="Model\Minesweeper\MinesweeperTile.h" />
+    <QtMoc Include="Model\QDifferentClicksButton.h" />
+    <ClInclude Include="Model\Utilities.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

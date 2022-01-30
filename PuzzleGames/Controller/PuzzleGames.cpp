@@ -4,6 +4,7 @@
 #include"Utilities.h"
 #include"MinesweeperEngine.h"
 #include"BattleshipEngine.h"
+#include"FillSquaresEngine.h"
 #include"qt_windows.h"
 
 PuzzleGames::PuzzleGames(QWidget *parent)
@@ -11,27 +12,22 @@ PuzzleGames::PuzzleGames(QWidget *parent)
 {
     currentGame = NULL;
     ui.setupUi(this);
-    ui.MSweeperPlayBtn->installEventFilter(this);
-    ui.BShipPlayBtn->installEventFilter(this);
-    ui.GoBackButton->installEventFilter(this);
-    ui.ResetButton->installEventFilter(this);
-    connect(ui.MSweeperPlayBtn, &QPushButton::released, this, &PuzzleGames::darkButtonRelease);
-    connect(ui.MSweeperPlayBtn, &QPushButton::pressed, this, &PuzzleGames::darkButtonPress);
+    darkButtons = { ui.MSweeperPlayBtn, ui.BShipPlayBtn,ui.GoBackButton,ui.ResetButton, ui.FillSquaresPlayBtn };
+    for (QPushButton* button : darkButtons) {
+        setupDarkButtonPressRelease(button);
+        button->installEventFilter(this);
+    }
     connect(ui.MSweeperPlayBtn, &QPushButton::clicked, this, &PuzzleGames::minesweeperPlayBtnClick);
-
-    connect(ui.BShipPlayBtn, &QPushButton::released, this, &PuzzleGames::darkButtonRelease);
-    connect(ui.BShipPlayBtn, &QPushButton::pressed, this, &PuzzleGames::darkButtonPress);
     connect(ui.BShipPlayBtn, &QPushButton::clicked, this, &PuzzleGames::battleshipPlayBtnClick);
-
-    connect(ui.ResetButton, &QPushButton::released, this, &PuzzleGames::darkButtonRelease);
-    connect(ui.ResetButton, &QPushButton::pressed, this, &PuzzleGames::darkButtonPress);
+    connect(ui.FillSquaresPlayBtn, &QPushButton::clicked, this, &PuzzleGames::fillSquaresPlayBtnClick);
     connect(ui.ResetButton, &QPushButton::clicked, this, &PuzzleGames::resetBtnClick);
-
-    connect(ui.GoBackButton, &QPushButton::released, this, &PuzzleGames::darkButtonRelease);
-    connect(ui.GoBackButton, &QPushButton::pressed, this, &PuzzleGames::darkButtonPress);
     connect(ui.GoBackButton, &QPushButton::clicked, this, &PuzzleGames::goBackBtnClick);
 }
 
+void PuzzleGames::setupDarkButtonPressRelease(QPushButton* button) {
+    connect(button, &QPushButton::released, this, &PuzzleGames::darkButtonRelease);
+    connect(button, &QPushButton::pressed, this, &PuzzleGames::darkButtonPress);
+}
 void PuzzleGames::updateTopLeftLabel(QString newLabel) {
     ui.TopLeftLabel->setText(newLabel);
 }
@@ -56,14 +52,18 @@ QDifferentClicksButton* PuzzleGames::createBattleshipButton(int row, int col) {
     return newButton;
 }
 
+QDifferentClicksButton* PuzzleGames::createFillSquaresButton(int row, int col) {
+    QDifferentClicksButton* newButton = new QDifferentClicksButton(ui.FillSquaresTileFrame);
+    ui.FillSquaresMainGrid->addWidget(newButton, row, col);
+    return newButton;
+}
+
 bool PuzzleGames::eventFilter(QObject* watched, QEvent* event) {
     QPushButton* btn = static_cast<QPushButton*>(watched);
     
     if (btn && btn->isEnabled()) {
         
-        bool darkButton{ (Utilities::getColor(btn) == ColorConstants::DARK_BUTTON_DEFAULT_COLOR) ||
-                         (Utilities::getColor(btn) == ColorConstants::DARK_BUTTON_LIT_COLOR)     ||
-                         (Utilities::getColor(btn) == ColorConstants::DARK_BUTTON_PRESS_COLOR) };
+        bool darkButton{ std::find(darkButtons.begin(),darkButtons.end(),btn) != darkButtons.end() };
 
         if (event->type() == QEvent::Enter && darkButton) {
             Utilities::changeColor(btn, ColorConstants::DARK_BUTTON_LIT_COLOR);
@@ -91,6 +91,20 @@ void PuzzleGames::minesweeperPlayBtnClick() {
     connectAndStartGame();
 }
 
+void PuzzleGames::battleshipPlayBtnClick() {
+    ui.MainStackedWidget->setCurrentIndex(1);
+    ui.GameStackedWidget->setCurrentIndex(1);
+    currentGame = new BattleshipEngine(this);
+    connectAndStartGame();
+}
+
+void PuzzleGames::fillSquaresPlayBtnClick() {
+    ui.MainStackedWidget->setCurrentIndex(1);
+    ui.GameStackedWidget->setCurrentIndex(2);
+    currentGame = new FillSquaresEngine(this);
+    connectAndStartGame();
+}
+
 void PuzzleGames::connectAndStartGame() {
     connect(currentGame, &GameEngine::sendStatusLabelUpdate, this, &PuzzleGames::updateStatusLabel);
     connect(currentGame, &GameEngine::sendTopLeftLabelUpdate, this, &PuzzleGames::updateTopLeftLabel);
@@ -98,12 +112,7 @@ void PuzzleGames::connectAndStartGame() {
     currentGame->startEngine();
 }
 
-void PuzzleGames::battleshipPlayBtnClick() {
-    ui.MainStackedWidget->setCurrentIndex(1);
-    ui.GameStackedWidget->setCurrentIndex(1);
-    currentGame = new BattleshipEngine(this);
-    connectAndStartGame();
-}
+
 
 void PuzzleGames::resetBtnClick() {
     currentGame->resetGame();

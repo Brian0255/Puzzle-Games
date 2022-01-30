@@ -12,6 +12,6 @@ public:
 	virtual void resetGame();
 	GameEngine();
 	virtual ~GameEngine();
-	bool eventFilter(QObject* watched, QEvent* event);
+	virtual bool eventFilter(QObject* watched, QEvent* event);
 };
 

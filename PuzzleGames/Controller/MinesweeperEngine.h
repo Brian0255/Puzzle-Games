@@ -18,7 +18,6 @@ public:
     void resetGame();
     void gameOver(QPushButton*);
 
-
     void revealTile(QPushButton* button);
 
     void checkIfWin();
