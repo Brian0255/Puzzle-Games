@@ -106,6 +106,7 @@ void PuzzleGames::fillSquaresPlayBtnClick() {
 }
 
 void PuzzleGames::connectAndStartGame() {
+    ui.StatusLabel->setText("");
     connect(currentGame, &GameEngine::sendStatusLabelUpdate, this, &PuzzleGames::updateStatusLabel);
     connect(currentGame, &GameEngine::sendTopLeftLabelUpdate, this, &PuzzleGames::updateTopLeftLabel);
     connect(currentGame, &GameEngine::sendTopRightLabelUpdate, this, &PuzzleGames::updateTopRightLabel);
