@@ -62,7 +62,7 @@ void FillSquaresEngine::transposeLayout(FillSquareLayout& layout) {
 }
 
 void FillSquaresEngine::rotate90Degrees(FillSquareLayout& layout) {
-	for (std::string row : layout.layout){
+	for (std::string& row : layout.layout){
 		std::reverse(row.begin(), row.end());
 	}
 }
