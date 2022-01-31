@@ -28,7 +28,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="GameSelectWindow">
      <widget class="QLabel" name="SelectGameLabel">
@@ -743,7 +743,7 @@ border-radius: 0px;</string>
 </string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="Minesweeper">
        <property name="styleSheet">
@@ -876,6 +876,55 @@ border-radius: 0px;</string>
           </rect>
          </property>
          <layout class="QGridLayout" name="FillSquaresMainGrid">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <property name="spacing">
+           <number>0</number>
+          </property>
+         </layout>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="BlockSlide">
+       <widget class="QFrame" name="BlockSlideTileFrame">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>581</width>
+          <height>581</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(170, 170, 170);
+</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QWidget" name="gridLayoutWidget_8">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>581</width>
+           <height>581</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="BlockSlideMainGrid">
           <property name="leftMargin">
            <number>0</number>
           </property>

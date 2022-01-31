@@ -5,6 +5,7 @@
 #include"MinesweeperEngine.h"
 #include"BattleshipEngine.h"
 #include"FillSquaresEngine.h"
+#include"BlockSlideEngine.h"
 #include"qt_windows.h"
 
 PuzzleGames::PuzzleGames(QWidget *parent)
@@ -13,7 +14,8 @@ PuzzleGames::PuzzleGames(QWidget *parent)
     currentGame = NULL;
     ui.setupUi(this);
     setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
-    darkButtons = { ui.MSweeperPlayBtn, ui.BShipPlayBtn,ui.GoBackButton,ui.ResetButton, ui.FillSquaresPlayBtn };
+    darkButtons = { ui.MSweeperPlayBtn, ui.BShipPlayBtn,ui.GoBackButton,ui.ResetButton, ui.FillSquaresPlayBtn,
+                    ui.BlockSlidePlayBtn};
     for (QPushButton* button : darkButtons) {
         setupDarkButtonPressRelease(button);
         button->installEventFilter(this);
@@ -23,6 +25,7 @@ PuzzleGames::PuzzleGames(QWidget *parent)
     connect(ui.FillSquaresPlayBtn, &QPushButton::clicked, this, &PuzzleGames::fillSquaresPlayBtnClick);
     connect(ui.ResetButton, &QPushButton::clicked, this, &PuzzleGames::resetBtnClick);
     connect(ui.GoBackButton, &QPushButton::clicked, this, &PuzzleGames::goBackBtnClick);
+    connect(ui.BlockSlidePlayBtn, &QPushButton::clicked, this, &PuzzleGames::blockSlidePlayBtnClick);
 }
 
 void PuzzleGames::setupDarkButtonPressRelease(QPushButton* button) {
@@ -57,6 +60,17 @@ QDifferentClicksButton* PuzzleGames::createFillSquaresButton(int row, int col) {
     QDifferentClicksButton* newButton = new QDifferentClicksButton(ui.FillSquaresTileFrame);
     ui.FillSquaresMainGrid->addWidget(newButton, row, col);
     return newButton;
+}
+
+QDifferentClicksButton* PuzzleGames::createBlockSlideButton(int row, int col) {
+    QDifferentClicksButton* newButton = new QDifferentClicksButton(ui.BlockSlideTileFrame);
+    ui.BlockSlideMainGrid->addWidget(newButton, row, col);
+    return newButton;
+}
+
+void PuzzleGames::setupSlidingBlock(SlidingBlock& block,int row, int col) {
+    QDifferentClicksButton* newButton = new QDifferentClicksButton(ui.BlockSlideTileFrame);
+    block.button = newButton;
 }
 
 bool PuzzleGames::eventFilter(QObject* watched, QEvent* event) {
@@ -103,6 +117,13 @@ void PuzzleGames::fillSquaresPlayBtnClick() {
     ui.MainStackedWidget->setCurrentIndex(1);
     ui.GameStackedWidget->setCurrentIndex(2);
     currentGame = new FillSquaresEngine(this);
+    connectAndStartGame();
+}
+
+void PuzzleGames::blockSlidePlayBtnClick() {
+    ui.MainStackedWidget->setCurrentIndex(1);
+    ui.GameStackedWidget->setCurrentIndex(3);
+    currentGame = new BlockSlideEngine(this);
     connectAndStartGame();
 }
 

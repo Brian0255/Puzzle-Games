@@ -60,12 +60,12 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\FillTheSquares;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Minesweeper;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Battleship;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Controller;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\View;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\BlockSlide;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\FillTheSquares;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Minesweeper;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Battleship;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Controller;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\View;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\FillTheSquares;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Minesweeper;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Battleship;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Controller;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\View;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\BlockSlide;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\FillTheSquares;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Minesweeper;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Battleship;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Controller;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\View;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -95,6 +95,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Model\BlockSlide\BlockSlideLayout.cpp" />
+    <ClCompile Include="Model\BlockSlide\BlockSlideConstants.cpp" />
+    <ClCompile Include="Controller\BlockSlideEngine.cpp" />
+    <ClCompile Include="Model\BlockSlide\BlockSlideTile.cpp" />
     <ClCompile Include="Controller\BattleshipEngine.cpp" />
     <ClCompile Include="Controller\FillSquaresEngine.cpp" />
     <ClCompile Include="Model\FillTheSquares\FillSquaresTile.cpp" />
@@ -104,6 +108,7 @@
     <ClCompile Include="Model\Battleship\BattleshipTile.cpp" />
     <ClCompile Include="Model\QDifferentClicks.cpp" />
     <ClCompile Include="Model\Utilities.cpp" />
+    <ClCompile Include="Model\BlockSlide\SlidingBlock.cpp" />
     <QtRcc Include="View\PuzzleGames.qrc" />
     <ClCompile Include="Model\ColorConstants.cpp" />
     <ClCompile Include="Controller\GameEngine.cpp" />
@@ -119,7 +124,12 @@
     <QtUic Include="View\PuzzleGames.ui" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Model\BlockSlide\BlockSlideLayout.h" />
+    <ClInclude Include="Model\BlockSlide\BlockSlideConstants.h" />
+    <ClInclude Include="Model\BlockSlide\SlidingBlock.h" />
     <QtMoc Include="Controller\BattleshipEngine.h" />
+    <ClInclude Include="Controller\BlockSlideEngine.h" />
+    <ClInclude Include="Model\BlockSlide\BlockSlideTile.h" />
     <ClInclude Include="Controller\FillSquaresEngine.h" />
     <ClInclude Include="Model\FillTheSquares\FillSquaresTile.h" />
     <ClInclude Include="Model\FillTheSquares\FillSquareLayout.h" />

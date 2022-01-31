@@ -73,6 +73,21 @@
     <ClCompile Include="Model\FillTheSquares\FillSquaresTile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Controller\BlockSlideEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\BlockSlide\BlockSlideTile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\BlockSlide\SlidingBlock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\BlockSlide\BlockSlideConstants.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\BlockSlide\BlockSlideLayout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Controller\PuzzleGames.h">
@@ -122,6 +137,21 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Model\FillTheSquares\FillSquaresTile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\BlockSlideEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\BlockSlide\BlockSlideTile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\BlockSlide\SlidingBlock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\BlockSlide\BlockSlideConstants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\BlockSlide\BlockSlideLayout.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

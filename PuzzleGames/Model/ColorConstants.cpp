@@ -19,3 +19,11 @@ const QString ColorConstants::FILL_SQUARES_FILL_COLOR{ "background-color: rgb(46
 const QString ColorConstants::FILL_SQUARES_BEFORE_HEAD_COLOR{ "background-color: rgb(51,141,215);" };
 const QString ColorConstants::FILL_SQUARES_HEAD_COLOR{ "background-color: rgb(56,185,255);" };
 const QString ColorConstants::FILL_SQUARES_X_COLOR{ "background-color: rgb(60,60,60);" };
+
+const QString ColorConstants::BLOCK_SLIDE_BLOCK_COLOR{ "background-color: rgb(36,145,225);" };
+const QString ColorConstants::BLOCK_SLIDE_BLOCK_PRESS_COLOR{ "background-color: rgb(46,155,225);" };
+const QString ColorConstants::BLOCK_SLIDE_BLOCK_HOVER_COLOR{ "background-color: rgb(56,165,225);" };
+
+const QString ColorConstants::BLOCK_SLIDE_BARRIER_COLOR{ "background-color: rgb(30,30,30);" };
+const QString ColorConstants::BLOCK_SLIDE_HIGHLIGHT_COLOR{ "background-color: rgb(200,215,228);" };
+const QString ColorConstants::BLOCK_SLIDE_DEFAULT_COLOR{"background-color: rgb(160,160,160);"};

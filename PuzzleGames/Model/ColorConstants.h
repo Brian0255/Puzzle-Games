@@ -22,4 +22,11 @@ public:
 	static const QString FILL_SQUARES_HEAD_COLOR;
 	static const QString FILL_SQUARES_BEFORE_HEAD_COLOR;
 	static const QString FILL_SQUARES_X_COLOR;
+
+	static const QString BLOCK_SLIDE_HIGHLIGHT_COLOR;
+	static const QString BLOCK_SLIDE_BLOCK_COLOR;
+	static const QString BLOCK_SLIDE_BARRIER_COLOR;
+	static const QString BLOCK_SLIDE_DEFAULT_COLOR;
+	static const QString BLOCK_SLIDE_BLOCK_HOVER_COLOR;
+	static const QString BLOCK_SLIDE_BLOCK_PRESS_COLOR;
 };

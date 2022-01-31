@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_PuzzleGames.h"
+#include"SlidingBlock.h"
 #include"GameEngine.h"
 #include"QDifferentClicksButton.h"
 #include<vector>
@@ -16,13 +17,18 @@ public:
     QDifferentClicksButton* createMinesweeperButton(int row, int col);
     QDifferentClicksButton* createBattleshipButton(int row, int col);
     QDifferentClicksButton* createFillSquaresButton(int row, int col);
+    QDifferentClicksButton* createBlockSlideButton(int row, int col);
+    void setupSlidingBlock(SlidingBlock& block, int row, int col);
     void setupDarkButtonPressRelease(QPushButton* button);
 public slots:
     void darkButtonPress();
     void darkButtonRelease();
+
     void minesweeperPlayBtnClick();
     void battleshipPlayBtnClick();
     void fillSquaresPlayBtnClick();
+    void blockSlidePlayBtnClick();
+
     void connectAndStartGame();
     void resetBtnClick();
     void goBackBtnClick();
