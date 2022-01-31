@@ -15,7 +15,7 @@ PuzzleGames::PuzzleGames(QWidget *parent)
     ui.setupUi(this);
     setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
     darkButtons = { ui.MSweeperPlayBtn, ui.BShipPlayBtn,ui.GoBackButton,ui.ResetButton, ui.FillSquaresPlayBtn,
-                    ui.BlockSlidePlayBtn};
+                    ui.BlockSlidePlayBtn, ui.BlockSlideBack, ui.BlockSlideForward};
     for (QPushButton* button : darkButtons) {
         setupDarkButtonPressRelease(button);
         button->installEventFilter(this);
@@ -26,6 +26,8 @@ PuzzleGames::PuzzleGames(QWidget *parent)
     connect(ui.ResetButton, &QPushButton::clicked, this, &PuzzleGames::resetBtnClick);
     connect(ui.GoBackButton, &QPushButton::clicked, this, &PuzzleGames::goBackBtnClick);
     connect(ui.BlockSlidePlayBtn, &QPushButton::clicked, this, &PuzzleGames::blockSlidePlayBtnClick);
+    connect(ui.BlockSlideForward, &QPushButton::clicked, this, &PuzzleGames::blockSlideForwardClick);
+    connect(ui.BlockSlideBack, &QPushButton::clicked, this, &PuzzleGames::blockSlideBackClick);
 }
 
 void PuzzleGames::setupDarkButtonPressRelease(QPushButton* button) {
@@ -123,8 +125,23 @@ void PuzzleGames::fillSquaresPlayBtnClick() {
 void PuzzleGames::blockSlidePlayBtnClick() {
     ui.MainStackedWidget->setCurrentIndex(1);
     ui.GameStackedWidget->setCurrentIndex(3);
+    ui.BlockSlidePuzzleLabel->setText("Puzzle 1");
     currentGame = new BlockSlideEngine(this);
     connectAndStartGame();
+}
+
+void PuzzleGames::blockSlideForwardClick() {
+    BlockSlideEngine* blockSlideGame = dynamic_cast<BlockSlideEngine*>(currentGame);
+    blockSlideGame->increasePuzzleIndex();
+    ui.BlockSlidePuzzleLabel->setText("Puzzle " + QString::number(blockSlideGame->getCurrentIndex() + 1));
+    blockSlideGame->resetGame();
+}
+
+void PuzzleGames::blockSlideBackClick() {
+    BlockSlideEngine* blockSlideGame = dynamic_cast<BlockSlideEngine*>(currentGame);
+    blockSlideGame->decreasePuzzleIndex();
+    ui.BlockSlidePuzzleLabel->setText("Puzzle " + QString::number(blockSlideGame->getCurrentIndex() + 1));
+    blockSlideGame->resetGame();
 }
 
 void PuzzleGames::connectAndStartGame() {

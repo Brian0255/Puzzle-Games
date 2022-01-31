@@ -7,10 +7,11 @@
 
 const int GRID_SIZE{ 6 };
 const int GRID_SPACING{ 4 };
-const int BUTTON_SIZE{ 92 };
+const int BUTTON_SIZE{ 82 };
 
 BlockSlideEngine::BlockSlideEngine(PuzzleGames* controller)
-	:controller{ controller } {
+	:controller{ controller }, curPuzzleIndex{ 0 }, animationActive{ false }, winCoords{ {} },
+	totalPuzzles{ static_cast<int>(BlockSlideConstants::layouts.size()) } {
 		currentSelectedBlock = new SlidingBlock();
 };
 
@@ -36,7 +37,7 @@ void BlockSlideEngine::setupTiles() {
 				"font: 40pt \"Segoe UI Semilight\";"
 				"color: rgb(222, 80, 80); "
 			);
-			tileBtn->setFixedSize(92, 92);
+			tileBtn->setFixedSize(BUTTON_SIZE, BUTTON_SIZE);
 			BlockSlideTile tile = BlockSlideTile(tileBtn);
 			tile.barrier = false;
 			connect(tileBtn, &QDifferentClicksButton::leftClicked, this, &BlockSlideEngine::tileBtnClick);
@@ -75,6 +76,7 @@ void BlockSlideEngine::resetGame() {
 		for (auto& tileArray : tiles) {
 			for (auto& tile : tileArray) {
 				tile.reset();
+				tile.button->setText("");
 			}
 		}
 		slidingBlocks.clear();
@@ -88,7 +90,7 @@ void BlockSlideEngine::startGame() {
 		putLayoutIntoTileGrid();
 	}
 	else {
-		currentLayout = BlockSlideConstants::layouts[0];
+		currentLayout = BlockSlideConstants::layouts[curPuzzleIndex];
 		putLayoutIntoTileGrid();
 	}
 }
@@ -130,7 +132,7 @@ void BlockSlideEngine::createSlidingBlock(int row, int col) {
 		"color: rgb(240, 104, 104); "
 	);
 	Utilities::changeColor(button, ColorConstants::BLOCK_SLIDE_BLOCK_COLOR);
-	button->setFixedSize(92, 92);
+	button->setFixedSize(BUTTON_SIZE,BUTTON_SIZE);
 	int xOffset = (col * (GRID_SPACING + BUTTON_SIZE));
 	int yOffset = (row * (GRID_SPACING + BUTTON_SIZE));
 	button->move(GRID_SPACING + xOffset, GRID_SPACING + yOffset);
@@ -292,6 +294,9 @@ void BlockSlideEngine::putLayoutIntoTileGrid() {
 				setTileAsGoal(i, j);
 				++numGoals;
 				break;
+			case '-':
+				setTileAsDefault(i, j);
+				break;
 			default:
 				break;
 			}
@@ -302,7 +307,16 @@ void BlockSlideEngine::putLayoutIntoTileGrid() {
 void BlockSlideEngine::setTileAsBarrier(int i, int j) {
 	BlockSlideTile* tile = &tiles[i][j];
 	tile->barrier = true;
+	tile->button->setText("");
 	Utilities::changeColor(tile->button, ColorConstants::BLOCK_SLIDE_BARRIER_COLOR);
+}
+
+void BlockSlideEngine::setTileAsDefault(int i, int j) {
+	BlockSlideTile* tile = &tiles[i][j];
+	tile->barrier = false;
+	tile->goal = false;
+	tile->button->setText("");
+	Utilities::changeColor(tile->button, ColorConstants::BLOCK_SLIDE_DEFAULT_COLOR);
 }
 
 void BlockSlideEngine::setTileAsGoal(int i, int j) {
@@ -324,6 +338,24 @@ bool BlockSlideEngine::eventFilter(QObject* watched, QEvent* event) {
 	}
 
 	return QObject::eventFilter(watched, event);
+}
+
+void BlockSlideEngine::increasePuzzleIndex() {
+	if (!animationActive) {
+		curPuzzleIndex = (curPuzzleIndex + 1) % totalPuzzles;
+		resetGame();
+	}
+}
+
+void BlockSlideEngine::decreasePuzzleIndex() {
+	if (!animationActive) {
+		curPuzzleIndex = (curPuzzleIndex + totalPuzzles - 1) % totalPuzzles;
+		resetGame();
+	}
+}
+
+int BlockSlideEngine::getCurrentIndex() {
+	return curPuzzleIndex;
 }
 
 void BlockSlideEngine::rotateLayoutRandomly() {

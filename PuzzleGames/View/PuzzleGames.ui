@@ -899,10 +899,10 @@ border-radius: 0px;</string>
        <widget class="QFrame" name="BlockSlideTileFrame">
         <property name="geometry">
          <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>581</width>
-          <height>581</height>
+          <x>30</x>
+          <y>60</y>
+          <width>521</width>
+          <height>521</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -920,8 +920,8 @@ border-radius: 0px;</string>
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>581</width>
-           <height>581</height>
+           <width>521</width>
+           <height>521</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="BlockSlideMainGrid">
@@ -942,6 +942,79 @@ border-radius: 0px;</string>
           </property>
          </layout>
         </widget>
+       </widget>
+       <widget class="QLabel" name="BlockSlidePuzzleLabel">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>20</y>
+          <width>181</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>12</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);</string>
+        </property>
+        <property name="text">
+         <string>Puzzle 1</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="BlockSlideForward">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>20</y>
+          <width>41</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(80,80,80);
+border: 0px;</string>
+        </property>
+        <property name="text">
+         <string>&gt;</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="BlockSlideBack">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>20</y>
+          <width>41</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(80,80,80);
+border: 0px;</string>
+        </property>
+        <property name="text">
+         <string>&lt;</string>
+        </property>
        </widget>
       </widget>
      </widget>

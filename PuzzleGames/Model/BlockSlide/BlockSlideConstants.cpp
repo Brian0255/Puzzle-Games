@@ -8,6 +8,10 @@ std::vector<BlockSlideLayout> createLayouts() {
 	BlockSlideLayout layout4;
 	BlockSlideLayout layout5;
 	BlockSlideLayout layout6;
+	BlockSlideLayout layout7;
+	BlockSlideLayout layout8;
+	BlockSlideLayout layout9;
+	BlockSlideLayout layout10;
 	layout1.layout = {
 		"B----B",
 		"------",
@@ -56,7 +60,40 @@ std::vector<BlockSlideLayout> createLayouts() {
 		"-O--OX",
 		"XX----"
 	};
-	layouts = { layout6 };
+	layout7.layout = {
+		"X-----",
+		"----X-",
+		"-XO---",
+		"-XB---",
+		"-----X",
+		"XX----"
+	};
+	layout8.layout = {
+		"XOOOOO",
+		"X-XXXX",
+		"BBO---",
+		"BBBO--",
+		"BBB-O-",
+		"XXXXXX"
+	};
+	layout9.layout = {
+		"--O---",
+		"------",
+		"B-----",
+		"-----B",
+		"------",
+		"---O--"
+	};
+	layout10.layout = {
+		"--O--B",
+		"B-----",
+		"--O---",
+		"B--O--",
+		"------",
+		"---O-B"
+	};
+	layouts = { layout1, layout2, layout3, layout4, layout5,
+				layout6, layout7, layout8, layout9,layout10 };
 	return layouts;
 }
 

@@ -35,10 +35,16 @@ public:
     void putLayoutIntoTileGrid();
     void setTileAsBarrier(int i, int j);
     void setTileAsGoal(int i, int j);
+    void setTileAsDefault(int i, int j);
 
     bool eventFilter(QObject* watched, QEvent* event);
 
     void resetTiles();
+
+    void increasePuzzleIndex();
+    void decreasePuzzleIndex();
+
+    int getCurrentIndex();
 
     void rotateLayoutRandomly();
     void rotate90Degrees();
@@ -62,5 +68,7 @@ private:
     bool animationActive;
     int numGoals{ 0 };
     bool resetOnlyThePuzzle{ false };
+    int curPuzzleIndex;
+    int totalPuzzles;
 };
 

@@ -29,6 +29,9 @@ public slots:
     void fillSquaresPlayBtnClick();
     void blockSlidePlayBtnClick();
 
+    void blockSlideForwardClick();
+    void blockSlideBackClick();
+
     void connectAndStartGame();
     void resetBtnClick();
     void goBackBtnClick();
