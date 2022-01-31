@@ -2,6 +2,9 @@
   <qresource prefix="PuzzleGames">
     <file>fillSquaresPicture.png</file>
   </qresource>
+  <qresource prefix="newPrefix">
+    <file>blockSlidePicture.png</file>
+  </qresource>
   <qresource prefix="battleshipPicture">
     <file>battleshipPicture.png</file>
   </qresource>

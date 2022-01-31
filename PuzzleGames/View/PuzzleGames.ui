@@ -28,7 +28,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="GameSelectWindow">
      <widget class="QLabel" name="SelectGameLabel">
@@ -676,6 +676,9 @@ border-radius: 0px;</string>
              </property>
              <property name="text">
               <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="PuzzleGames.qrc">:/newPrefix/blockSlidePicture.png</pixmap>
              </property>
              <property name="scaledContents">
               <bool>true</bool>
