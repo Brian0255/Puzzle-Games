@@ -34,5 +34,8 @@ public:
 	static const QString BLOCK_FILL_OVERLAP_ERROR_COLOR;
 	static const QString BLOCK_FILL_MAIN_GRID_TILE_COLOR;
 	static const QString BLOCK_FILL_BARRIER_COLOR;
+	static const QString BLOCK_FILL_GOAL_TILE_COLOR;
+
 	static const std::map<QChar, QString> BLOCK_FILL_PIECE_COLORS;
+	static const std::map<QChar, QString> BLOCK_FILL_PIECE_HIGHLIGHT_COLORS;
 };

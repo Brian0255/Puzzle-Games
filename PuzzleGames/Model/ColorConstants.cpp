@@ -29,16 +29,27 @@ const QString ColorConstants::BLOCK_SLIDE_HIGHLIGHT_COLOR{ "background-color: rg
 const QString ColorConstants::BLOCK_SLIDE_DEFAULT_COLOR{"background-color: rgb(160,160,160);"};
 
 const QString ColorConstants::BLOCK_FILL_DEFAULT_TILE_COLOR{ "background-color: rgb(160,160,160);" };
+const QString ColorConstants::BLOCK_FILL_GOAL_TILE_COLOR{ "background-color: rgb(180,180,180);" };
 const QString ColorConstants::BLOCK_FILL_MAIN_GRID_TILE_COLOR{ "background-color: rgb(180,180,180);" };
 const QString ColorConstants::BLOCK_FILL_BARRIER_COLOR{ "background-color: rgb(30,30,30);" };
 const QString ColorConstants::BLOCK_FILL_OVERLAP_ERROR_COLOR{ "background-color: rgb(255,165,165);" };
 
 const std::map<QChar, QString> ColorConstants::BLOCK_FILL_PIECE_COLORS{
 	{'z',"background-color: rgb(230,0,0);"},
-	{'s',"background - color: rgb(73,243,42); "},
+	{'s',"background-color: rgb(73,243,42); "},
 	{'t',"background-color: rgb(156,0,241);"},
 	{'j',"background-color: rgb(33,0,238);"},
 	{'l',"background-color: rgb(232,159,6);"},
 	{'i',"background-color: rgb(80,241,242);"},
 	{'o',"background-color: rgb(238,241,34);"}
+};
+
+const std::map<QChar, QString> ColorConstants::BLOCK_FILL_PIECE_HIGHLIGHT_COLORS{
+	{'z',"background-color: rgb(255,80,80);"},
+	{'s',"background-color: rgb(157,242,140); "},
+	{'t',"background-color: rgb(181,81,239);"},
+	{'j',"background-color: rgb(101,80,237);"},
+	{'l',"background-color: rgb(229,179,80);"},
+	{'i',"background-color: rgb(162,239,239);"},
+	{'o',"background-color: rgb(239,239,189);"}
 };
