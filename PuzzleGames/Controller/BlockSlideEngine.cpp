@@ -358,15 +358,6 @@ int BlockSlideEngine::getCurrentIndex() {
 	return curPuzzleIndex;
 }
 
-void BlockSlideEngine::rotateLayoutRandomly() {
-}
-
-void BlockSlideEngine::rotate90Degrees() {
-}
-
-void BlockSlideEngine::transposeLayout() {
-}
-
 void BlockSlideEngine::tileBtnClick() {
 	QPushButton* button = qobject_cast<QPushButton*>(sender());
 	std::array<int, 2> coords = buttonCoords.at(button);

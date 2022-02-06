@@ -50,8 +50,6 @@ public:
     void rotate90Degrees();
     void transposeLayout();
 public slots:
-    void slidingBlockButtonPress();
-    void slidingBlockButtonRelease();
     void tileBtnClick();
     void slidingBlockBtnRightClick();
     void slidingBlockBtnClick();
