@@ -210,7 +210,6 @@ void MinesweeperEngine::tileButtonPress() {
 }
 
 void MinesweeperEngine::tileButtonClick() {
-    qDebug() << "clicked";
     QPushButton* button = qobject_cast<QPushButton*>(sender());
     if (button->isEnabled()) {
         Utilities::changeColor(button, ColorConstants::TILE_UNCOVERED_COLOR);
