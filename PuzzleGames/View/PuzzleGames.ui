@@ -28,7 +28,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="GameSelectWindow">
      <widget class="QLabel" name="SelectGameLabel">
@@ -833,7 +833,7 @@ border-radius: 0px;</string>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
-             <width>390</width>
+             <width>196</width>
              <height>20</height>
             </size>
            </property>
@@ -1208,9 +1208,9 @@ border: 0px;</string>
        <widget class="QLabel" name="BlockFillPuzzleLabel">
         <property name="geometry">
          <rect>
-          <x>200</x>
+          <x>240</x>
           <y>20</y>
-          <width>181</width>
+          <width>101</width>
           <height>31</height>
          </rect>
         </property>
