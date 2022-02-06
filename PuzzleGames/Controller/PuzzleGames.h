@@ -18,6 +18,8 @@ public:
     QDifferentClicksButton* createBattleshipButton(int row, int col);
     QDifferentClicksButton* createFillSquaresButton(int row, int col);
     QDifferentClicksButton* createBlockSlideButton(int row, int col);
+    QDifferentClicksButton* createBlockFillButton(int row, int col);
+
     void setupSlidingBlock(SlidingBlock& block, int row, int col);
     void setupDarkButtonPressRelease(QPushButton* button);
 public slots:
@@ -28,9 +30,13 @@ public slots:
     void battleshipPlayBtnClick();
     void fillSquaresPlayBtnClick();
     void blockSlidePlayBtnClick();
+    void blockFillPlayBtnClick();
 
     void blockSlideForwardClick();
     void blockSlideBackClick();
+
+    void blockFillForwardClick();
+    void blockFillBackClick();
 
     void connectAndStartGame();
     void resetBtnClick();
