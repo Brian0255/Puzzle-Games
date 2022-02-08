@@ -53,3 +53,11 @@ const std::map<QChar, QString> ColorConstants::BLOCK_FILL_PIECE_HIGHLIGHT_COLORS
 	{'i',"background-color: rgb(162,239,239);"},
 	{'o',"background-color: rgb(239,239,189);"}
 };
+
+const QString ColorConstants::COORDINATION_BLOCK_COLOR{ "background-color: rgb(244,119,136);" };
+const QString ColorConstants::COORDINATION_BLOCK_HOVER_COLOR{ "background-color: rgb(242,179,196);" };
+const QString ColorConstants::COORDINATION_BLOCK_PRESS_COLOR{ "background-color: rgb(242,149,166);" };
+const QString ColorConstants::COORDINATION_GOAL_COLOR{ "background-color: rgb(85,188,204);" };
+const QString ColorConstants::COORDINATION_BARRIER_COLOR{ "background-color: rgb(30,30,30);" };
+const QString ColorConstants::COORDINATION_DEFAULT_COLOR{ "background-color: rgb(160,160,160);" };
+
