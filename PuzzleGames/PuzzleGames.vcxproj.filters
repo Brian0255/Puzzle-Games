@@ -46,7 +46,7 @@
     <ClCompile Include="Model\Minesweeper\MinesweeperTile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Model\Utilities.cpp">
+    <ClCompile Include="Model\ArrayUtils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Model\QDifferentClicks.cpp">
@@ -88,6 +88,42 @@
     <ClCompile Include="Model\BlockSlide\BlockSlideLayout.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Model\BlockFill\BlockFillShape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\BlockFill\BlockFillTile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\BlockFill\BlockFillConstants.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\BlockFillEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\BlockFill\BlockFillLayout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\Coordination\CoordinationConstants.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\CoordinationEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\Coordination\CoordinationLayout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\Coordination\CoordinationTile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller\PuzzleSelectGameEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\TileUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\ColorUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Controller\PuzzleGames.h">
@@ -118,7 +154,7 @@
     <ClInclude Include="Model\Minesweeper\MinesweeperTile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Model\Utilities.h">
+    <ClInclude Include="Model\ArrayUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Model\Battleship\BattleshipTile.h">
@@ -152,6 +188,42 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Model\BlockSlide\BlockSlideLayout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\BlockFill\BlockFillShape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\BlockFill\BlockFillTile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\BlockFill\BlockFillConstants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\BlockFillEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\BlockFill\BlockFillLayout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Coordination\CoordinationConstants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\CoordinationEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Coordination\CoordinationLayout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\Coordination\CoordinationTile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller\PuzzleSelectGameEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\TileUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\ColorUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

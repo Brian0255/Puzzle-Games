@@ -3,8 +3,9 @@
 #include"qpushbutton.h"
 
 class BlockFillTile {
-public:
+	friend class TileUtils;
 	friend class BlockFillEngine;
+public:
 
 	BlockFillTile(QPushButton* button);
 	BlockFillTile();

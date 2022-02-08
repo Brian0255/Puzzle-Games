@@ -1,21 +1,20 @@
 #include "MinesweeperEngine.h"
 #include"QDifferentClicksButton.h"
 #include"ColorConstants.h"
-#include"Utilities.h"
+#include"TileUtils.h"
+#include"ColorUtils.h"
 
 MinesweeperEngine::MinesweeperEngine(PuzzleGames* controller) : controller{ controller } {};
 
 MinesweeperEngine::~MinesweeperEngine() {
     for (auto& tileArray : tiles) {
         for (MinesweeperTile tile : tileArray) {
-            QPushButton* button = tile.button;
-            delete button;
+            delete tile.button;
         }
     }
 }
 
 void MinesweeperEngine::startEngine() {
-    srand(time(0));
     bombs = bombStartAmount;
     emit sendTopLeftLabelUpdate("");
     emit sendTopRightLabelUpdate("Bombs: " + QString::number(bombs));
@@ -25,7 +24,7 @@ void MinesweeperEngine::startEngine() {
 void MinesweeperEngine::setupTiles() {
     for (int i = 0; i < 16; ++i) {
         for (int j = 0; j < 16; ++j) {
-            QDifferentClicksButton* tileBtn = controller->createMinesweeperButton(i, j);
+            QDifferentClicksButton* tileBtn = controller->createButton(i, j, false);
             tileBtn->setStyleSheet(
                 "border: 0px;"
                 "background-color: rgb(200,200,200);"
@@ -115,7 +114,7 @@ void MinesweeperEngine::revealTile(QPushButton* button) {
     }
     else {
         mainTile->reveal();
-        Utilities::Utilities::changeColor(button, ColorConstants::TILE_UNCOVERED_COLOR);
+        ColorUtils::changeColor(button, ColorConstants::TILE_UNCOVERED_COLOR);
         button->removeEventFilter(this);
         if (mainTile->tileType == TILE_TYPE::SAFE) {
             for (int rowOffset = -1; rowOffset < 2; ++rowOffset) {
@@ -143,7 +142,7 @@ void MinesweeperEngine::resetGame() {
         for (int j = 0; j < tiles.size(); ++j) {
             MinesweeperTile* tile = &tiles[i][j];
             tile->tileType = (TILE_TYPE::HIDDEN);
-            Utilities::Utilities::changeColor(tile->button, ColorConstants::TILE_DEFAULT_COLOR);
+            ColorUtils::changeColor(tile->button, ColorConstants::TILE_DEFAULT_COLOR);
             tile->button->installEventFilter(this);
             tile->button->setEnabled(true);
             tile->button->setText("");
@@ -163,25 +162,17 @@ void MinesweeperEngine::resetGame() {
 
 void MinesweeperEngine::gameOver(QPushButton* hit) {
     hit->setText("X");
-    Utilities::Utilities::changeColor(hit, ColorConstants::MINESWEEPER_HIT_BOMB_COLOR);
-    disableButtons();
+    ColorUtils::changeColor(hit, ColorConstants::MINESWEEPER_HIT_BOMB_COLOR);
+    TileUtils::disableButtons(tiles);
     for (std::array<MinesweeperTile, 16> tileRow : tiles) {
         for (MinesweeperTile tile : tileRow) {
             if (tile.tileType == TILE_TYPE::BOMB && tile.button != hit) {
-                Utilities::Utilities::changeColor(tile.button, ColorConstants::TILE_UNCOVERED_COLOR);
+                ColorUtils::changeColor(tile.button, ColorConstants::TILE_UNCOVERED_COLOR);
                 tile.button->setText("X");
             }
         }
     }
     emit sendStatusLabelUpdate("Game over!");
-}
-
-void MinesweeperEngine::disableButtons() {
-    for (std::array<MinesweeperTile, 16> tileRow : tiles) {
-        for (MinesweeperTile tile : tileRow) {
-            tile.button->setEnabled(false);
-        }
-    }
 }
 
 void MinesweeperEngine::checkIfWin() {
@@ -194,7 +185,7 @@ void MinesweeperEngine::checkIfWin() {
         }
     }
     if (win) {
-        disableButtons();
+        TileUtils::disableButtons(tiles);
         emit sendStatusLabelUpdate("You win!");
     }
 }
@@ -206,13 +197,13 @@ void MinesweeperEngine::resetButtonClick() {
 void MinesweeperEngine::tileButtonPress() {
     QPushButton* button = qobject_cast<QPushButton*>(sender());
     if (button->isEnabled())
-        Utilities::changeColor(button, ColorConstants::TILE_PRESS_COLOR);
+        ColorUtils::changeColor(button, ColorConstants::TILE_PRESS_COLOR);
 }
 
 void MinesweeperEngine::tileButtonClick() {
     QPushButton* button = qobject_cast<QPushButton*>(sender());
     if (button->isEnabled()) {
-        Utilities::changeColor(button, ColorConstants::TILE_UNCOVERED_COLOR);
+        ColorUtils::changeColor(button, ColorConstants::TILE_UNCOVERED_COLOR);
 
         if (!gameActive) {
             gameActive = true;
