@@ -1,7 +1,7 @@
 #pragma once
 #include "PuzzleSelectGameEngine.h"
 #include"BlockFillTile.h"
-#include"BlockFillLayout.h"
+#include"GameLayout.h"
 #include"PuzzleGames.h"
 class BlockFillEngine :
     public PuzzleSelectGameEngine {
@@ -19,7 +19,7 @@ public:
 
     void putLayoutIntoTileGrid();
 
-    void createShape(BlockFillLayout layout, int row, int col);
+    void createShape(GameLayout<16> layout, int row, int col);
     void connectShapeWithTiles(BlockFillShape* shape);
     void changeTileColorToShape(BlockFillTile* tile);
 

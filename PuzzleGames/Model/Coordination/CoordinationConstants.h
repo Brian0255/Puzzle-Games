@@ -1,7 +1,7 @@
 #pragma once
-#include"CoordinationLayout.h"
+#include"GameLayout.h"
 #include<vector>
 class CoordinationConstants {
 public:
-	static const std::vector<CoordinationLayout> layouts;
+	static const std::vector<GameLayout<7>> layouts;
 };

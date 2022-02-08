@@ -194,8 +194,8 @@ void FillSquaresEngine::checkIfWin() {
 
 
 void FillSquaresEngine::startGame() {
-	std::vector<FillSquareLayout> layouts = FillSquareConstants::layouts;
-	FillSquareLayout layout;
+	std::vector<GameLayout<GRID_SIZE>> layouts = FillSquareConstants::layouts;
+	GameLayout<GRID_SIZE> layout;
 	do {
 		int randIndex = rand() % layouts.size();
 		layout = layouts[randIndex];

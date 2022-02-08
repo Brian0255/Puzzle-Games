@@ -1,17 +1,17 @@
 #include "FillSquareConstants.h"
 
-std::vector<FillSquareLayout> createLayouts() {
-	std::vector<FillSquareLayout> layouts;
-	FillSquareLayout layout1;
-	FillSquareLayout layout2;
-	FillSquareLayout layout3;
-	FillSquareLayout layout4;
-	FillSquareLayout layout5;
-	FillSquareLayout layout6;
-	FillSquareLayout layout7;
-	FillSquareLayout layout8;
-	FillSquareLayout layout9;
-	FillSquareLayout layout10;
+std::vector<GameLayout<8>> createLayouts() {
+	std::vector<GameLayout<8>> layouts;
+	GameLayout<8> layout1;
+	GameLayout<8> layout2;
+	GameLayout<8> layout3;
+	GameLayout<8> layout4;
+	GameLayout<8> layout5;
+	GameLayout<8> layout6;
+	GameLayout<8> layout7;
+	GameLayout<8> layout8;
+	GameLayout<8> layout9;
+	GameLayout<8> layout10;
 	layout1.layout = {
 		"--XX--XX",
 		"--------",
@@ -118,4 +118,4 @@ std::vector<FillSquareLayout> createLayouts() {
 }
 
 
-const std::vector<FillSquareLayout> FillSquareConstants::layouts = createLayouts();
+const std::vector<GameLayout<8>> FillSquareConstants::layouts = createLayouts();

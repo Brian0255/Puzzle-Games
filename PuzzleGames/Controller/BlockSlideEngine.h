@@ -3,7 +3,7 @@
 #include"PuzzleGames.h"
 #include"qpushbutton.h"
 #include"BlockSlideTile.h"
-#include"BlockSlideLayout.h"
+#include"GameLayout.h"
 class BlockSlideEngine :
     public PuzzleSelectGameEngine {
 public:
@@ -52,7 +52,7 @@ public slots:
 private:
     PuzzleGames* controller;
     std::array<std::array<BlockSlideTile, 6>, 6> tiles;
-    BlockSlideLayout currentLayout;
+    GameLayout<6> currentLayout;
     std::vector<SlidingBlock*> slidingBlocks;
     bool gameActive{ false };
     std::array<int, 2> winCoords;

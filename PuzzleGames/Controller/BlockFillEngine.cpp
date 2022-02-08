@@ -76,7 +76,7 @@ void BlockFillEngine::checkIfWin() {
 
 void BlockFillEngine::putLayoutIntoTileGrid() {
 	int curIndex = PuzzleSelectGameEngine::getCurrentIndex();
-	BlockFillLayout currentLayout = BlockFillConstants::layouts[curIndex];
+	GameLayout<16> currentLayout = BlockFillConstants::layouts[curIndex];
 	std::array<std::string, 16> layout = currentLayout.layout;
 	for (int i = 0; i < layout.size(); ++i) {
 		for (int j = 0; j < layout[0].size(); ++j) {
@@ -101,7 +101,7 @@ void BlockFillEngine::putLayoutIntoTileGrid() {
 	}
 }
 
-void BlockFillEngine::createShape(BlockFillLayout layout, int row, int col) {
+void BlockFillEngine::createShape(GameLayout<GRID_SIZE> layout, int row, int col) {
 	int rowSize = layout.layout[0].size();
 	int totalRows = layout.layout.size();
 	QChar shapeType = layout.layout[row][col];

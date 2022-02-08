@@ -64,9 +64,6 @@
     <ClCompile Include="Model\FillTheSquares\FillSquareConstants.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Model\FillTheSquares\FillSquareLayout.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Controller\FillSquaresEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -85,9 +82,6 @@
     <ClCompile Include="Model\BlockSlide\BlockSlideConstants.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Model\BlockSlide\BlockSlideLayout.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Model\BlockFill\BlockFillShape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -100,16 +94,10 @@
     <ClCompile Include="Controller\BlockFillEngine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Model\BlockFill\BlockFillLayout.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Model\Coordination\CoordinationConstants.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Controller\CoordinationEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Model\Coordination\CoordinationLayout.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Model\Coordination\CoordinationTile.cpp">
@@ -122,6 +110,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Model\ColorUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\GameLayout.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -166,9 +157,6 @@
     <ClInclude Include="Model\FillTheSquares\FillSquareConstants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Model\FillTheSquares\FillSquareLayout.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Controller\FillSquaresEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -187,9 +175,6 @@
     <ClInclude Include="Model\BlockSlide\BlockSlideConstants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Model\BlockSlide\BlockSlideLayout.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Model\BlockFill\BlockFillShape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -202,16 +187,10 @@
     <ClInclude Include="Controller\BlockFillEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Model\BlockFill\BlockFillLayout.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Model\Coordination\CoordinationConstants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Controller\CoordinationEngine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Model\Coordination\CoordinationLayout.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Model\Coordination\CoordinationTile.h">
@@ -224,6 +203,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Model\ColorUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\GameLayout.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

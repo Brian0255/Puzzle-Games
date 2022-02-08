@@ -23,7 +23,7 @@ PuzzleGames::PuzzleGames(QWidget *parent)
 
     playPuzzleSelectButtons = { ui.BlockSlidePlayBtn,ui.BlockFillPlayBtn,ui.CoordPlayBtn };
 
-    darkButtons = { ui.PuzzleSelectForward,ui.PuzzleSelectBack };
+    darkButtons = { ui.PuzzleSelectForward,ui.PuzzleSelectBack, ui.ResetButton,ui.GoBackButton };
     darkButtons.insert(darkButtons.end(), playButtons.begin(), playButtons.end());     
 
     for (QPushButton* button : darkButtons) {
@@ -141,6 +141,9 @@ void PuzzleGames::playButtonClick() {
     ui.MainStackedWidget->setCurrentIndex(1);
     bool puzzleSelectGame{ std::find(playPuzzleSelectButtons.begin(),playPuzzleSelectButtons.end(), button) != playPuzzleSelectButtons.end() };
     ui.GameStackedWidget->setCurrentIndex((puzzleSelectGame) ? 1 : 0);
+    if (puzzleSelectGame) {
+        ui.PuzzleSelectLabel->setText("Puzzle 1");
+    }
     currentGame = createEngine(id);
     connectAndStartGame();
 }
@@ -164,6 +167,7 @@ void PuzzleGames::connectAndStartGame() {
     connect(currentGame, &GameEngine::sendStatusLabelUpdate, this, &PuzzleGames::updateStatusLabel);
     connect(currentGame, &GameEngine::sendTopLeftLabelUpdate, this, &PuzzleGames::updateTopLeftLabel);
     connect(currentGame, &GameEngine::sendTopRightLabelUpdate, this, &PuzzleGames::updateTopRightLabel);
+    qDebug() << "set engine connections";
     currentGame->startEngine();
 }
 

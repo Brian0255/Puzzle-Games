@@ -6,6 +6,7 @@
 #include"ArrayUtils.h"
 
 const int GRID_SIZE{ 7 };
+const int BUTTON_SIZE{ 40 };
 
 CoordinationEngine::CoordinationEngine(PuzzleGames* controller)
 	:controller{ controller },
@@ -38,8 +39,8 @@ void CoordinationEngine::resetGame() {
 }
 
 void CoordinationEngine::setupTiles() {
-	for (int i = 0; i < 16; ++i) {
-		for (int j = 0; j < 16; ++j) {
+	for (int i = 0; i < GRID_SIZE; ++i) {
+		for (int j = 0; j < GRID_SIZE; ++j) {
 			QDifferentClicksButton* tileBtn = controller->createButton(i, j, true);
 			tileBtn->setStyleSheet(
 				"border: 0px;"
@@ -48,7 +49,7 @@ void CoordinationEngine::setupTiles() {
 				"font: 14pt \"Segoe UI Semilight\";"
 				"color: rgb(255, 255, 255); "
 			);
-			tileBtn->setFixedSize(32, 32);
+			tileBtn->setFixedSize(BUTTON_SIZE, BUTTON_SIZE);
 			tileBtn->installEventFilter(this);
 			CoordinationTile tile = CoordinationTile();
 			connect(tileBtn, &QDifferentClicksButton::leftClicked, this, &CoordinationEngine::tileButtonClick);

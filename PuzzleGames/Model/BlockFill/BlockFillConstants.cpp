@@ -18,18 +18,18 @@
 "----------------"
 */
 
-std::vector<BlockFillLayout> createLayouts() {
-	std::vector<BlockFillLayout> layouts;
-	BlockFillLayout layout1;
-	BlockFillLayout layout2;
-	BlockFillLayout layout3;
-	BlockFillLayout layout4;
-	BlockFillLayout layout5;
-	BlockFillLayout layout6;
-	BlockFillLayout layout7;
-	BlockFillLayout layout8;
-	BlockFillLayout layout9;
-	BlockFillLayout layout10;
+std::vector<GameLayout<16>> createLayouts() {
+	std::vector<GameLayout<16>> layouts;
+	GameLayout<16> layout1;
+	GameLayout<16> layout2;
+	GameLayout<16> layout3;
+	GameLayout<16> layout4;
+	GameLayout<16> layout5;
+	GameLayout<16> layout6;
+	GameLayout<16> layout7;
+	GameLayout<16> layout8;
+	GameLayout<16> layout9;
+	GameLayout<16> layout10;
 	layout1.layout = {
 	"-------|o11-o22-",
 	"-------|-11--22-",
@@ -215,7 +215,7 @@ std::vector<BlockFillLayout> createLayouts() {
 	return layouts;
 }
 
-const std::vector<BlockFillLayout> BlockFillConstants::layouts = createLayouts();
+const std::vector<GameLayout<16>> BlockFillConstants::layouts = createLayouts();
 const std::array<QChar, 7> BlockFillConstants::pieceNames = {
 	'o','l','j','t','s','z','i'
 };

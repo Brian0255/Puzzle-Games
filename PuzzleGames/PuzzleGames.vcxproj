@@ -95,24 +95,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Model\GameLayout.cpp" />
     <ClCompile Include="Model\ColorUtils.cpp" />
     <ClCompile Include="Controller\BlockFillEngine.cpp" />
     <ClCompile Include="Model\Coordination\CoordinationConstants.cpp" />
     <ClCompile Include="Controller\CoordinationEngine.cpp" />
-    <ClCompile Include="Model\Coordination\CoordinationLayout.cpp" />
     <ClCompile Include="Model\Coordination\CoordinationTile.cpp" />
-    <ClCompile Include="Model\BlockFill\BlockFillLayout.cpp" />
     <ClCompile Include="Model\BlockFill\BlockFillShape.cpp" />
     <ClCompile Include="Model\BlockFill\BlockFillTile.cpp" />
     <ClCompile Include="Model\BlockFill\BlockFillConstants.cpp" />
-    <ClCompile Include="Model\BlockSlide\BlockSlideLayout.cpp" />
     <ClCompile Include="Model\BlockSlide\BlockSlideConstants.cpp" />
     <ClCompile Include="Controller\BlockSlideEngine.cpp" />
     <ClCompile Include="Model\BlockSlide\BlockSlideTile.cpp" />
     <ClCompile Include="Controller\BattleshipEngine.cpp" />
     <ClCompile Include="Controller\FillSquaresEngine.cpp" />
     <ClCompile Include="Model\FillTheSquares\FillSquaresTile.cpp" />
-    <ClCompile Include="Model\FillTheSquares\FillSquareLayout.cpp" />
     <ClCompile Include="Model\FillTheSquares\FillSquareConstants.cpp" />
     <ClCompile Include="Model\Battleship\BattleshipShip.cpp" />
     <ClCompile Include="Model\Battleship\BattleshipTile.cpp" />
@@ -136,17 +133,15 @@
     <QtUic Include="View\PuzzleGames.ui" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Model\GameLayout.h" />
     <ClInclude Include="Model\ColorUtils.h" />
     <ClInclude Include="Controller\BlockFillEngine.h" />
     <ClInclude Include="Model\Coordination\CoordinationConstants.h" />
     <ClInclude Include="Controller\CoordinationEngine.h" />
-    <ClInclude Include="Model\Coordination\CoordinationLayout.h" />
     <ClInclude Include="Model\Coordination\CoordinationTile.h" />
-    <ClInclude Include="Model\BlockFill\BlockFillLayout.h" />
     <ClInclude Include="Model\BlockFill\BlockFillShape.h" />
     <ClInclude Include="Model\BlockFill\BlockFillTile.h" />
     <ClInclude Include="Model\BlockFill\BlockFillConstants.h" />
-    <ClInclude Include="Model\BlockSlide\BlockSlideLayout.h" />
     <ClInclude Include="Model\BlockSlide\BlockSlideConstants.h" />
     <ClInclude Include="Model\BlockSlide\SlidingBlock.h" />
     <ClInclude Include="Controller\PuzzleSelectGameEngine.h" />
@@ -156,7 +151,6 @@
     <ClInclude Include="Model\BlockSlide\BlockSlideTile.h" />
     <ClInclude Include="Controller\FillSquaresEngine.h" />
     <ClInclude Include="Model\FillTheSquares\FillSquaresTile.h" />
-    <ClInclude Include="Model\FillTheSquares\FillSquareLayout.h" />
     <ClInclude Include="Model\FillTheSquares\FillSquareConstants.h" />
     <ClInclude Include="Model\Battleship\BattleshipShip.h" />
     <ClInclude Include="Model\Battleship\BattleshipTile.h" />

@@ -1,7 +1,7 @@
 #pragma once
 #include "GameEngine.h"
 #include"FillSquaresTile.h"
-#include"FillSquareLayout.h"
+#include"GameLayout.h"
 #include"PuzzleGames.h"
 
 class FillSquaresEngine :
@@ -46,7 +46,7 @@ public slots:
 private:
     PuzzleGames* controller;
     std::array<std::array<FillSquaresTile, 8>, 8> tiles;
-    FillSquareLayout currentLayout;
+    GameLayout<8> currentLayout;
     bool currentlyFilling{ false };
     bool gameActive{ false };
     std::map<QPushButton*, std::array<int, 2>> buttonCoords;

@@ -1,9 +1,9 @@
 #pragma once
 #include<qstring.h>
-#include"FillSquareLayout.h"
+#include"GameLayout.h"
 #include<vector>
 class FillSquareConstants {
 public:
-	static const std::vector<FillSquareLayout> layouts;
+	static const std::vector<GameLayout<8>> layouts;
 };
 

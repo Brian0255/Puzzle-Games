@@ -2,7 +2,7 @@
 #include "PuzzleSelectGameEngine.h"
 #include"PuzzleGames.h"
 #include"CoordinationTile.h"
-#include"CoordinationLayout.h"
+#include"GameLayout.h"
 #include<vector>
 #include<array>
 #include<map>
@@ -41,6 +41,6 @@ private:
     std::array<int, 2> activeBlockCoords;
     bool currentlyMoving;
     std::map<QPushButton*, std::array<int, 2>> buttonCoords;
-    CoordinationLayout currentLayout;
+    GameLayout<7> currentLayout;
 };
 

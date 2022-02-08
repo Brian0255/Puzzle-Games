@@ -1,17 +1,17 @@
 #include "BlockSlideConstants.h"
 
-std::vector<BlockSlideLayout> createLayouts() {
-	std::vector<BlockSlideLayout> layouts;
-	BlockSlideLayout layout1;
-	BlockSlideLayout layout2;
-	BlockSlideLayout layout3;
-	BlockSlideLayout layout4;
-	BlockSlideLayout layout5;
-	BlockSlideLayout layout6;
-	BlockSlideLayout layout7;
-	BlockSlideLayout layout8;
-	BlockSlideLayout layout9;
-	BlockSlideLayout layout10;
+std::vector<GameLayout<6>> createLayouts() {
+	std::vector<GameLayout<6>> layouts;
+	GameLayout<6> layout1;
+	GameLayout<6> layout2;
+	GameLayout<6> layout3;
+	GameLayout<6> layout4;
+	GameLayout<6> layout5;
+	GameLayout<6> layout6;
+	GameLayout<6> layout7;
+	GameLayout<6> layout8;
+	GameLayout<6> layout9;
+	GameLayout<6> layout10;
 	layout1.layout = {
 		"B----B",
 		"------",
@@ -97,4 +97,4 @@ std::vector<BlockSlideLayout> createLayouts() {
 	return layouts;
 }
 
-const std::vector<BlockSlideLayout> BlockSlideConstants::layouts = createLayouts();
+const std::vector<GameLayout<6>> BlockSlideConstants::layouts = createLayouts();
