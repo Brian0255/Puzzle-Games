@@ -1,6 +1,6 @@
 #include "FillSquaresTile.h"
 #include"ColorConstants.h"
-#include"Utilities.h"
+#include"ColorUtils.h"
 
 FillSquaresTile::FillSquaresTile(QPushButton* button) 
 	:button(button),filled(false),XSpot(false){}
@@ -14,7 +14,7 @@ void FillSquaresTile::fill() {
 
 void FillSquaresTile::reset() {
 	if (!XSpot) {
-		Utilities::changeColor(button, ColorConstants::TILE_DEFAULT_COLOR);
+		ColorUtils::changeColor(button, ColorConstants::TILE_DEFAULT_COLOR);
 		filled = false;
 		button->setEnabled(true);
 	}

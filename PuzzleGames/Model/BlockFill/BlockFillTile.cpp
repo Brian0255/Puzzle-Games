@@ -1,5 +1,5 @@
 #include "BlockFillTile.h"
-#include"Utilities.h"
+#include"ColorUtils.h"
 #include"ColorConstants.h"
 
 BlockFillTile::BlockFillTile(QPushButton* button)
@@ -11,6 +11,6 @@ void BlockFillTile::reset() {
 	shape = NULL;
 	barrier = false;
 	goal = false;
-	Utilities::changeColor(button, ColorConstants::BLOCK_FILL_DEFAULT_TILE_COLOR);
+	ColorUtils::changeColor(button, ColorConstants::BLOCK_FILL_DEFAULT_TILE_COLOR);
 }
 ;

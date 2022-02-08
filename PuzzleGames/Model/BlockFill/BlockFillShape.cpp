@@ -1,5 +1,5 @@
 #include"BlockFillShape.h"
-#include"Utilities.h"
+#include"ArrayUtils.h"
 #include<qdebug.h>
 BlockFillShape::BlockFillShape(QChar name, QChar shapeType)
 	: name{ name }, shapeType{ shapeType }, currentAnchorPoint{ {} } {}
@@ -33,11 +33,11 @@ void BlockFillShape::rotateRight() {
 	//add to anchor coord, new coord for piece
 
 	for (std::array<int, 2>&coord : coords) {
-		std::array<int, 2> difference = Utilities::subtractIntArrays(currentAnchorPoint, coord);
+		std::array<int, 2> difference = ArrayUtils::subtractIntArrays(currentAnchorPoint, coord);
 		int temp = difference[0];
 		difference[0] = difference[1] * -1;
 		difference[1] = temp;
-		coord = Utilities::addIntArrays(difference, currentAnchorPoint);
+		coord = ArrayUtils::addIntArrays(difference, currentAnchorPoint);
 	}
 }
 
