@@ -1,6 +1,8 @@
 #include "FillSquaresEngine.h"
-#include"Utilities.h"
+#include"ColorUtils.h"
 #include"ColorConstants.h"
+#include"TileUtils.h"
+#include"ArrayUtils.h"
 #include"FillSquareConstants.h"
 #include<vector>
 
@@ -27,42 +29,42 @@ void FillSquaresEngine::startEngine() {
 
 void FillSquaresEngine::resetGame() {
 	resetTiles();
+	buttonFillSequence.clear();
+	currentlyFilling = false;
 	startGame();
 	emit sendStatusLabelUpdate("");
 }
 
 void FillSquaresEngine::resetTiles() {
-	buttonFillSequence.clear();
-	currentlyFilling = false;
 	for (auto& tileArray : tiles) {
 		for (auto& tile : tileArray) {
 			tile.filled = false;
 			tile.XSpot = false;
 			tile.button->setEnabled(true);
-			Utilities::changeColor(tile.button, ColorConstants::TILE_DEFAULT_COLOR);
+			ColorUtils::changeColor(tile.button, ColorConstants::TILE_DEFAULT_COLOR);
 		}
 	}
 }
 
-void FillSquaresEngine::rotateLayoutRandomly(FillSquareLayout& layout) {
+void FillSquaresEngine::rotateLayoutRandomly() {
 	for (int i = 0; i < (rand() % 4); ++i) {
-		transposeLayout(layout);
-		rotate90Degrees(layout);
+		transposeLayout();
+		rotate90Degrees();
 	}
 }
 
-void FillSquaresEngine::transposeLayout(FillSquareLayout& layout) {
+void FillSquaresEngine::transposeLayout() {
 	for (int i = 0; i < GRID_SIZE; i += 1) {
 		for (int j = i + 1; j < GRID_SIZE; j += 1) {
-			char temp = layout.layout[i][j];
-			layout.layout[i][j] = layout.layout[j][i];
-			layout.layout[j][i] = temp;
+			char temp = currentLayout.layout[i][j];
+			currentLayout.layout[i][j] = currentLayout.layout[j][i];
+			currentLayout.layout[j][i] = temp;
 		}
 	}
 }
 
-void FillSquaresEngine::rotate90Degrees(FillSquareLayout& layout) {
-	for (std::string& row : layout.layout){
+void FillSquaresEngine::rotate90Degrees() {
+	for (std::string& row : currentLayout.layout){
 		std::reverse(row.begin(), row.end());
 	}
 }
@@ -74,15 +76,15 @@ void FillSquaresEngine::updateColors() {
 	QPushButton* filledBeforeLast = NULL;
 	if (buttonFillSequence.size() > 0) {
 		lastFilled = buttonFillSequence.at(buttonFillSequence.size() - 1);
-		Utilities::changeColor(lastFilled, ColorConstants::FILL_SQUARES_HEAD_COLOR);
+		ColorUtils::changeColor(lastFilled, ColorConstants::FILL_SQUARES_HEAD_COLOR);
 	}
 	if (buttonFillSequence.size() > 1) {
 		filledBeforeLast = buttonFillSequence.at(buttonFillSequence.size() - 2);
-		Utilities::changeColor(filledBeforeLast, ColorConstants::FILL_SQUARES_BEFORE_HEAD_COLOR);
+		ColorUtils::changeColor(filledBeforeLast, ColorConstants::FILL_SQUARES_BEFORE_HEAD_COLOR);
 	}
 	if (buttonFillSequence.size() > 2) {
 		for (int i = 0; i < (buttonFillSequence.size() - 2); ++i) {
-			Utilities::changeColor(buttonFillSequence[i], ColorConstants::FILL_SQUARES_FILL_COLOR);
+			ColorUtils::changeColor(buttonFillSequence[i], ColorConstants::FILL_SQUARES_FILL_COLOR);
 		}
 	}
 	checkIfWin();
@@ -110,13 +112,13 @@ bool FillSquaresEngine::eventFilter(QObject* watched, QEvent* event) {
 				goBackwards(lastFilled, btn);
 			}
 			else if(activeButton){
-				Utilities::changeColor(btn, ColorConstants::TILE_HOVER_COLOR);
+				ColorUtils::changeColor(btn, ColorConstants::TILE_HOVER_COLOR);
 			}
 			updateColors();
 		}
 
 		else if (event->type() == QEvent::Leave && activeButton) {
-			Utilities::changeColor(btn, ColorConstants::TILE_DEFAULT_COLOR);
+			ColorUtils::changeColor(btn, ColorConstants::TILE_DEFAULT_COLOR);
 		}
 	}
 
@@ -135,13 +137,13 @@ void FillSquaresEngine::goBackwards(QPushButton*& lastFilled, QPushButton* btn) 
 	FillSquaresTile* curTile = &tiles[coords[0]][coords[1]];
 	curTile->reset();
 	buttonFillSequence.pop_back();
-	Utilities::changeColor(btn, ColorConstants::FILL_SQUARES_HEAD_COLOR);
+	ColorUtils::changeColor(btn, ColorConstants::FILL_SQUARES_HEAD_COLOR);
 }
 
 void FillSquaresEngine::setupTiles() {
 	for (int i = 0; i < GRID_SIZE; ++i) {
 		for (int j = 0; j < GRID_SIZE; ++j) {
-			QDifferentClicksButton* tileBtn = controller->createFillSquaresButton(i, j);
+			QDifferentClicksButton* tileBtn = controller->createButton(i, j,false);
 			tileBtn->setStyleSheet(
 				"border: 0px;"
 				"background-color: rgb(200,200,200);"
@@ -184,19 +186,12 @@ void FillSquaresEngine::checkIfWin() {
 	}
 	if (won) {
 		emit sendStatusLabelUpdate("You win!");
-		Utilities::changeColor(buttonFillSequence.at(buttonFillSequence.size() - 1), ColorConstants::FILL_SQUARES_FILL_COLOR);
-		Utilities::changeColor(buttonFillSequence.at(buttonFillSequence.size() - 2), ColorConstants::FILL_SQUARES_FILL_COLOR);
-		disableButtons();
+		ColorUtils::changeColor(buttonFillSequence.at(buttonFillSequence.size() - 1), ColorConstants::FILL_SQUARES_FILL_COLOR);
+		ColorUtils::changeColor(buttonFillSequence.at(buttonFillSequence.size() - 2), ColorConstants::FILL_SQUARES_FILL_COLOR);
+		TileUtils::disableButtons(tiles);
 	}
 }
 
-void FillSquaresEngine::disableButtons() {
-	for (std::array<FillSquaresTile, 8> tileRow : tiles) {
-		for (FillSquaresTile tile : tileRow) {
-			tile.button->setEnabled(false);
-		}
-	}
-}
 
 void FillSquaresEngine::startGame() {
 	std::vector<FillSquareLayout> layouts = FillSquareConstants::layouts;
@@ -206,12 +201,12 @@ void FillSquaresEngine::startGame() {
 		layout = layouts[randIndex];
 	} while (layout.layout == currentLayout.layout);
 	currentLayout = layout;
-	rotateLayoutRandomly(layout);
-	putLayoutIntoTileGrid(layout);
+	rotateLayoutRandomly();
+	putLayoutIntoTileGrid();
 }
 
-void FillSquaresEngine::putLayoutIntoTileGrid(FillSquareLayout layout) {
-	std::array<std::string, 8> rows = layout.layout;
+void FillSquaresEngine::putLayoutIntoTileGrid() {
+	std::array<std::string, 8> rows = currentLayout.layout;
 	for (int i = 0; i < GRID_SIZE; ++i) {
 		for (int j = 0; j < GRID_SIZE; ++j) {
 			char letter = rows[i][j];
@@ -226,7 +221,7 @@ void FillSquaresEngine::putLayoutIntoTileGrid(FillSquareLayout layout) {
 void FillSquaresEngine::setTileAsBlockedOff(int i, int j) {
 	FillSquaresTile* tile = &tiles[i][j];
 	tile->XSpot = true;
-	Utilities::changeColor(tile->button, ColorConstants::FILL_SQUARES_X_COLOR);
+	ColorUtils::changeColor(tile->button, ColorConstants::FILL_SQUARES_X_COLOR);
 }
 
 bool FillSquaresEngine::isNeighboringCurrentTile(FillSquaresTile* tile) {
@@ -238,11 +233,8 @@ bool FillSquaresEngine::isNeighboringCurrentTile(FillSquaresTile* tile) {
 		{0,1},{0,-1},{1,0},{-1,0}
 	};
 	for (std::array<int, 2> difference : differences) {
-		std::array<int, 2> sum = {
-			difference[0] + coordsCurrent[0],
-			difference[1] + coordsCurrent[1]
-		};
-		if ((sum[0] == coordsChecking[0]) && (sum[1] == coordsChecking[1])&&!tile->filled) {
+		std::array<int, 2> sum = ArrayUtils::addIntArrays(difference, coordsCurrent);
+		if ((sum == coordsChecking) && !tile->filled) {
 			return true;
 		}
 	}
@@ -269,7 +261,7 @@ void FillSquaresEngine::tileButtonClick() {
 void FillSquaresEngine::tileRightClick() {
 	QPushButton* button = qobject_cast<QPushButton*>(sender());
 	resetFill();
-	if (Utilities::getColor(button) != ColorConstants::FILL_SQUARES_X_COLOR) {
-		Utilities::changeColor(button, ColorConstants::TILE_HOVER_COLOR);
+	if (ColorUtils::getColor(button) != ColorConstants::FILL_SQUARES_X_COLOR) {
+		ColorUtils::changeColor(button, ColorConstants::TILE_HOVER_COLOR);
 	}
 }
