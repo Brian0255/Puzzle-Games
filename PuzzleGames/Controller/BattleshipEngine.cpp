@@ -1,7 +1,8 @@
 #include "BattleshipEngine.h"
 #include"QDifferentClicksButton.h"
 #include"ColorConstants.h"
-#include"Utilities.h"
+#include"ColorUtils.h"
+#include"TileUtils.h"
 #include<qregularexpression.h>
 #include<random>
 
@@ -29,7 +30,7 @@ void BattleshipEngine::startEngine(){
 void BattleshipEngine::setupTiles() {
 	for (int i = 0; i < GRID_SIZE; ++i) {
 		for (int j = 0; j < GRID_SIZE; ++j) {
-			QDifferentClicksButton* tileBtn = controller->createBattleshipButton(i, j);
+			QDifferentClicksButton* tileBtn = controller->createButton(i, j, false);
 			tileBtn->setStyleSheet(
 				"border: 0px;"
 				"background-color: rgb(200,200,200);"
@@ -73,9 +74,9 @@ void BattleshipEngine::revealTile(QPushButton* button) {
 	int row = coords[0];
 	int col = coords[1];
 	tiles[row][col].reveal();
-	Utilities::changeColor(button, ColorConstants::TILE_UNCOVERED_COLOR);
+	ColorUtils::changeColor(button, ColorConstants::TILE_UNCOVERED_COLOR);
 	if (tiles[row][col].isShip) {
-		Utilities::changeColor(button, ColorConstants::HIT_PART_OF_SHIP_COLOR);
+		ColorUtils::changeColor(button, ColorConstants::HIT_PART_OF_SHIP_COLOR);
 	}
 	button->setEnabled(false);
 	button->removeEventFilter(this);
@@ -86,7 +87,7 @@ void BattleshipEngine::resetGame() {
 	for (int i = 0; i < tiles.size(); ++i) {
 		for (int j = 0; j < tiles.size(); ++j) {
 			BattleshipTile* tile = &tiles[i][j];
-			Utilities::changeColor(tile->button, ColorConstants::TILE_DEFAULT_COLOR);
+			ColorUtils::changeColor(tile->button, ColorConstants::TILE_DEFAULT_COLOR);
 			tile->button->installEventFilter(this);
 			tile->button->setEnabled(true);
 			tile->button->setText("");
@@ -101,21 +102,13 @@ void BattleshipEngine::resetGame() {
 
 void BattleshipEngine::gameOver() {
 	emit sendStatusLabelUpdate("Game over!");
-	disableButtons();
-}
-
-void BattleshipEngine::disableButtons() {
-	for (std::array<BattleshipTile, GRID_SIZE> tileRow : tiles) {
-		for (BattleshipTile tile : tileRow) {
-			tile.button->setEnabled(false);
-		}
-	}
+	TileUtils::disableButtons(tiles);
 }
 
 void BattleshipEngine::checkIfWin() {
 	calculateShipsRemaining();
 	if (shipsRemaining == 0) {
-		disableButtons();
+		TileUtils::disableButtons(tiles);
 		emit sendStatusLabelUpdate("You win!");
 	}
 }
@@ -126,12 +119,12 @@ void BattleshipEngine::tileRightClick() {
 	BattleshipTile* tile = &tiles[coords[0]][coords[1]];
 	if (tile->hidden) {
 		if (!tile->crossedOff) {
-			Utilities::changeColor(button, ColorConstants::BATTLESHIP_CROSS_OFF_COLOR);
+			ColorUtils::changeColor(button, ColorConstants::BATTLESHIP_CROSS_OFF_COLOR);
 			tile->crossedOff = true;
 			button->removeEventFilter(this);
 		}
 		else {
-			Utilities::changeColor(button, ColorConstants::TILE_DEFAULT_COLOR);
+			ColorUtils::changeColor(button, ColorConstants::TILE_DEFAULT_COLOR);
 			tile->crossedOff = false;
 			button->installEventFilter(this);
 		}
@@ -160,7 +153,7 @@ bool BattleshipEngine::shipUncovered(BattleshipShip ship) {
 		for (std::array coord : ship.coords) {
 			int row = coord[0];
 			int col = coord[1];
-			Utilities::changeColor(tiles[row][col].button, ColorConstants::HIT_SHIP_COLOR);
+			ColorUtils::changeColor(tiles[row][col].button, ColorConstants::HIT_SHIP_COLOR);
 		}
 	}
 	return uncovered;
@@ -255,13 +248,13 @@ void BattleshipEngine::addShip(BattleshipShip& potentialShip) {
 void BattleshipEngine::tileButtonPress() {
 	QPushButton* button = qobject_cast<QPushButton*>(sender());
 	if (button->isEnabled())
-		Utilities::changeColor(button, ColorConstants::TILE_PRESS_COLOR);
+		ColorUtils::changeColor(button, ColorConstants::TILE_PRESS_COLOR);
 }
 
 void BattleshipEngine::tileButtonClick() {
 	QPushButton* button = qobject_cast<QPushButton*>(sender());
 	if (button->isEnabled()) {
-		Utilities::changeColor(button, ColorConstants::TILE_UNCOVERED_COLOR);
+		ColorUtils::changeColor(button, ColorConstants::TILE_UNCOVERED_COLOR);
 		std::array<int, 2> coords = buttonCoords.at(button);
 		BattleshipTile tile = tiles[coords[0]][coords[1]];
 		--clicksLeft;

@@ -17,7 +17,7 @@ public:
     void resetGame();
     void gameOver();
     void checkIfWin();
-    void disableButtons();
+
     void setupTileShipCounts();
 public slots:
     void tileButtonPress();
