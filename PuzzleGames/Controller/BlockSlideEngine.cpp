@@ -1,7 +1,8 @@
 #include "BlockSlideEngine.h"
-#include"Utilities.h"
+#include"ColorUtils.h"
 #include"ColorConstants.h"
 #include"BlockSlideConstants.h"
+#include"TileUtils.h"
 #include<qpropertyanimation.h>
 #include<qsequentialanimationgroup.h>
 
@@ -10,8 +11,8 @@ const int GRID_SPACING{ 4 };
 const int BUTTON_SIZE{ 82 };
 
 BlockSlideEngine::BlockSlideEngine(PuzzleGames* controller)
-	:controller{ controller }, curPuzzleIndex{ 0 }, animationActive{ false }, winCoords{ {} },
-	totalPuzzles{ static_cast<int>(BlockSlideConstants::layouts.size()) } {
+	:controller{ controller }, animationActive{ false }, winCoords{ {} },
+	PuzzleSelectGameEngine(static_cast<int>(BlockSlideConstants::layouts.size()))  {
 		currentSelectedBlock = new SlidingBlock();
 };
 
@@ -30,7 +31,7 @@ BlockSlideEngine::~BlockSlideEngine() {
 void BlockSlideEngine::setupTiles() {
 	for (int i = 0; i < GRID_SIZE; ++i) {
 		for (int j = 0; j < GRID_SIZE; ++j) {
-			QDifferentClicksButton* tileBtn = controller->createBlockSlideButton(i, j);
+			QDifferentClicksButton* tileBtn = controller->createButton(i, j, true);
 			tileBtn->setStyleSheet(
 				"border: 0px;"
 				"background-color: rgb(160,160,160);"
@@ -62,6 +63,7 @@ void BlockSlideEngine::checkIfWin() {
 }
 
 void BlockSlideEngine::startEngine() {
+	controller->changePuzzleGridSpacing(4);
 	setupTiles();
 	startGame();
 }
@@ -90,7 +92,8 @@ void BlockSlideEngine::startGame() {
 		putLayoutIntoTileGrid();
 	}
 	else {
-		currentLayout = BlockSlideConstants::layouts[curPuzzleIndex];
+		int curIndex = PuzzleSelectGameEngine::getCurrentIndex();
+		currentLayout = BlockSlideConstants::layouts[curIndex];
 		putLayoutIntoTileGrid();
 	}
 }
@@ -100,11 +103,7 @@ void BlockSlideEngine::disableButtons() {
 		block->button->setEnabled(false);
 		block->button->removeEventFilter(this);
 	}
-	for (auto& tileArray : tiles) {
-		for (BlockSlideTile tile : tileArray) {
-			tile.button->setEnabled(false);
-		}
-	}
+	TileUtils::disableButtons(tiles);
 }
 
 void BlockSlideEngine::enableButtons() {
@@ -112,11 +111,7 @@ void BlockSlideEngine::enableButtons() {
 		block->button->setEnabled(true);
 		block->button->installEventFilter(this);
 	}
-	for (auto& tileArray : tiles) {
-		for (BlockSlideTile tile : tileArray) {
-			tile.button->setEnabled(true);
-		}
-	}
+	TileUtils::enableButtons(tiles);
 }
 
 void BlockSlideEngine::createSlidingBlock(int row, int col) {
@@ -131,7 +126,7 @@ void BlockSlideEngine::createSlidingBlock(int row, int col) {
 		"font: 60pt \"Segoe UI Semilight\";"
 		"color: rgb(240, 104, 104); "
 	);
-	Utilities::changeColor(button, ColorConstants::BLOCK_SLIDE_BLOCK_COLOR);
+	ColorUtils::changeColor(button, ColorConstants::BLOCK_SLIDE_BLOCK_COLOR);
 	button->setFixedSize(BUTTON_SIZE,BUTTON_SIZE);
 	int xOffset = (col * (GRID_SPACING + BUTTON_SIZE));
 	int yOffset = (row * (GRID_SPACING + BUTTON_SIZE));
@@ -308,7 +303,7 @@ void BlockSlideEngine::setTileAsBarrier(int i, int j) {
 	BlockSlideTile* tile = &tiles[i][j];
 	tile->barrier = true;
 	tile->button->setText("");
-	Utilities::changeColor(tile->button, ColorConstants::BLOCK_SLIDE_BARRIER_COLOR);
+	ColorUtils::changeColor(tile->button, ColorConstants::BLOCK_SLIDE_BARRIER_COLOR);
 }
 
 void BlockSlideEngine::setTileAsDefault(int i, int j) {
@@ -316,7 +311,7 @@ void BlockSlideEngine::setTileAsDefault(int i, int j) {
 	tile->barrier = false;
 	tile->goal = false;
 	tile->button->setText("");
-	Utilities::changeColor(tile->button, ColorConstants::BLOCK_SLIDE_DEFAULT_COLOR);
+	ColorUtils::changeColor(tile->button, ColorConstants::BLOCK_SLIDE_DEFAULT_COLOR);
 }
 
 void BlockSlideEngine::setTileAsGoal(int i, int j) {
@@ -329,11 +324,11 @@ bool BlockSlideEngine::eventFilter(QObject* watched, QEvent* event) {
 	QPushButton* btn = static_cast<QPushButton*>(watched);
 	if (btn && btn->isEnabled()) {
 		if (event->type() == QEvent::Enter) {
-			Utilities::changeColor(btn, ColorConstants::BLOCK_SLIDE_BLOCK_HOVER_COLOR);
+			ColorUtils::changeColor(btn, ColorConstants::BLOCK_SLIDE_BLOCK_HOVER_COLOR);
 		}
 
 		else if (event->type() == QEvent::Leave) {
-			Utilities::changeColor(btn, ColorConstants::BLOCK_SLIDE_BLOCK_COLOR);
+			ColorUtils::changeColor(btn, ColorConstants::BLOCK_SLIDE_BLOCK_COLOR);
 		}
 	}
 
@@ -342,21 +337,16 @@ bool BlockSlideEngine::eventFilter(QObject* watched, QEvent* event) {
 
 void BlockSlideEngine::increasePuzzleIndex() {
 	if (!animationActive) {
-		curPuzzleIndex = (curPuzzleIndex + 1) % totalPuzzles;
-		resetGame();
+		PuzzleSelectGameEngine::increasePuzzleIndex();
 	}
 }
 
 void BlockSlideEngine::decreasePuzzleIndex() {
 	if (!animationActive) {
-		curPuzzleIndex = (curPuzzleIndex + totalPuzzles - 1) % totalPuzzles;
-		resetGame();
+		PuzzleSelectGameEngine::decreasePuzzleIndex();
 	}
 }
 
-int BlockSlideEngine::getCurrentIndex() {
-	return curPuzzleIndex;
-}
 
 void BlockSlideEngine::tileBtnClick() {
 	QPushButton* button = qobject_cast<QPushButton*>(sender());
