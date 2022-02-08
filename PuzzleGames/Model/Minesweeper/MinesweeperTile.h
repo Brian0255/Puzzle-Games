@@ -4,9 +4,9 @@
 enum  TILE_TYPE { HIDDEN, BOMB, SAFE, BOMBS_AROUND };
 
 class MinesweeperTile {
-private:
 	friend class MinesweeperEngine;
-
+	friend class TileUtils;
+private:
 	bool hidden;
 	QPushButton* button;
 	TILE_TYPE tileType;

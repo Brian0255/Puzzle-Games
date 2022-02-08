@@ -2,8 +2,9 @@
 #include<QPushButton>
 
 class BattleshipTile {
-private:
 	friend class BattleshipEngine;
+	friend class TileUtils;
+private:
 	char letter;
 	bool hidden;
 	bool isShip;
