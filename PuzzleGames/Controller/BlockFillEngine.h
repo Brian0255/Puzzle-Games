@@ -1,10 +1,10 @@
 #pragma once
-#include "GameEngine.h"
+#include "PuzzleSelectGameEngine.h"
 #include"BlockFillTile.h"
 #include"BlockFillLayout.h"
 #include"PuzzleGames.h"
 class BlockFillEngine :
-    public GameEngine {
+    public PuzzleSelectGameEngine {
 public:
     BlockFillEngine(PuzzleGames* controller);
     ~BlockFillEngine();
@@ -19,9 +19,6 @@ public:
 
     void putLayoutIntoTileGrid();
 
-    void disableButtons();
-    void enableButtons();
-
     void createShape(BlockFillLayout layout, int row, int col);
     void connectShapeWithTiles(BlockFillShape* shape);
     void changeTileColorToShape(BlockFillTile* tile);
@@ -29,11 +26,6 @@ public:
     void clearCurrentShapeColors();
     void fillCurrentShapeColors();
     bool overlapAtCurrentSpot();
-
-    void increasePuzzleIndex();
-    void decreasePuzzleIndex();
-
-    int getCurrentIndex();
 
     void highlightShape(BlockFillShape* shape);
     void unhighlightShape(BlockFillShape* shape);
@@ -55,8 +47,6 @@ private:
     std::map<QPushButton*, std::array<int, 2>> buttonCoords;
     BlockFillShape* currentShape;
     bool dragging;
-    int curPuzzleIndex;
-    int totalPuzzles;
     std::array<int, 2> lastMouseGridPosition;
 };
 

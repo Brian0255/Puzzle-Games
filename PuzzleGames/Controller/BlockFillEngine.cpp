@@ -1,32 +1,16 @@
 #include "BlockFillEngine.h"
 #include"BlockFillConstants.h"
-#include"Utilities.h"
+#include"ColorUtils.h"
+#include"ArrayUtils.h"
+#include"TileUtils.h"
 #include"ColorConstants.h"
 
-
-const int TARGET_GRID_START_ROW = 3;
-const int TARGET_GRID_START_COL = 1;
 const int GRID_SIZE = 16;
-const int BUTTON_SIZE = 31;
+const int BUTTON_SIZE = 30;
 
 BlockFillEngine::BlockFillEngine(PuzzleGames* controller)
-	:controller{ controller }, dragging{ false }, curPuzzleIndex{ 0 },
-	totalPuzzles{ static_cast<int>(BlockFillConstants::layouts.size()) } {
-};
-
-void BlockFillEngine::increasePuzzleIndex() {
-	curPuzzleIndex = (curPuzzleIndex + 1) % totalPuzzles;
-	resetGame();
-}
-
-void BlockFillEngine::decreasePuzzleIndex() {
-	curPuzzleIndex = (curPuzzleIndex + totalPuzzles - 1) % totalPuzzles;
-	resetGame();
-}
-
-int BlockFillEngine::getCurrentIndex() {
-	return curPuzzleIndex;
-}
+	: PuzzleSelectGameEngine(static_cast<int>(BlockFillConstants::layouts.size())),
+		controller{ controller }, dragging{ false }  {};
 
 BlockFillEngine::~BlockFillEngine() {
 	for (BlockFillShape* shape : shapes) {
@@ -40,6 +24,7 @@ BlockFillEngine::~BlockFillEngine() {
 }
 
 void BlockFillEngine::startEngine() {
+	controller->changePuzzleGridSpacing(2);
 	setupTiles();
 	startGame();
 }
@@ -60,7 +45,7 @@ void BlockFillEngine::resetGame() {
 	for (BlockFillShape* shape : shapes) {
 		delete shape;
 	}
-	enableButtons();
+	TileUtils::enableButtons(tiles);
 	shapes.clear();
 	resetTiles();
 	dragging = false;
@@ -85,12 +70,13 @@ void BlockFillEngine::checkIfWin() {
 		for (auto& shape : shapes) {
 			unhighlightShape(shape);
 		}
-		disableButtons();
+		TileUtils::disableButtons(tiles);
 	}
 }
 
 void BlockFillEngine::putLayoutIntoTileGrid() {
-	BlockFillLayout currentLayout = BlockFillConstants::layouts[curPuzzleIndex];
+	int curIndex = PuzzleSelectGameEngine::getCurrentIndex();
+	BlockFillLayout currentLayout = BlockFillConstants::layouts[curIndex];
 	std::array<std::string, 16> layout = currentLayout.layout;
 	for (int i = 0; i < layout.size(); ++i) {
 		for (int j = 0; j < layout[0].size(); ++j) {
@@ -98,12 +84,12 @@ void BlockFillEngine::putLayoutIntoTileGrid() {
 			if (charAt == 'G') {
 				BlockFillTile* tile = &tiles[i][j];
 				tile->goal = true;
-				Utilities::changeColor(tile->button, ColorConstants::BLOCK_FILL_GOAL_TILE_COLOR);
+				ColorUtils::changeColor(tile->button, ColorConstants::BLOCK_FILL_GOAL_TILE_COLOR);
 			}
 			else if (charAt == 'B') {
 				BlockFillTile* tile = &tiles[i][j];
 				tile->barrier = true;
-				Utilities::changeColor(tile->button, ColorConstants::BLOCK_FILL_BARRIER_COLOR);
+				ColorUtils::changeColor(tile->button, ColorConstants::BLOCK_FILL_BARRIER_COLOR);
 			}
 			else {
 				std::array<QChar, 7> pieceNames = BlockFillConstants::pieceNames;
@@ -154,7 +140,7 @@ void BlockFillEngine::connectShapeWithTiles(BlockFillShape* shape) {
 void BlockFillEngine::changeTileColorToShape(BlockFillTile* tile) {
 	QChar shapeType = tile->shape->shapeType;
 	QString color = ColorConstants::BLOCK_FILL_PIECE_COLORS.at(shapeType);
-	Utilities::changeColor(tile->button, color);
+	ColorUtils::changeColor(tile->button, color);
 }
 
 void BlockFillEngine::clearCurrentShapeColors() {
@@ -167,16 +153,16 @@ void BlockFillEngine::clearCurrentShapeColors() {
 			BlockFillTile* tile = &tiles[row][col];
 			tile->button->setText("");
 			if (tile->barrier) {
-				Utilities::changeColor(tile->button, ColorConstants::BLOCK_FILL_BARRIER_COLOR);
+				ColorUtils::changeColor(tile->button, ColorConstants::BLOCK_FILL_BARRIER_COLOR);
 			}
 			else if (tile->shape != NULL) {
 				changeTileColorToShape(tile);
 			}
 			else if (tile->goal) {
-				Utilities::changeColor(tile->button, ColorConstants::BLOCK_FILL_GOAL_TILE_COLOR);
+				ColorUtils::changeColor(tile->button, ColorConstants::BLOCK_FILL_GOAL_TILE_COLOR);
 			}
 			else {
-				Utilities::changeColor(tile->button, ColorConstants::BLOCK_FILL_DEFAULT_TILE_COLOR);
+				ColorUtils::changeColor(tile->button, ColorConstants::BLOCK_FILL_DEFAULT_TILE_COLOR);
 			}
 		}
 	}
@@ -192,10 +178,10 @@ void BlockFillEngine::fillCurrentShapeColors() {
 			BlockFillTile* tile = &tiles[row][col];
 			QString color = ColorConstants::BLOCK_FILL_PIECE_HIGHLIGHT_COLORS.at(currentShape->shapeType);
 			if (currentShape->inValidSpot() && !overlapAtCurrentSpot()) {
-				Utilities::changeColor(tile->button, color);
+				ColorUtils::changeColor(tile->button, color);
 			}
 			else {
-				Utilities::changeColor(tile->button, ColorConstants::BLOCK_FILL_OVERLAP_ERROR_COLOR);
+				ColorUtils::changeColor(tile->button, ColorConstants::BLOCK_FILL_OVERLAP_ERROR_COLOR);
 				tile->button->setText("X");
 			}
 		}
@@ -215,14 +201,14 @@ bool BlockFillEngine::overlapAtCurrentSpot() {
 void BlockFillEngine::highlightShape(BlockFillShape* shape) {
 	QString color = ColorConstants::BLOCK_FILL_PIECE_HIGHLIGHT_COLORS.at(shape->shapeType);
 	for (auto& coord : shape->coords) {
-		Utilities::changeColor(tiles[coord[0]][coord[1]].button, color);
+		ColorUtils::changeColor(tiles[coord[0]][coord[1]].button, color);
 	}
 }
 
 void BlockFillEngine::unhighlightShape(BlockFillShape* shape) {
 	QString color = ColorConstants::BLOCK_FILL_PIECE_COLORS.at(shape->shapeType);
 	for (auto& coord : shape->coords) {
-		Utilities::changeColor(tiles[coord[0]][coord[1]].button, color);
+		ColorUtils::changeColor(tiles[coord[0]][coord[1]].button, color);
 	}
 }
 
@@ -248,7 +234,7 @@ void BlockFillEngine::handleButtonEventFilter(QEvent* event, QPushButton*& btn) 
 	if (event->type() == QEvent::Enter) {
 		if (dragging) {
 			std::array<int, 2> newCoords = buttonCoords.at(btn);
-			std::array<int, 2> difference = Utilities::subtractIntArrays(newCoords, lastMouseGridPosition);
+			std::array<int, 2> difference = ArrayUtils::subtractIntArrays(newCoords, lastMouseGridPosition);
 			clearCurrentShapeColors();
 			currentShape->move(difference);
 			fillCurrentShapeColors();
@@ -327,27 +313,10 @@ void BlockFillEngine::setupShapeDrag(BlockFillTile* tile, QPushButton*& button) 
 	}
 }
 
-void BlockFillEngine::disableButtons() {
-	for (std::array<BlockFillTile, 16> tileRow : tiles) {
-		for (BlockFillTile tile : tileRow) {
-			tile.button->setEnabled(false);
-		}
-	}
-}
-
-void BlockFillEngine::enableButtons() {
-	for (std::array<BlockFillTile, 16> tileRow : tiles) {
-		for (BlockFillTile tile : tileRow) {
-			tile.button->setEnabled(true);
-		}
-	}
-}
-
-
 void BlockFillEngine::setupTiles() {
 	for (int i = 0; i < GRID_SIZE; ++i) {
 		for (int j = 0; j < GRID_SIZE; ++j) {
-			QDifferentClicksButton* tileBtn = controller->createBlockFillButton(i, j);
+			QDifferentClicksButton* tileBtn = controller->createButton(i, j, true);
 			tileBtn->setStyleSheet(
 				"border: 0px;"
 				"background-color: rgb(160,160,160);"
