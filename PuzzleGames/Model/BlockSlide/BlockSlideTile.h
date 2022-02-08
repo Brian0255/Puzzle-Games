@@ -1,9 +1,8 @@
 #pragma once
 #include"qpushbutton.h"
 class BlockSlideTile {
-	friend class TileUtils;
-	friend class BlockSlideEngine;
 private:
+	friend class BlockSlideEngine;
 	bool highlighted;
 	bool barrier;
 	bool goal;

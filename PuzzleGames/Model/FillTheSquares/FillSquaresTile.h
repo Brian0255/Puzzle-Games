@@ -3,7 +3,6 @@
 class FillSquaresTile {
 private:
 	friend class FillSquaresEngine;
-	friend class TileUtils;
 	bool XSpot;
 	bool filled;
 	QPushButton* button;

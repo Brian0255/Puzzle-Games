@@ -1,5 +1,5 @@
 #include "BlockSlideTile.h"
-#include"ColorUtils.h"
+#include"Utilities.h"
 #include"ColorConstants.h"
 
 BlockSlideTile::BlockSlideTile(QPushButton* button)
@@ -10,18 +10,18 @@ BlockSlideTile::BlockSlideTile() {
 
 void BlockSlideTile::highlight() {
 	highlighted = true;
-	ColorUtils::changeColor(button, ColorConstants::BLOCK_SLIDE_HIGHLIGHT_COLOR);
+	Utilities::changeColor(button, ColorConstants::BLOCK_SLIDE_HIGHLIGHT_COLOR);
 }
 
 void BlockSlideTile::clearHighlight() {
 	if (highlighted) {
 		highlighted = false;
-		ColorUtils::changeColor(button, ColorConstants::BLOCK_SLIDE_DEFAULT_COLOR);
+		Utilities::changeColor(button, ColorConstants::BLOCK_SLIDE_DEFAULT_COLOR);
 	}
 }
 
 void BlockSlideTile::reset() {
 	barrier = false;
 	highlighted = false;
-	ColorUtils::changeColor(button, ColorConstants::BLOCK_SLIDE_DEFAULT_COLOR);
+	Utilities::changeColor(button, ColorConstants::BLOCK_SLIDE_DEFAULT_COLOR);
 }

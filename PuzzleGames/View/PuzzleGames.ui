@@ -27,16 +27,10 @@
       <height>721</height>
      </rect>
     </property>
-    <property name="styleSheet">
-     <string notr="true">background:transparent;</string>
-    </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="GameSelectWindow">
-     <property name="styleSheet">
-      <string notr="true">background: transparent;</string>
-     </property>
      <widget class="QLabel" name="SelectGameLabel">
       <property name="geometry">
        <rect>
@@ -103,7 +97,7 @@
        </sizepolicy>
       </property>
       <property name="styleSheet">
-       <string notr="true">background: transparent;
+       <string notr="true">background-color: rgb(60,60,60);
 </string>
       </property>
       <property name="frameShape">
@@ -822,9 +816,6 @@ border-radius: 0px;</string>
              <property name="text">
               <string/>
              </property>
-             <property name="pixmap">
-              <pixmap resource="PuzzleGames.qrc">:/PuzzleGames/blockFillPicture.png</pixmap>
-             </property>
              <property name="scaledContents">
               <bool>true</bool>
              </property>
@@ -833,140 +824,20 @@ border-radius: 0px;</string>
           </widget>
          </item>
          <item>
-          <widget class="QFrame" name="CoordSelectFrame">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
            </property>
-           <property name="minimumSize">
+           <property name="sizeType">
+            <enum>QSizePolicy::Fixed</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
             <size>
-             <width>172</width>
-             <height>200</height>
+             <width>196</width>
+             <height>20</height>
             </size>
            </property>
-           <property name="maximumSize">
-            <size>
-             <width>172</width>
-             <height>200</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color:rgb(100,100,100);
-border-radius: 10px;</string>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-           <widget class="QLabel" name="CoordSelectLabel">
-            <property name="geometry">
-             <rect>
-              <x>10</x>
-              <y>0</y>
-              <width>151</width>
-              <height>41</height>
-             </rect>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>14</pointsize>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">color: rgb(255, 255, 255);</string>
-            </property>
-            <property name="text">
-             <string>Coordination</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="CoordPlayBtn">
-            <property name="geometry">
-             <rect>
-              <x>20</x>
-              <y>150</y>
-              <width>131</width>
-              <height>41</height>
-             </rect>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="mouseTracking">
-             <bool>true</bool>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">border:0px;
-color: rgb(255, 255, 255);
-
-padding: 0px 0px 0px 0px;
-background-color: rgb(80,80,80);</string>
-            </property>
-            <property name="text">
-             <string>Play</string>
-            </property>
-            <property name="checkable">
-             <bool>true</bool>
-            </property>
-           </widget>
-           <widget class="QFrame" name="CoordSelectPicFrame">
-            <property name="geometry">
-             <rect>
-              <x>30</x>
-              <y>40</y>
-              <width>111</width>
-              <height>101</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(80,80,80);
-border-radius: 0px;</string>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <widget class="QLabel" name="CoordPic">
-             <property name="geometry">
-              <rect>
-               <x>10</x>
-               <y>10</y>
-               <width>91</width>
-               <height>81</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </widget>
-          </widget>
+          </spacer>
          </item>
         </layout>
        </item>
@@ -1011,10 +882,111 @@ border-radius: 0px;</string>
 </string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>4</number>
       </property>
-      <widget class="QWidget" name="StandardGameFrame">
-       <widget class="QFrame" name="StandardGameTileFrame">
+      <widget class="QWidget" name="Minesweeper">
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 127);</string>
+       </property>
+       <widget class="QFrame" name="MSweeperTileFrame">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>581</width>
+          <height>581</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(170, 170, 170);
+</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QWidget" name="gridLayoutWidget_3">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>581</width>
+           <height>581</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="MSweeperMainGrid">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <property name="spacing">
+           <number>0</number>
+          </property>
+         </layout>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="Battleship">
+       <widget class="QFrame" name="BShipTileFrame">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>581</width>
+          <height>581</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(170, 170, 170);
+</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QWidget" name="gridLayoutWidget_2">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>581</width>
+           <height>581</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="BShipMainGrid">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <property name="spacing">
+           <number>0</number>
+          </property>
+         </layout>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="FillTheSquares">
+       <widget class="QFrame" name="FillSquaresTileFrame">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -1042,7 +1014,7 @@ border-radius: 0px;</string>
            <height>581</height>
           </rect>
          </property>
-         <layout class="QGridLayout" name="StandardGameMainGrid">
+         <layout class="QGridLayout" name="FillSquaresMainGrid">
           <property name="leftMargin">
            <number>0</number>
           </property>
@@ -1062,32 +1034,80 @@ border-radius: 0px;</string>
         </widget>
        </widget>
       </widget>
-      <widget class="QWidget" name="PuzzleSelectFrame">
-       <widget class="QPushButton" name="PuzzleSelectBack">
+      <widget class="QWidget" name="BlockSlide">
+       <widget class="QFrame" name="BlockSlideTileFrame">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>60</y>
+          <width>521</width>
+          <height>521</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(170, 170, 170);
+</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QWidget" name="gridLayoutWidget_8">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>521</width>
+           <height>521</height>
+          </rect>
+         </property>
+         <layout class="QGridLayout" name="BlockSlideMainGrid">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <property name="spacing">
+           <number>0</number>
+          </property>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QLabel" name="BlockSlidePuzzleLabel">
         <property name="geometry">
          <rect>
           <x>200</x>
           <y>20</y>
-          <width>41</width>
+          <width>181</width>
           <height>31</height>
          </rect>
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>12</pointsize>
           <bold>true</bold>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(80,80,80);
-border: 0px;</string>
+         <string notr="true">color: rgb(255, 255, 255);</string>
         </property>
         <property name="text">
-         <string>&lt;</string>
+         <string>Puzzle 1</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
-       <widget class="QPushButton" name="PuzzleSelectForward">
+       <widget class="QPushButton" name="BlockSlideForward">
         <property name="geometry">
          <rect>
           <x>340</x>
@@ -1111,7 +1131,81 @@ border: 0px;</string>
          <string>&gt;</string>
         </property>
        </widget>
-       <widget class="QLabel" name="PuzzleSelectLabel">
+       <widget class="QPushButton" name="BlockSlideBack">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>20</y>
+          <width>41</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(80,80,80);
+border: 0px;</string>
+        </property>
+        <property name="text">
+         <string>&lt;</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="BlockFill">
+       <widget class="QPushButton" name="BlockFillBack">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>20</y>
+          <width>41</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(80,80,80);
+border: 0px;</string>
+        </property>
+        <property name="text">
+         <string>&lt;</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="BlockFillForward">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>20</y>
+          <width>41</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>14</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(80,80,80);
+border: 0px;</string>
+        </property>
+        <property name="text">
+         <string>&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="BlockFillPuzzleLabel">
         <property name="geometry">
          <rect>
           <x>240</x>
@@ -1136,7 +1230,7 @@ border: 0px;</string>
          <set>Qt::AlignCenter</set>
         </property>
        </widget>
-       <widget class="QFrame" name="PuzzleTileFrame">
+       <widget class="QFrame" name="BlockFillTileFrame">
         <property name="geometry">
          <rect>
           <x>30</x>
@@ -1164,12 +1258,12 @@ border: 0px;</string>
            <height>521</height>
           </rect>
          </property>
-         <layout class="QGridLayout" name="PuzzleMainGrid">
+         <layout class="QGridLayout" name="BlockFillMainGrid">
           <property name="leftMargin">
-           <number>0</number>
+           <number>4</number>
           </property>
           <property name="topMargin">
-           <number>0</number>
+           <number>4</number>
           </property>
           <property name="rightMargin">
            <number>0</number>
@@ -1178,7 +1272,7 @@ border: 0px;</string>
            <number>0</number>
           </property>
           <property name="spacing">
-           <number>2</number>
+           <number>0</number>
           </property>
          </layout>
         </widget>
@@ -1315,7 +1409,6 @@ border: 0px;</string>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
   <include location="PuzzleGames.qrc"/>
-  <include location="../../../../../.designer/backup/PuzzleGames.qrc"/>
  </resources>
  <connections/>
 </ui>

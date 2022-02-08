@@ -21,7 +21,7 @@ public:
     void revealTile(QPushButton* button);
 
     void checkIfWin();
-
+    void disableButtons();
     int calcFlagsAroundTile(QPushButton* button);
     void setupTileBombCounts();
 public slots:

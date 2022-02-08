@@ -6,7 +6,7 @@
 #include"GameEngine.h"
 #include"QDifferentClicksButton.h"
 #include<vector>
-#include<map>
+
 class PuzzleGames : public QMainWindow
 {
     Q_OBJECT
@@ -14,28 +14,33 @@ class PuzzleGames : public QMainWindow
 public:
     bool eventFilter(QObject* watched, QEvent* event);
     PuzzleGames(QWidget *parent = Q_NULLPTR);
-    QDifferentClicksButton* createButton(int row, int col, bool puzzleSelectGame);
+    QDifferentClicksButton* createMinesweeperButton(int row, int col);
+    QDifferentClicksButton* createBattleshipButton(int row, int col);
+    QDifferentClicksButton* createFillSquaresButton(int row, int col);
+    QDifferentClicksButton* createBlockSlideButton(int row, int col);
+    QDifferentClicksButton* createBlockFillButton(int row, int col);
 
     void setupSlidingBlock(SlidingBlock& block, int row, int col);
     void setupDarkButtonPressRelease(QPushButton* button);
-
-    void changePuzzleGridSpacing(int newSpacing);
-
-    GameEngine* createEngine(int id);
 public slots:
     void darkButtonPress();
     void darkButtonRelease();
 
-    void playButtonClick();
+    void minesweeperPlayBtnClick();
+    void battleshipPlayBtnClick();
+    void fillSquaresPlayBtnClick();
+    void blockSlidePlayBtnClick();
+    void blockFillPlayBtnClick();
 
-    void puzzleSelectForwardClick();
-    void puzzleSelectBackClick();
+    void blockSlideForwardClick();
+    void blockSlideBackClick();
+
+    void blockFillForwardClick();
+    void blockFillBackClick();
 
     void connectAndStartGame();
-
     void resetBtnClick();
     void goBackBtnClick();
-
     void updateTopLeftLabel(QString newLabel);
     void updateTopRightLabel(QString newLabel);
     void updateStatusLabel(QString newLabel);
@@ -43,6 +48,4 @@ private:
     Ui::PuzzleGamesClass ui;
     GameEngine* currentGame;
     std::vector<QPushButton*> darkButtons;
-    std::vector<QPushButton*> playButtons;
-    std::vector<QPushButton*> playPuzzleSelectButtons;
 };
