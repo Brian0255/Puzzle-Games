@@ -22,7 +22,7 @@ template<typename T, int size>
 inline void TileUtils::disableButtons(std::array<T, size>& tiles) {
 	for (auto& tileArray : tiles) {
 		for (auto& tile : tileArray) {
-			tile.button->setEnabled(true);
+			tile.button->setEnabled(false);
 		}
 	}
 }
