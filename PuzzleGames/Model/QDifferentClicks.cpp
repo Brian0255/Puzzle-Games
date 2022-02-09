@@ -12,4 +12,11 @@ void QDifferentClicksButton::mousePressEvent(QMouseEvent* e) {
     }
     else if (e->button() == Qt::MiddleButton)
         emit middleClicked();
+
+}
+
+void QDifferentClicksButton::mouseReleaseEvent(QMouseEvent* e) {
+    if (e->button() == Qt::LeftButton) {
+        emit leftReleased();
+    }
 }

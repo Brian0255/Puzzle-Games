@@ -40,7 +40,6 @@ public:
 	static const std::map<QChar, QString> BLOCK_FILL_PIECE_HIGHLIGHT_COLORS;
 
 	static const QString COORDINATION_BLOCK_COLOR;
-	static const QString COORDINATION_GOAL_COLOR;
 	static const QString COORDINATION_BLOCK_HOVER_COLOR;
 	static const QString COORDINATION_BLOCK_PRESS_COLOR;
 	static const QString COORDINATION_DEFAULT_COLOR;

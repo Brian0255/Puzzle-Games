@@ -11,11 +11,12 @@ public:
 
 private slots:
     void mousePressEvent(QMouseEvent* e);
-
+    void mouseReleaseEvent(QMouseEvent* e);
 signals:
     void rightClicked();
     void leftClicked();
     void middleClicked();
+    void leftReleased();
 public slots:
 
 };
