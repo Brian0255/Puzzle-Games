@@ -1,9 +1,10 @@
 #include "CoordinationTile.h"
 #include"ColorConstants.h"
 #include"ColorUtils.h"
+#include<qdebug.h>
 
 CoordinationTile::CoordinationTile(QPushButton* button)
-	: button{ button }, tileType{ DEFAULT }, hasBlock{ false } {};
+	: button{ button }, tileType{ COORD_TILE_TYPE::DEFAULT }, hasBlock{ false } {};
 
 CoordinationTile::CoordinationTile() {
 }
@@ -11,15 +12,14 @@ CoordinationTile::CoordinationTile() {
 void CoordinationTile::changeAppearance() {
 	button->setText("");
 	switch (tileType) {
-	case DEFAULT :
+	case COORD_TILE_TYPE::DEFAULT:
 		ColorUtils::changeColor(button, ColorConstants::COORDINATION_DEFAULT_COLOR);
 		break;
-	case BARRIER:
+	case COORD_TILE_TYPE::BARRIER:
 		ColorUtils::changeColor(button, ColorConstants::COORDINATION_BARRIER_COLOR);
 		break;
-	case GOAL:
+	case COORD_TILE_TYPE::GOAL:
 		ColorUtils::changeColor(button, ColorConstants::COORDINATION_DEFAULT_COLOR);
-		ColorUtils::changeTextColor(button, ColorConstants::COORDINATION_GOAL_COLOR);
 		button->setText("X");
 		break;
 	default:
@@ -29,4 +29,8 @@ void CoordinationTile::changeAppearance() {
 	if (hasBlock) {
 		ColorUtils::changeColor(button, ColorConstants::COORDINATION_BLOCK_COLOR);
 	}
+}
+
+void CoordinationTile::reset() {
+	hasBlock = false;
 }

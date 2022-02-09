@@ -1,7 +1,7 @@
 #pragma once
 #include"qpushbutton.h"
 
-enum COORD_TILE_TYPE { BARRIER, GOAL, DEFAULT };
+enum class COORD_TILE_TYPE { BARRIER, GOAL, DEFAULT };
 
 class CoordinationTile {
 	friend class TileUtils;
