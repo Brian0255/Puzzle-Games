@@ -127,24 +127,27 @@ void CoordinationEngine::moveAllBlocks(std::array<int, 2> differenceToMove) {
 		clearOutOldBlockPositions();
 		calculateNewBlockCoords(newCoords);
 		setTilesToNewBlockCoords();
-		checkForOverlapError(oldCoords, newCoords);
+		//keep checking for overlap error until there is none
+		/while(checkForOverlapError(oldCoords, newCoords));
 		CoordinationTile* activeTile = &tiles[activeBlockCoords[0]][activeBlockCoords[1]];
 		ColorUtils::changeColor(activeTile->button, ColorConstants::COORDINATION_BLOCK_HOVER_COLOR);
 		checkIfWin();
 	}
 }
 
-void CoordinationEngine::checkForOverlapError(std::vector<std::array<int, 2>>& oldCoords, std::vector<std::array<int, 2>>& newCoords) {
+bool CoordinationEngine::checkForOverlapError(std::vector<std::array<int, 2>>& oldCoords, std::vector<std::array<int, 2>>& newCoords) {
 	for (int i = 0; i < oldCoords.size(); ++i) {
-		if (newCoords[i] != oldCoords[i]) {
+		if (allBlockCoords[i] != oldCoords[i]) {
 			if (std::count(allBlockCoords.begin(), allBlockCoords.end(), allBlockCoords[i]) == 2) {
 				allBlockCoords[i] = oldCoords[i];
 				CoordinationTile* tile = &tiles[allBlockCoords[i][0]][allBlockCoords[i][1]];
 				tile->hasBlock = true;
 				tile->changeAppearance();
+				return true;
 			}
 		}
 	}
+	return false;
 }
 
 void CoordinationEngine::setTilesToNewBlockCoords() {

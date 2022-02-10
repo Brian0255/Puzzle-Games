@@ -23,7 +23,7 @@ public:
     void checkIfWin();
 
     void moveAllBlocks(std::array<int, 2> differenceToMove);
-    void checkForOverlapError(std::vector<std::array<int, 2>>& oldCoords, std::vector<std::array<int, 2>>& newCoords);
+    bool checkForOverlapError(std::vector<std::array<int, 2>>& oldCoords, std::vector<std::array<int, 2>>& newCoords);
     void setTilesToNewBlockCoords();
     void calculateNewBlockCoords(std::vector<std::array<int, 2>>& newCoords);
     void clearOutOldBlockPositions();
@@ -38,7 +38,6 @@ public:
 
 public slots:
     void tileButtonClick();
-    void tileButtonPress();
     void tileButtonRelease();
 private:
     PuzzleGames* controller;

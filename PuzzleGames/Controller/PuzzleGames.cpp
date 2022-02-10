@@ -151,13 +151,13 @@ void PuzzleGames::playButtonClick() {
 void PuzzleGames::puzzleSelectForwardClick() {
     PuzzleSelectGameEngine* engine = dynamic_cast<PuzzleSelectGameEngine*>(currentGame);
     engine->increasePuzzleIndex();
-    ui.PuzzleSelectLabel->setText("Puzzle: " + QString::number(engine->getCurrentIndex()+1));
+    ui.PuzzleSelectLabel->setText("Puzzle " + QString::number(engine->getCurrentIndex()+1));
 }
 
 void PuzzleGames::puzzleSelectBackClick() {
     PuzzleSelectGameEngine* engine = dynamic_cast<PuzzleSelectGameEngine*>(currentGame);
     engine->decreasePuzzleIndex();
-    ui.PuzzleSelectLabel->setText("Puzzle: " + QString::number(engine->getCurrentIndex()+1));
+    ui.PuzzleSelectLabel->setText("Puzzle " + QString::number(engine->getCurrentIndex()+1));
 }
 
 void PuzzleGames::connectAndStartGame() {
@@ -167,7 +167,6 @@ void PuzzleGames::connectAndStartGame() {
     connect(currentGame, &GameEngine::sendStatusLabelUpdate, this, &PuzzleGames::updateStatusLabel);
     connect(currentGame, &GameEngine::sendTopLeftLabelUpdate, this, &PuzzleGames::updateTopLeftLabel);
     connect(currentGame, &GameEngine::sendTopRightLabelUpdate, this, &PuzzleGames::updateTopRightLabel);
-    qDebug() << "set engine connections";
     currentGame->startEngine();
 }
 
