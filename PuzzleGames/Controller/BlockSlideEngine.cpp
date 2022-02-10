@@ -11,7 +11,7 @@ const int GRID_SPACING{ 4 };
 const int BUTTON_SIZE{ 82 };
 
 BlockSlideEngine::BlockSlideEngine(PuzzleGames* controller)
-	:controller{ controller }, animationActive{ false }, winCoords{ {} },
+	:controller{ controller }, animationActive{ false }, 
 	PuzzleSelectGameEngine(static_cast<int>(BlockSlideConstants::layouts.size()))  {
 		currentSelectedBlock = new SlidingBlock();
 };

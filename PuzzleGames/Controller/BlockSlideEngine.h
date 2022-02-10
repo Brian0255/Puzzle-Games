@@ -55,7 +55,6 @@ private:
     GameLayout<6> currentLayout;
     std::vector<SlidingBlock*> slidingBlocks;
     bool gameActive{ false };
-    std::array<int, 2> winCoords;
     std::map<QPushButton*, std::array<int, 2>> buttonCoords;
     SlidingBlock* currentSelectedBlock;
     bool animationActive;
