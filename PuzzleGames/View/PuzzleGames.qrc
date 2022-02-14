@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="PuzzleGames">
+    <file>coordPic.png</file>
     <file>blockFillPicture.png</file>
     <file>fillSquaresPicture.png</file>
   </qresource>

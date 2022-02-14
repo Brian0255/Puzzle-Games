@@ -31,7 +31,7 @@
      <string notr="true">background:transparent;</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="GameSelectWindow">
      <property name="styleSheet">
@@ -961,6 +961,9 @@ border-radius: 0px;</string>
              <property name="text">
               <string/>
              </property>
+             <property name="pixmap">
+              <pixmap resource="PuzzleGames.qrc">:/PuzzleGames/coordPic.png</pixmap>
+             </property>
              <property name="scaledContents">
               <bool>true</bool>
              </property>
@@ -1315,7 +1318,6 @@ border: 0px;</string>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
   <include location="PuzzleGames.qrc"/>
-  <include location="../../../../../.designer/backup/PuzzleGames.qrc"/>
  </resources>
  <connections/>
 </ui>
