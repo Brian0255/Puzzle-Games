@@ -128,7 +128,7 @@ void CoordinationEngine::moveAllBlocks(std::array<int, 2> differenceToMove) {
 		calculateNewBlockCoords(newCoords);
 		setTilesToNewBlockCoords();
 		//keep checking for overlap error until there is none
-		/while(checkForOverlapError(oldCoords, newCoords));
+		while(checkForOverlapError(oldCoords, newCoords));
 		CoordinationTile* activeTile = &tiles[activeBlockCoords[0]][activeBlockCoords[1]];
 		ColorUtils::changeColor(activeTile->button, ColorConstants::COORDINATION_BLOCK_HOVER_COLOR);
 		checkIfWin();
