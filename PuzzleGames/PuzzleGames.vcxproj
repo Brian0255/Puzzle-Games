@@ -60,12 +60,12 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Coordination;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\BlockFill;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\BlockSlide;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\FillTheSquares;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Minesweeper;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Battleship;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Controller;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\View;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Coordination;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\BlockFill;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\BlockSlide;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\FillTheSquares;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Minesweeper;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Battleship;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Controller;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\View;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Coordination;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\BlockFill;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\BlockSlide;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\FillTheSquares;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Minesweeper;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Battleship;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Controller;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\View;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Coordination;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\BlockFill;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\BlockSlide;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\FillTheSquares;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Minesweeper;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Battleship;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Controller;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\View;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -118,6 +118,8 @@
     <ClCompile Include="Model\BlockSlide\SlidingBlock.cpp" />
     <ClCompile Include="Controller\PuzzleSelectGameEngine.cpp" />
     <ClCompile Include="Model\TileUtils.cpp" />
+    <ClCompile Include="Model\TutorialDialog.cpp" />
+    <ClCompile Include="Model\TutorialConstants.cpp" />
     <QtRcc Include="View\PuzzleGames.qrc" />
     <ClCompile Include="Model\ColorConstants.cpp" />
     <ClCompile Include="Controller\GameEngine.cpp" />
@@ -130,6 +132,7 @@
     <QtMoc Include="Controller\PuzzleGames.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="View\TutorialDialog.ui" />
     <QtUic Include="View\PuzzleGames.ui" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +149,8 @@
     <ClInclude Include="Model\BlockSlide\SlidingBlock.h" />
     <ClInclude Include="Controller\PuzzleSelectGameEngine.h" />
     <ClInclude Include="Model\TileUtils.h" />
+    <ClInclude Include="Model\TutorialConstants.h" />
+    <QtMoc Include="Model\TutorialDialog.h" />
     <QtMoc Include="Controller\BattleshipEngine.h" />
     <ClInclude Include="Controller\BlockSlideEngine.h" />
     <ClInclude Include="Model\BlockSlide\BlockSlideTile.h" />

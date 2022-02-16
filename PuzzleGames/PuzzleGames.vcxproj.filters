@@ -115,6 +115,12 @@
     <ClCompile Include="Model\GameLayout.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Model\TutorialDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Model\TutorialConstants.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Controller\PuzzleGames.h">
@@ -132,9 +138,15 @@
     <QtMoc Include="Controller\BattleshipEngine.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="Model\TutorialDialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="View\PuzzleGames.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="View\TutorialDialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -206,6 +218,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Model\GameLayout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Model\TutorialConstants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
