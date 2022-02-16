@@ -7,6 +7,10 @@ public:
 	static const QString DARK_BUTTON_LIT_COLOR;
 	static const QString DARK_BUTTON_PRESS_COLOR;
 
+	static const QString TUTORIAL_BUTTON_DEFAULT_COLOR;
+	static const QString TUTORIAL_BUTTON_LIT_COLOR;
+	static const QString TUTORIAL_BUTTON_PRESS_COLOR;
+
 	static const QString TILE_DEFAULT_COLOR;
 	static const QString TILE_HOVER_COLOR;
 	static const QString TILE_PRESS_COLOR;

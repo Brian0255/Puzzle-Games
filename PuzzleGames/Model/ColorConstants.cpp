@@ -4,6 +4,10 @@ const QString ColorConstants::DARK_BUTTON_DEFAULT_COLOR{ "background-color: rgb(
 const QString ColorConstants::DARK_BUTTON_LIT_COLOR{ "background-color: rgb(90,90,90);" };
 const QString ColorConstants::DARK_BUTTON_PRESS_COLOR{ "background-color: rgb(85,85,85);" };
 
+const QString ColorConstants::TUTORIAL_BUTTON_DEFAULT_COLOR{ "background-color: rgb(60,60,60);" };
+const QString ColorConstants::TUTORIAL_BUTTON_LIT_COLOR{ "background-color: rgb(70,70,70);" };
+const QString ColorConstants::TUTORIAL_BUTTON_PRESS_COLOR{ "background-color: rgb(65,65,65);" };
+
 const QString ColorConstants::TILE_DEFAULT_COLOR{ "background-color: rgb(200,200,200);" };
 const QString ColorConstants::TILE_HOVER_COLOR{ "background-color: rgb(220,220,220);" };
 const QString ColorConstants::TILE_PRESS_COLOR{ "background-color: rgb(210,210,210);" };
