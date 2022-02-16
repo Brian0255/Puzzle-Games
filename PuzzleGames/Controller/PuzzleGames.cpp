@@ -8,6 +8,7 @@
 #include"BlockSlideEngine.h"
 #include"BlockFillEngine.h"
 #include"CoordinationEngine.h"
+#include"TutorialDialog.h"
 #include"qt_windows.h"
 
 PuzzleGames::PuzzleGames(QWidget *parent)
@@ -23,7 +24,8 @@ PuzzleGames::PuzzleGames(QWidget *parent)
 
     playPuzzleSelectButtons = { ui.BlockSlidePlayBtn,ui.BlockFillPlayBtn,ui.CoordPlayBtn };
 
-    darkButtons = { ui.PuzzleSelectForward,ui.PuzzleSelectBack, ui.ResetButton,ui.GoBackButton };
+    darkButtons = { ui.PuzzleSelectForward,ui.PuzzleSelectBack, ui.ResetButton,ui.GoBackButton, ui.TutorialButton,
+                     };
     darkButtons.insert(darkButtons.end(), playButtons.begin(), playButtons.end());     
 
     for (QPushButton* button : darkButtons) {
@@ -39,10 +41,11 @@ PuzzleGames::PuzzleGames(QWidget *parent)
     connect(ui.PuzzleSelectBack, &QPushButton::clicked, this, &PuzzleGames::puzzleSelectBackClick);
     connect(ui.ResetButton, &QPushButton::clicked, this, &PuzzleGames::resetBtnClick);
     connect(ui.GoBackButton, &QPushButton::clicked, this, &PuzzleGames::goBackBtnClick);
+    connect(ui.TutorialButton, &QPushButton::clicked, this, &PuzzleGames::tutorialBtnClick);
 }
 
-GameEngine* PuzzleGames::createEngine(int id) {
-    switch (id) {
+GameEngine* PuzzleGames::createEngine() {
+    switch (currentGameId) {
     case 0:
         return new MinesweeperEngine(this);
         break;
@@ -133,10 +136,10 @@ void PuzzleGames::darkButtonRelease() {
 
 void PuzzleGames::playButtonClick() {
     QPushButton* button = qobject_cast<QPushButton*>(sender());
-    int id = 0;
+    currentGameId = 0;
     auto iterator = std::find(playButtons.begin(), playButtons.end(), button);
     if (iterator != playButtons.end()) {
-        id = iterator - playButtons.begin();
+       currentGameId = iterator - playButtons.begin();
     }
     ui.MainStackedWidget->setCurrentIndex(1);
     bool puzzleSelectGame{ std::find(playPuzzleSelectButtons.begin(),playPuzzleSelectButtons.end(), button) != playPuzzleSelectButtons.end() };
@@ -144,7 +147,7 @@ void PuzzleGames::playButtonClick() {
     if (puzzleSelectGame) {
         ui.PuzzleSelectLabel->setText("Puzzle 1");
     }
-    currentGame = createEngine(id);
+    currentGame = createEngine();
     connectAndStartGame();
 }
 
@@ -177,6 +180,13 @@ void PuzzleGames::resetBtnClick() {
 void PuzzleGames::goBackBtnClick() {
     delete currentGame;
     ui.MainStackedWidget->setCurrentIndex(0);
+}
+
+void PuzzleGames::tutorialBtnClick() {
+    TutorialDialog dialog = TutorialDialog(currentGameId,this);
+    
+    dialog.setWindowTitle("Tutorial");
+    dialog.exec();
 }
 
 void PuzzleGames::darkButtonPress() {

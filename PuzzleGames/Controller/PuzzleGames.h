@@ -21,7 +21,7 @@ public:
 
     void changePuzzleGridSpacing(int newSpacing);
 
-    GameEngine* createEngine(int id);
+    GameEngine* createEngine();
 public slots:
     void darkButtonPress();
     void darkButtonRelease();
@@ -35,6 +35,7 @@ public slots:
 
     void resetBtnClick();
     void goBackBtnClick();
+    void tutorialBtnClick();
 
     void updateTopLeftLabel(QString newLabel);
     void updateTopRightLabel(QString newLabel);
@@ -45,4 +46,5 @@ private:
     std::vector<QPushButton*> darkButtons;
     std::vector<QPushButton*> playButtons;
     std::vector<QPushButton*> playPuzzleSelectButtons;
+    int currentGameId;
 };
