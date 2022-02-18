@@ -184,8 +184,6 @@ void PuzzleGames::goBackBtnClick() {
 
 void PuzzleGames::tutorialBtnClick() {
     TutorialDialog dialog = TutorialDialog(currentGameId,this);
-    
-    dialog.setWindowTitle("Tutorial");
     dialog.exec();
 }
 

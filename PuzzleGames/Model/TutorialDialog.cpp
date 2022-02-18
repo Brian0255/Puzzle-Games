@@ -7,6 +7,7 @@ TutorialDialog::TutorialDialog(int index, QWidget *parent)
 	: currentIndex{ index }, QDialog(parent)
 {
 	ui.setupUi(this);
+    setWindowTitle(TutorialConstants::TUTORIAL_GAME_NAMES[currentIndex] + " Tutorial");
     setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
 	ui.ControlsStackedWidget->setCurrentIndex(currentIndex);
 	ui.RulesStackedWidget->setCurrentIndex(currentIndex);
