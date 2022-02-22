@@ -9,12 +9,29 @@ public:
     BlockFillEngine(PuzzleGames* controller);
     ~BlockFillEngine();
 
+    void startEngine();
+    void resetGame();
+
+    bool eventFilter(QObject* watched, QEvent* event);
+
+public slots:
+    void tileBtnClick();
+    void placeCurrentBlock();
+    void tileBtnRightClick();
+    void setupShapeDrag(BlockFillTile* tile, QPushButton*& button);
+private:
+    PuzzleGames* controller;
+    std::array<std::array<BlockFillTile, 16>, 16> tiles;
+    std::vector<BlockFillShape*> shapes;
+    bool gameActive{ false };
+    std::map<QPushButton*, std::array<int, 2>> buttonCoords;
+    BlockFillShape* currentShape;
+    bool dragging;
+    std::array<int, 2> lastMouseGridPosition;
+
+    void startGame();
     void checkIfWin();
     void setupTiles();
-
-    void startEngine();
-    void startGame();
-    void resetGame();
     void resetTiles();
 
     void putLayoutIntoTileGrid();
@@ -30,23 +47,9 @@ public:
     void highlightShape(BlockFillShape* shape);
     void unhighlightShape(BlockFillShape* shape);
 
-    bool eventFilter(QObject* watched, QEvent* event);
-
     void handleButtonEventFilter(QEvent* event, QPushButton*& btn);
     void handleFrameEventFilter(QEvent* event);
-public slots:
-    void tileBtnClick();
-    void placeCurrentBlock();
-    void tileBtnRightClick();
-    void setupShapeDrag(BlockFillTile* tile, QPushButton*& button);
-private:
-    PuzzleGames* controller;
-    std::array<std::array<BlockFillTile, 16>, 16> tiles;
-    std::vector<BlockFillShape*> shapes;
-    bool gameActive{ false };
-    std::map<QPushButton*, std::array<int, 2>> buttonCoords;
-    BlockFillShape* currentShape;
-    bool dragging;
-    std::array<int, 2> lastMouseGridPosition;
+
+
 };
 

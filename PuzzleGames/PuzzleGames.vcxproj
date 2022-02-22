@@ -60,12 +60,16 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Coordination;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\BlockFill;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\BlockSlide;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\FillTheSquares;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Minesweeper;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Battleship;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Controller;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\View;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Tests;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Coordination;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\BlockFill;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\BlockSlide;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\FillTheSquares;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Minesweeper;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Battleship;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Controller;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\View;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Coordination;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\BlockFill;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\BlockSlide;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\FillTheSquares;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Minesweeper;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Battleship;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Controller;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\View;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Tests;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Coordination;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\BlockFill;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\BlockSlide;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\FillTheSquares;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Minesweeper;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model\Battleship;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Controller;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\Model;C:\Users\Brian\source\repos\PuzzleGames\PuzzleGames\View;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>-Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">

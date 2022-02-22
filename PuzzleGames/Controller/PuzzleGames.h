@@ -14,10 +14,9 @@ class PuzzleGames : public QMainWindow
 public:
     bool eventFilter(QObject* watched, QEvent* event);
     PuzzleGames(QWidget *parent = Q_NULLPTR);
-    QDifferentClicksButton* createButton(int row, int col, bool puzzleSelectGame);
 
+    QDifferentClicksButton* createButton(int row, int col, bool puzzleSelectGame);
     void setupSlidingBlock(SlidingBlock& block, int row, int col);
-    void setupDarkButtonPressRelease(QPushButton* button);
 
     void changePuzzleGridSpacing(int newSpacing);
 
@@ -47,4 +46,6 @@ private:
     std::vector<QPushButton*> playButtons;
     std::vector<QPushButton*> playPuzzleSelectButtons;
     int currentGameId;
+
+    void setupDarkButtonPressRelease(QPushButton* button);
 };

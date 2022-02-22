@@ -10,34 +10,8 @@ public:
     BlockSlideEngine(PuzzleGames* controller);
     ~BlockSlideEngine();
 
-    void setupTiles();
-    void checkIfWin();
-
     void startEngine();
     void resetGame();
-    void startGame();
-
-    void createSlidingBlock(int row, int col);
-
-    void highlightPossibleMoves(SlidingBlock* block);
-    void highlightToTheRight(SlidingBlock* block);
-    void highlightToTheLeft(SlidingBlock* block);
-    void highlightAbove(SlidingBlock* block);
-    void highlightBelow(SlidingBlock* block);
-    void clearHighlights();
-
-    void enableButtons();
-    void disableButtons();
-
-    void moveCurrentBlock(std::array<int, 2> newCoords);
-    void moveSmoothly(std::array<int, 2> newCoords);
-    void updateBlock();
-
-    void putLayoutIntoTileGrid();
-
-    void setTileAsBarrier(int i, int j);
-    void setTileAsGoal(int i, int j);
-    void setTileAsDefault(int i, int j);
 
     bool eventFilter(QObject* watched, QEvent* event);
 
@@ -61,5 +35,33 @@ private:
     int numGoals{ 0 };
     bool resetOnlyThePuzzle{ false };
 
+    void startGame();
+    void setupTiles();
+    void checkIfWin();
+
+    void setTileAsBarrier(int i, int j);
+    void setTileAsGoal(int i, int j);
+    void setTileAsDefault(int i, int j);
+
+    void putLayoutIntoTileGrid();
+
+    void enableButtons();
+    void disableButtons();
+
+    void createSlidingBlock(int row, int col);
+
+    void highlightPossibleMoves(SlidingBlock* block);
+
+    void highlightToTheRight(SlidingBlock* block);
+    void highlightToTheLeft(SlidingBlock* block);
+    void highlightAbove(SlidingBlock* block);
+    void highlightBelow(SlidingBlock* block);
+
+    void clearHighlights();
+
+    void moveCurrentBlock(std::array<int, 2> newCoords);
+    void moveSmoothly(std::array<int, 2> newCoords);
+
+    void updateBlock();
 };
 

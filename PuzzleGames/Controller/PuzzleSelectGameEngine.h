@@ -10,9 +10,10 @@ public:
 
     int getCurrentIndex();
 
-    virtual void putLayoutIntoTileGrid() = 0;
 private:
     int curPuzzleIndex;
     int totalPuzzles;
+
+    virtual void putLayoutIntoTileGrid() = 0;
 };
 

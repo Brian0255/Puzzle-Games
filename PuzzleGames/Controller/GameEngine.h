@@ -12,8 +12,9 @@ public:
 	virtual void startEngine() = 0;
 	virtual void resetGame() = 0;
 
-	virtual void setupTiles() = 0;
-
 	bool eventFilter(QObject* watched, QEvent* event);
+
+private:
+	virtual void setupTiles() = 0;
 };
 

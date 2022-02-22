@@ -12,18 +12,10 @@ class MinesweeperEngine : public GameEngine {
 public:
     MinesweeperEngine(PuzzleGames* controller);
     ~MinesweeperEngine();
+
     void startEngine();
-    void setupTiles();
-    void startGame(QPushButton*, int);
     void resetGame();
-    void gameOver(QPushButton*);
 
-    void revealTile(QPushButton* button);
-
-    void checkIfWin();
-
-    int calcFlagsAroundTile(QPushButton* button);
-    void setupTileBombCounts();
 public slots:
     void tileButtonPress();
     void tileButtonClick();
@@ -38,4 +30,16 @@ private:
     bool gameActive{ false };
     std::map<QPushButton*, std::array<int, 2>> buttonCoords;
     std::map<std::array<int, 2>, bool> bombCoordsUsed;
+
+    void setupTiles();
+    void startGame(QPushButton*, int);
+
+    void gameOver(QPushButton*);
+
+    void revealTile(QPushButton* button);
+
+    void checkIfWin();
+
+    int calcFlagsAroundTile(QPushButton* button);
+    void setupTileBombCounts();
 };

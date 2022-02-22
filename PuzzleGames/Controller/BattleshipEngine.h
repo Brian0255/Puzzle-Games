@@ -10,15 +10,10 @@ class BattleshipEngine :
 public:
     BattleshipEngine(PuzzleGames* controller);
     ~BattleshipEngine();
-    void startEngine();
-    void setupTiles();
-    void startGame();
-    void revealTile(QPushButton* button);
-    void resetGame();
-    void gameOver();
-    void checkIfWin();
 
-    void setupTileShipCounts();
+    void startEngine();
+    void resetGame();
+
 public slots:
     void tileButtonPress();
     void tileButtonClick();
@@ -33,6 +28,16 @@ private:
     std::array<std::array<BattleshipTile, 10>, 10> tiles;
     bool gameActive{ false };
     std::map<QPushButton*, std::array<int, 2>> buttonCoords;
+
+
+    void setupTiles();
+    void startGame();
+    void revealTile(QPushButton* button);
+    void gameOver();
+    void checkIfWin();
+
+    void setupTileShipCounts();
+
     void calculateShipsRemaining();
     bool shipUncovered(BattleshipShip ship);
     bool checkIfShipFits(BattleshipShip ship);

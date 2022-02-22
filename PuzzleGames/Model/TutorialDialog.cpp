@@ -9,13 +9,17 @@ TutorialDialog::TutorialDialog(int index, QWidget *parent)
 	ui.setupUi(this);
     setWindowTitle(TutorialConstants::TUTORIAL_GAME_NAMES[currentIndex] + " Tutorial");
     setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
+
 	ui.ControlsStackedWidget->setCurrentIndex(currentIndex);
 	ui.RulesStackedWidget->setCurrentIndex(currentIndex);
+
 	ui.TutorialDesc->setText(TutorialConstants::TUTORIAL_GAME_DESCRIPTIONS[currentIndex]);
 	ui.TutorialGameName->setText(TutorialConstants::TUTORIAL_GAME_NAMES[currentIndex]);
+
 	connect(ui.ReturnToGame, &QPushButton::clicked, this, &QDialog::close);
     connect(ui.ReturnToGame, &QPushButton::pressed, this, &TutorialDialog::buttonPress);
     connect(ui.ReturnToGame, &QPushButton::released, this, &TutorialDialog::buttonRelease);
+
     ui.ReturnToGame->installEventFilter(this);
 }
 
