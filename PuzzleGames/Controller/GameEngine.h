@@ -9,8 +9,8 @@ signals:
 	void sendStatusLabelUpdate(QString newText);
 
 public:
-	virtual void startEngine() = 0;
-	virtual void resetGame() = 0;
+	virtual bool startEngine() = 0;
+	virtual bool resetGame() = 0;
 
 	bool eventFilter(QObject* watched, QEvent* event);
 
