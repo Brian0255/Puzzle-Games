@@ -3,6 +3,8 @@
 #include <QtWidgets/QPushButton>
 #include<../PuzzleGames/Model/ArrayUtils.h>
 #include<../PuzzleGames/Model/ColorUtils.h>
+#include<../PuzzleGames/Controller/BattleshipEngine.h>
+#include<../PuzzleGames/Controller/PuzzleGames.h>
 // add necessary includes here
 
 #define arrSize3 3
@@ -17,17 +19,24 @@ public:
     ~Tests();
 
 private slots:
-    void test_colorChangeBasic();
-    void test_colorChangeEdgeCase();
+    void changeColor_noColorExists();
+    void changeColor_generalCase();
 
-    void test_colorGetBasic();
-    void test_colorGetEdgeCase();
+    void getColor_generalCase();
+    void getColor_noColorExists();
 
-    void test_arrayAddBasic();
-    void test_arrayAddEdgeCase();
+    void addIntArrays_generalCase();
+    void addIntArrays_emptyArrays();
 
-    void test_arraySubBasic();
-    void test_arraySubEdgeCase();
+    void subIntArrays_generalCase();
+    void subIntArrays_emptyArrays();
+
+    void BattleshipEngine_startEngine_generalCase();
+    void BattleshipEngine_startEngine_NULLController();
+    void BattleshipEngine_resetGame_engineNotStarted();
+    void BattleshipEngine_resetGame_generalCase();
+
+
 };
 
 Tests::Tests()
@@ -40,7 +49,7 @@ Tests::~Tests()
 
 }
 
-void Tests::test_arrayAddBasic(){
+void Tests::addIntArrays_generalCase(){
     std::array<int,arrSize3> arr1 = {1,2,3};
     std::array<int,arrSize3> arr2 = {3,4,0};
 
@@ -49,7 +58,7 @@ void Tests::test_arrayAddBasic(){
     QVERIFY(expected == actual);
 }
 
-void Tests::test_arrayAddEdgeCase(){
+void Tests::addIntArrays_emptyArrays(){
     std::array<int,arrSize0> arr1 = {};
     std::array<int,arrSize0> arr2 = {};
 
@@ -58,7 +67,7 @@ void Tests::test_arrayAddEdgeCase(){
     QVERIFY(expected == actual);
 }
 
-void Tests::test_arraySubBasic(){
+void Tests::subIntArrays_generalCase(){
     std::array<int,arrSize3> arr1 = {1,0,6};
     std::array<int,arrSize3> arr2 = {1,3,0};
 
@@ -67,7 +76,7 @@ void Tests::test_arraySubBasic(){
     QVERIFY(expected == actual);
 }
 
-void Tests::test_arraySubEdgeCase(){
+void Tests::subIntArrays_emptyArrays(){
     std::array<int,arrSize0> arr1 = {};
     std::array<int,arrSize0> arr2 = {};
 
@@ -76,7 +85,19 @@ void Tests::test_arraySubEdgeCase(){
     QVERIFY(expected == actual);
 }
 
-void Tests::test_colorChangeBasic()
+void Tests::BattleshipEngine_startEngine_generalCase() {
+}
+
+void Tests::BattleshipEngine_startEngine_NULLController() {
+}
+
+void Tests::BattleshipEngine_resetGame_engineNotStarted() {
+}
+
+void Tests::BattleshipEngine_resetGame_generalCase() {
+}
+
+void Tests::changeColor_generalCase()
 {
     QPushButton* button = new QPushButton();
     button->setStyleSheet(
@@ -90,7 +111,7 @@ void Tests::test_colorChangeBasic()
     QVERIFY(button->styleSheet() == expected->styleSheet());
 }
 
-void Tests::test_colorChangeEdgeCase()
+void Tests::changeColor_noColorExists()
 {
     QPushButton* button = new QPushButton();
 
@@ -102,7 +123,7 @@ void Tests::test_colorChangeEdgeCase()
     QVERIFY(button->styleSheet() == expected->styleSheet());
 }
 
-void Tests::test_colorGetBasic()
+void Tests::getColor_generalCase()
 {
     QPushButton* button = new QPushButton();
     button->setStyleSheet(
@@ -113,7 +134,7 @@ void Tests::test_colorGetBasic()
     QVERIFY(expected==actual);
 }
 
-void Tests::test_colorGetEdgeCase()
+void Tests::getColor_noColorExists()
 {
     QPushButton* button = new QPushButton();
     QString expected = "";
