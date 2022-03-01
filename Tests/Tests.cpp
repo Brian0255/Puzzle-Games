@@ -6,6 +6,11 @@
 #include "ArrayUtils.h"
 #include "ColorUtils.h"
 #include"BattleshipEngine.h"
+#include"MinesweeperEngine.h"
+#include"CoordinationEngine.h"
+#include"BlockFillEngine.h"
+#include"FillSquaresEngine.h"
+#include"BlockSlideEngine.h"
 #include"PuzzleGames.h"
 #include"qdebug.h"
 #include<iostream>
@@ -35,6 +40,9 @@ private slots:
 
     void subIntArrays_generalCase();
     void subIntArrays_emptyArrays();
+
+    void MinesweeperEngine_startEngine_NULLController();
+    void MinesweeperEngine_resetGame_engineNotStarted();
 
     void BattleshipEngine_startEngine_NULLController();
     void BattleshipEngine_resetGame_engineNotStarted();
@@ -94,6 +102,19 @@ void Tests::BattleshipEngine_startEngine_NULLController() {
 void Tests::BattleshipEngine_resetGame_engineNotStarted() {
     PuzzleGames controller;
     BattleshipEngine* engine = new BattleshipEngine(&controller);
+    bool success = engine->resetGame();
+    QVERIFY(success == false);
+}
+
+void Tests::MinesweeperEngine_startEngine_NULLController() {
+    MinesweeperEngine* engine = new MinesweeperEngine(NULL);
+    bool success = engine->startEngine();
+    QVERIFY(success == false);
+}
+
+void Tests::MinesweeperEngine_resetGame_engineNotStarted() {
+    PuzzleGames controller;
+    MinesweeperEngine* engine = new MinesweeperEngine(&controller);
     bool success = engine->resetGame();
     QVERIFY(success == false);
 }
