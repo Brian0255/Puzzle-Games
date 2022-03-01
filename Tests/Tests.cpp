@@ -1,10 +1,14 @@
 #include <QtTest>
 #include <QCoreApplication>
+#include<QtWidgets/qapplication.h>
 #include <QtWidgets/QPushButton>
-#include<../PuzzleGames/Model/ArrayUtils.h>
-#include<../PuzzleGames/Model/ColorUtils.h>
-#include<../PuzzleGames/Controller/BattleshipEngine.h>
-#include<../PuzzleGames/Controller/PuzzleGames.h>
+#include"qmainwindow.h"
+#include "ArrayUtils.h"
+#include "ColorUtils.h"
+#include"BattleshipEngine.h"
+#include"PuzzleGames.h"
+#include"qdebug.h"
+#include<iostream>
 // add necessary includes here
 
 #define arrSize3 3
@@ -13,6 +17,7 @@
 class Tests : public QObject
 {
     Q_OBJECT
+
 
 public:
     Tests();
@@ -31,17 +36,12 @@ private slots:
     void subIntArrays_generalCase();
     void subIntArrays_emptyArrays();
 
-    void BattleshipEngine_startEngine_generalCase();
     void BattleshipEngine_startEngine_NULLController();
     void BattleshipEngine_resetGame_engineNotStarted();
-    void BattleshipEngine_resetGame_generalCase();
-
-
 };
 
 Tests::Tests()
 {
-
 }
 
 Tests::~Tests()
@@ -85,16 +85,17 @@ void Tests::subIntArrays_emptyArrays(){
     QVERIFY(expected == actual);
 }
 
-void Tests::BattleshipEngine_startEngine_generalCase() {
-}
-
 void Tests::BattleshipEngine_startEngine_NULLController() {
+    BattleshipEngine* engine = new BattleshipEngine(NULL);
+    bool success = engine->startEngine();
+    QVERIFY(success == false);
 }
 
 void Tests::BattleshipEngine_resetGame_engineNotStarted() {
-}
-
-void Tests::BattleshipEngine_resetGame_generalCase() {
+    PuzzleGames controller;
+    BattleshipEngine* engine = new BattleshipEngine(&controller);
+    bool success = engine->resetGame();
+    QVERIFY(success == false);
 }
 
 void Tests::changeColor_generalCase()
@@ -142,6 +143,6 @@ void Tests::getColor_noColorExists()
     QVERIFY(expected==actual);
 }
 
-QTEST_MAIN(Tests)
+QTEST_MAIN(Tests);
 
 #include "Tests.moc"
