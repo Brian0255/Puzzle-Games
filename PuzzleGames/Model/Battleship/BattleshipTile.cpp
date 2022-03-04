@@ -2,9 +2,12 @@
 #include <qDebug>
 
 BattleshipTile::BattleshipTile(QPushButton* button)
-    :hidden{ true }, isShip{ false }, shipsIntersecting{ 0 }, button{ button }, crossedOff{ false } {}
+    :hidden{ true }, isShip{ false }, shipsIntersecting{ 0 }, button{ button }, crossedOff{ false },
+    letter{ 'Z' }, secret{ false } {};
 
-BattleshipTile::BattleshipTile() {}
+BattleshipTile::BattleshipTile()
+    : button{ NULL }, hidden{ true }, isShip{ false }, shipsIntersecting{ 0 }, crossedOff{ false },
+    letter{ 'Z' }, secret{ false } {};
 
 void BattleshipTile::calculateShipsIntersecting(std::array<std::array<BattleshipTile, 10>, 10>& battleshipTiles, std::map<QPushButton*, std::array<int, 2>>& buttonCoords) {
     shipsIntersecting = 0;
@@ -78,4 +81,12 @@ void BattleshipTile::reveal() {
         button->setText((shipsIntersecting > 0) ? QString::number(shipsIntersecting) : "");
     }
     hidden = false;
+}
+
+void BattleshipTile::reset() {
+    button->setEnabled(true);
+    button->setText("");
+    hidden = true;
+    isShip = false;
+    crossedOff = false;
 }
