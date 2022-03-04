@@ -6,8 +6,8 @@
 CoordinationTile::CoordinationTile(QPushButton* button)
 	: button{ button }, tileType{ COORD_TILE_TYPE::DEFAULT }, hasBlock{ false } {};
 
-CoordinationTile::CoordinationTile() {
-}
+CoordinationTile::CoordinationTile()
+	:button{ NULL }, tileType{ COORD_TILE_TYPE::DEFAULT }, hasBlock{ false } {};
 
 void CoordinationTile::changeAppearance() {
 	button->setText("");
