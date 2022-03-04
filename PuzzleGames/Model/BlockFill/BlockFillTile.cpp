@@ -3,10 +3,11 @@
 #include"ColorConstants.h"
 
 BlockFillTile::BlockFillTile(QPushButton* button)
-	: button{ button }, shape{ NULL }, goal{ false }, barrier{ false } {}
+	: button{ button }, shape{ NULL }, goal{ false }, barrier{ false } {};
 
-BlockFillTile::BlockFillTile() {
-}
+BlockFillTile::BlockFillTile()
+	: button{ NULL }, shape{ NULL }, goal{ false }, barrier{ false } {};
+
 void BlockFillTile::reset() {
 	shape = NULL;
 	barrier = false;
