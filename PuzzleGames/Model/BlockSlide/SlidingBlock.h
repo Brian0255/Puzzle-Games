@@ -1,5 +1,5 @@
 #pragma once
-#include<QDifferentClicksButton.h>
+#include"QDifferentClicksButton.h"
 #include<array>
 struct SlidingBlock {
 	QDifferentClicksButton* button;
