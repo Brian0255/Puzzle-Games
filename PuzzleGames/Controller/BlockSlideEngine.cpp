@@ -62,14 +62,18 @@ void BlockSlideEngine::checkIfWin() {
 	}
 }
 
-void BlockSlideEngine::startEngine() {
-	controller->changePuzzleGridSpacing(4);
-	setupTiles();
-	startGame();
+bool BlockSlideEngine::startEngine() {
+	if (controller != NULL) {
+		controller->changePuzzleGridSpacing(4);
+		setupTiles();
+		startGame();
+		return true;
+	}
+	return false;
 }
 
-void BlockSlideEngine::resetGame() {
-	if (!animationActive) {
+bool BlockSlideEngine::resetGame() {
+	if (!animationActive && tiles[0][0].button != NULL) {
 		emit sendStatusLabelUpdate("");
 		for (SlidingBlock* block : slidingBlocks) {
 			delete block->button;
@@ -84,7 +88,9 @@ void BlockSlideEngine::resetGame() {
 		slidingBlocks.clear();
 		enableButtons();
 		startGame();
+		return true;
 	}
+	return false;
 }
 
 void BlockSlideEngine::startGame() {
