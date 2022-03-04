@@ -13,8 +13,8 @@ public:
     MinesweeperEngine(PuzzleGames* controller);
     ~MinesweeperEngine();
 
-    void startEngine();
-    void resetGame();
+    bool startEngine();
+    bool resetGame();
 
 public slots:
     void tileButtonPress();

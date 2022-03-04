@@ -9,8 +9,8 @@ public:
     BlockFillEngine(PuzzleGames* controller);
     ~BlockFillEngine();
 
-    void startEngine();
-    void resetGame();
+    bool startEngine();
+    bool resetGame();
 
     bool eventFilter(QObject* watched, QEvent* event);
 

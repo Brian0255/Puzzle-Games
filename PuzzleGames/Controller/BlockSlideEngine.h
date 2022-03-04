@@ -10,8 +10,8 @@ public:
     BlockSlideEngine(PuzzleGames* controller);
     ~BlockSlideEngine();
 
-    void startEngine();
-    void resetGame();
+    bool startEngine();
+    bool resetGame();
 
     bool eventFilter(QObject* watched, QEvent* event);
 

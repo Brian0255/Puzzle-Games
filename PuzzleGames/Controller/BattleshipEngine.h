@@ -11,8 +11,8 @@ public:
     BattleshipEngine(PuzzleGames* controller);
     ~BattleshipEngine();
 
-    void startEngine();
-    void resetGame();
+    bool startEngine();
+    bool resetGame();
 
 public slots:
     void tileButtonPress();

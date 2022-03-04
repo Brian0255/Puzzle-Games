@@ -13,8 +13,8 @@ public:
     CoordinationEngine(PuzzleGames* controller);
     ~CoordinationEngine();
 
-    void startEngine();
-    void resetGame();
+    bool startEngine();
+    bool resetGame();
 
     bool eventFilter(QObject* watched, QEvent* event);
 
