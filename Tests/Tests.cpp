@@ -46,6 +46,9 @@ private slots:
 
     void BattleshipEngine_startEngine_NULLController();
     void BattleshipEngine_resetGame_engineNotStarted();
+
+    void FillSquaresEngine_startEngine_NULLController();
+    void FillSquaresEngine_resetGame_engineNotStarted();
 };
 
 Tests::Tests()
@@ -93,6 +96,19 @@ void Tests::subIntArrays_emptyArrays(){
     QVERIFY(expected == actual);
 }
 
+void Tests::MinesweeperEngine_startEngine_NULLController() {
+    MinesweeperEngine* engine = new MinesweeperEngine(NULL);
+    bool success = engine->startEngine();
+    QVERIFY(success == false);
+}
+
+void Tests::MinesweeperEngine_resetGame_engineNotStarted() {
+    PuzzleGames controller;
+    MinesweeperEngine* engine = new MinesweeperEngine(&controller);
+    bool success = engine->resetGame();
+    QVERIFY(success == false);
+}
+
 void Tests::BattleshipEngine_startEngine_NULLController() {
     BattleshipEngine* engine = new BattleshipEngine(NULL);
     bool success = engine->startEngine();
@@ -106,15 +122,15 @@ void Tests::BattleshipEngine_resetGame_engineNotStarted() {
     QVERIFY(success == false);
 }
 
-void Tests::MinesweeperEngine_startEngine_NULLController() {
-    MinesweeperEngine* engine = new MinesweeperEngine(NULL);
+void Tests::FillSquaresEngine_startEngine_NULLController() {
+    FillSquaresEngine* engine = new FillSquaresEngine(NULL);
     bool success = engine->startEngine();
     QVERIFY(success == false);
 }
 
-void Tests::MinesweeperEngine_resetGame_engineNotStarted() {
+void Tests::FillSquaresEngine_resetGame_engineNotStarted() {
     PuzzleGames controller;
-    MinesweeperEngine* engine = new MinesweeperEngine(&controller);
+    FillSquaresEngine* engine = new FillSquaresEngine(&controller);
     bool success = engine->resetGame();
     QVERIFY(success == false);
 }
