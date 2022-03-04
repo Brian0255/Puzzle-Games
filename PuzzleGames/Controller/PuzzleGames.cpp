@@ -10,6 +10,7 @@
 #include"CoordinationEngine.h"
 #include"TutorialDialog.h"
 #include"qt_windows.h"
+#include<stdexcept>
 
 PuzzleGames::PuzzleGames(QWidget *parent)
     : QMainWindow(parent)
@@ -94,17 +95,22 @@ void PuzzleGames::setupSlidingBlock(SlidingBlock& block, int row, int col) {
 }
 
 QDifferentClicksButton* PuzzleGames::createButton(int row, int col, bool puzzleSelectGame) {
-    QDifferentClicksButton* newButton;
-    if (puzzleSelectGame) {
-        newButton = new QDifferentClicksButton(ui.PuzzleTileFrame);
+    if (row >= 0 && col >= 0) {
+        QDifferentClicksButton* newButton;
+        if (puzzleSelectGame) {
+            newButton = new QDifferentClicksButton(ui.PuzzleTileFrame);
             ui.PuzzleMainGrid->addWidget(newButton, row, col);
+        }
+        else {
+            newButton = new QDifferentClicksButton(ui.StandardGameTileFrame);
+            ui.StandardGameMainGrid->addWidget(newButton, row, col);
+        }
+
+        return newButton;
     }
     else {
-        newButton = new QDifferentClicksButton(ui.StandardGameTileFrame);
-        ui.StandardGameMainGrid->addWidget(newButton, row, col);
+        throw std::invalid_argument("Row or column was negative. Cannot create button in grid with negative indices.");
     }
-            
-    return newButton;
 }
 
 
