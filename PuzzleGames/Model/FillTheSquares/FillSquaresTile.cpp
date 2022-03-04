@@ -2,11 +2,11 @@
 #include"ColorConstants.h"
 #include"ColorUtils.h"
 
-FillSquaresTile::FillSquaresTile(QPushButton* button) 
-	:button(button),filled(false),XSpot(false){}
+FillSquaresTile::FillSquaresTile(QPushButton* button)
+	:button(button), filled{ false }, XSpot{ false } {};
 
-FillSquaresTile::FillSquaresTile() {
-}
+FillSquaresTile::FillSquaresTile()
+	:button{ NULL }, filled{ false }, XSpot{ false } {};
 
 void FillSquaresTile::fill() {
 	filled = true;
