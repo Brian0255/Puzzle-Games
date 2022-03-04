@@ -21,9 +21,13 @@ CoordinationEngine::~CoordinationEngine() {
 	}
 }
 
-void CoordinationEngine::startEngine() {
-	setupTiles();
-	startGame();
+bool CoordinationEngine::startEngine() {
+	if (controller != NULL) {
+		setupTiles();
+		startGame();
+		return true;
+	}
+	return false;
 }
 
 void CoordinationEngine::startGame() {
@@ -32,17 +36,21 @@ void CoordinationEngine::startGame() {
 	putLayoutIntoTileGrid();
 }
 
-void CoordinationEngine::resetGame() {
-	emit sendStatusLabelUpdate("");
-	currentlyMoving = false;
-	allBlockCoords.clear();
-	for (auto& tileArray : tiles) {
-		for (auto& tile : tileArray) {
-			tile.reset();
+bool CoordinationEngine::resetGame() {
+	if (tiles[0][0].button!=NULL) {
+		emit sendStatusLabelUpdate("");
+		currentlyMoving = false;
+		allBlockCoords.clear();
+		for (auto& tileArray : tiles) {
+			for (auto& tile : tileArray) {
+				tile.reset();
+			}
 		}
+		TileUtils::enableButtons(tiles);
+		startGame();
+		return true;
 	}
-	TileUtils::enableButtons(tiles);
-	startGame();
+	return false;
 }
 
 void CoordinationEngine::setupTiles() {
