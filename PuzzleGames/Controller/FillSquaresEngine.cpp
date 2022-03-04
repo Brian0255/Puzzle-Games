@@ -7,7 +7,8 @@
 #include<vector>
 
 const int GRID_SIZE{ 8 };
-FillSquaresEngine::FillSquaresEngine(PuzzleGames* controller) : controller{ controller } {
+FillSquaresEngine::FillSquaresEngine(PuzzleGames* controller) 
+	: controller{ controller }, tiles{ {} } {
 	srand(time(0));
 	currentLayout.layout = {};
 }
@@ -22,17 +23,25 @@ FillSquaresEngine::~FillSquaresEngine() {
 }
 ;
 
-void FillSquaresEngine::startEngine() {
-	setupTiles();
-	startGame();
+bool FillSquaresEngine::startEngine() {
+	if (controller != NULL) {
+		setupTiles();
+		startGame();
+		return true;
+	}
+	return false;
 }
 
-void FillSquaresEngine::resetGame() {
-	resetTiles();
-	buttonFillSequence.clear();
-	currentlyFilling = false;
-	startGame();
-	emit sendStatusLabelUpdate("");
+bool FillSquaresEngine::resetGame() {
+	if (tiles[0][0].button!=NULL) {
+		resetTiles();
+		buttonFillSequence.clear();
+		currentlyFilling = false;
+		startGame();
+		emit sendStatusLabelUpdate("");
+		return true;
+	}
+	return false;
 }
 
 void FillSquaresEngine::resetTiles() {
