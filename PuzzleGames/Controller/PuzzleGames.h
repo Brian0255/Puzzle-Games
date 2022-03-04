@@ -1,10 +1,11 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
-#include "ui_PuzzleGames.h"
+#include "PuzzleGames.h"
 #include"SlidingBlock.h"
 #include"GameEngine.h"
 #include"QDifferentClicksButton.h"
+#include"ui_PuzzleGames.h"
 #include<vector>
 #include<map>
 class PuzzleGames : public QMainWindow

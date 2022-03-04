@@ -192,7 +192,6 @@ Makefile: ..\Tests\Tests.pro D:\Qt\6.2.0\msvc2019_64\mkspecs\win32-msvc\qmake.co
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\qt_config.prf \
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\win32-msvc\qmake.conf \
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\spec_post.prf \
-		.qmake.stash \
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\exclusive_builds.prf \
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\common\msvc-version.conf \
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\toolchain.prf \
@@ -201,19 +200,18 @@ Makefile: ..\Tests\Tests.pro D:\Qt\6.2.0\msvc2019_64\mkspecs\win32-msvc\qmake.co
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\resolve_config.prf \
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\exclusive_builds_post.prf \
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\default_post.prf \
-		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\testcase.prf \
+		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\win32\console.prf \
+		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\qml_debug.prf \
+		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\entrypoint.prf \
+		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\precompile_header.prf \
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\warn_on.prf \
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\qt.prf \
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\resources_functions.prf \
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\resources.prf \
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\moc.prf \
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\testlib_defines.prf \
-		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\win32\console.prf \
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\win32\opengl.prf \
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\uic.prf \
-		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\qml_debug.prf \
-		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\entrypoint.prf \
-		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\precompile_header.prf \
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\qmake_use.prf \
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\file_copies.prf \
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\testcase_targets.prf \
@@ -225,6 +223,7 @@ Makefile: ..\Tests\Tests.pro D:\Qt\6.2.0\msvc2019_64\mkspecs\win32-msvc\qmake.co
 		D:\Qt\6.2.0\msvc2019_64\lib\Qt6Gui.prl \
 		D:\Qt\6.2.0\msvc2019_64\lib\Qt6Test.prl \
 		D:\Qt\6.2.0\msvc2019_64\lib\Qt6Core.prl \
+		.qmake.stash \
 		D:\Qt\6.2.0\msvc2019_64\mkspecs\features\build_pass.prf \
 		D:\Qt\6.2.0\msvc2019_64\lib\Qt6Widgetsd.prl \
 		D:\Qt\6.2.0\msvc2019_64\lib\Qt6Guid.prl \
@@ -339,7 +338,6 @@ D:\Qt\6.2.0\msvc2019_64\mkspecs\features\qt_functions.prf:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\features\qt_config.prf:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\win32-msvc\qmake.conf:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\features\spec_post.prf:
-.qmake.stash:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\features\exclusive_builds.prf:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\common\msvc-version.conf:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\features\toolchain.prf:
@@ -348,19 +346,18 @@ D:\Qt\6.2.0\msvc2019_64\mkspecs\features\win32\default_pre.prf:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\features\resolve_config.prf:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\features\exclusive_builds_post.prf:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\features\default_post.prf:
-D:\Qt\6.2.0\msvc2019_64\mkspecs\features\testcase.prf:
+D:\Qt\6.2.0\msvc2019_64\mkspecs\features\win32\console.prf:
+D:\Qt\6.2.0\msvc2019_64\mkspecs\features\qml_debug.prf:
+D:\Qt\6.2.0\msvc2019_64\mkspecs\features\entrypoint.prf:
+D:\Qt\6.2.0\msvc2019_64\mkspecs\features\precompile_header.prf:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\features\warn_on.prf:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\features\qt.prf:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\features\resources_functions.prf:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\features\resources.prf:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\features\moc.prf:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\features\testlib_defines.prf:
-D:\Qt\6.2.0\msvc2019_64\mkspecs\features\win32\console.prf:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\features\win32\opengl.prf:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\features\uic.prf:
-D:\Qt\6.2.0\msvc2019_64\mkspecs\features\qml_debug.prf:
-D:\Qt\6.2.0\msvc2019_64\mkspecs\features\entrypoint.prf:
-D:\Qt\6.2.0\msvc2019_64\mkspecs\features\precompile_header.prf:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\features\qmake_use.prf:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\features\file_copies.prf:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\features\testcase_targets.prf:
@@ -372,6 +369,7 @@ D:\Qt\6.2.0\msvc2019_64\lib\Qt6Widgets.prl:
 D:\Qt\6.2.0\msvc2019_64\lib\Qt6Gui.prl:
 D:\Qt\6.2.0\msvc2019_64\lib\Qt6Test.prl:
 D:\Qt\6.2.0\msvc2019_64\lib\Qt6Core.prl:
+.qmake.stash:
 D:\Qt\6.2.0\msvc2019_64\mkspecs\features\build_pass.prf:
 D:\Qt\6.2.0\msvc2019_64\lib\Qt6Widgetsd.prl:
 D:\Qt\6.2.0\msvc2019_64\lib\Qt6Guid.prl:
@@ -390,17 +388,7 @@ clean: debug-clean release-clean  FORCE
 	-$(DEL_FILE) Tests.idb
 distclean: debug-distclean release-distclean  FORCE
 	-$(DEL_FILE) Makefile
-	-$(DEL_FILE) C:\Users\Brian\source\repos\PuzzleGames\build-Tests-Desktop_Qt_6_2_0_MSVC2019_64bit-Debug\target_wrapper.bat .qmake.stash Tests.pdb
-
-debug-check:
-	@set MAKEFLAGS=$(MAKEFLAGS)
-	$(MAKE) -f $(MAKEFILE).Debug check
-release-check:
-	@set MAKEFLAGS=$(MAKEFLAGS)
-	$(MAKE) -f $(MAKEFILE).Release check
-check_all: debug-check release-check
-
-check: debug-check
+	-$(DEL_FILE) .qmake.stash Tests.pdb
 
 debug-mocclean:
 	@set MAKEFLAGS=$(MAKEFLAGS)
@@ -417,6 +405,8 @@ release-mocables:
 	@set MAKEFLAGS=$(MAKEFLAGS)
 	$(MAKE) -f $(MAKEFILE).Release mocables
 mocables: debug-mocables release-mocables
+
+check: first
 
 benchmark: first
 FORCE:
