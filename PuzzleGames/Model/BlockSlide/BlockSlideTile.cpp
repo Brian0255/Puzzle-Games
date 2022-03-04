@@ -3,10 +3,10 @@
 #include"ColorConstants.h"
 
 BlockSlideTile::BlockSlideTile(QPushButton* button)
-	:button{ button }, highlighted{ false }, goal{ false } {};
+	:button{ button }, highlighted{ false }, goal{ false }, barrier{ false } {};
 
-BlockSlideTile::BlockSlideTile() {
-}
+BlockSlideTile::BlockSlideTile()
+	:button{ NULL }, highlighted{ false }, goal{ false }, barrier{ false } {};
 
 void BlockSlideTile::highlight() {
 	highlighted = true;
