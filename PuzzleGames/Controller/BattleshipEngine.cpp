@@ -6,7 +6,8 @@
 #include<qregularexpression.h>
 #include<random>
 
-BattleshipEngine::BattleshipEngine(PuzzleGames* controller) : controller{ controller } {};
+BattleshipEngine::BattleshipEngine(PuzzleGames* controller) 
+	: controller{ controller } {};
 
 const int SHIP_START_AMOUNT{ 12 };
 const int CLICK_START_AMOUNT{ 60 };
@@ -22,9 +23,13 @@ BattleshipEngine::~BattleshipEngine() {
 	}
 }
 
-void BattleshipEngine::startEngine(){
-	setupTiles();
-	startGame();
+bool BattleshipEngine::startEngine(){
+	if (controller != NULL) {
+		setupTiles();
+		startGame();
+		return true;
+	}
+	return false;
 }
 
 void BattleshipEngine::setupTiles() {
@@ -52,10 +57,12 @@ void BattleshipEngine::setupTiles() {
 
 void BattleshipEngine::startGame() {
 	emit sendStatusLabelUpdate("");
-	shipsRemaining = SHIP_START_AMOUNT;
-	clicksLeft = CLICK_START_AMOUNT;
 	emit sendTopLeftLabelUpdate("Ships left: " + QString::number(shipsRemaining));
 	emit sendTopRightLabelUpdate("Clicks left: " + QString::number(clicksLeft));
+
+	shipsRemaining = SHIP_START_AMOUNT;
+	clicksLeft = CLICK_START_AMOUNT;
+
 	int max = tiles.size();
 	unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 	std::array<std::string, 4> orientations = { "horizontal","horizontal","vertical","vertical" };
@@ -83,21 +90,21 @@ void BattleshipEngine::revealTile(QPushButton* button) {
 	checkIfWin();
 }
 
-void BattleshipEngine::resetGame() {
-	for (int i = 0; i < tiles.size(); ++i) {
-		for (int j = 0; j < tiles.size(); ++j) {
-			BattleshipTile* tile = &tiles[i][j];
-			ColorUtils::changeColor(tile->button, ColorConstants::TILE_DEFAULT_COLOR);
-			tile->button->installEventFilter(this);
-			tile->button->setEnabled(true);
-			tile->button->setText("");
-			tile->hidden = true;
-			tile->isShip = false;
-			tile->crossedOff = false;
+bool BattleshipEngine::resetGame() {
+	if (tiles[0][0].button!=NULL) {
+		for (int i = 0; i < tiles.size(); ++i) {
+			for (int j = 0; j < tiles.size(); ++j) {
+				BattleshipTile* tile = &tiles[i][j];
+				ColorUtils::changeColor(tile->button, ColorConstants::TILE_DEFAULT_COLOR);
+				tile->button->installEventFilter(this);
+				tile->reset();
+			}
 		}
+		ships.clear();
+		startGame();
+		return true;
 	}
-	ships.clear();
-	startGame();
+	return false;
 }
 
 void BattleshipEngine::gameOver() {
