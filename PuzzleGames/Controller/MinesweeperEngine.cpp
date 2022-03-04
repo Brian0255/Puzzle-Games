@@ -14,11 +14,15 @@ MinesweeperEngine::~MinesweeperEngine() {
     }
 }
 
-void MinesweeperEngine::startEngine() {
-    bombs = bombStartAmount;
-    emit sendTopLeftLabelUpdate("");
-    emit sendTopRightLabelUpdate("Bombs: " + QString::number(bombs));
-    setupTiles();
+bool MinesweeperEngine::startEngine() {
+    if (controller != NULL) {
+        bombs = bombStartAmount;
+        emit sendTopLeftLabelUpdate("");
+        emit sendTopRightLabelUpdate("Bombs: " + QString::number(bombs));
+        setupTiles();
+        return true;
+    }
+    return false;
 }
 
 void MinesweeperEngine::setupTiles() {
@@ -137,27 +141,31 @@ void MinesweeperEngine::revealTile(QPushButton* button) {
     }
 }
 
-void MinesweeperEngine::resetGame() {
-    for (int i = 0; i < tiles.size(); ++i) {
-        for (int j = 0; j < tiles.size(); ++j) {
-            MinesweeperTile* tile = &tiles[i][j];
-            tile->tileType = (TILE_TYPE::HIDDEN);
-            ColorUtils::changeColor(tile->button, ColorConstants::TILE_DEFAULT_COLOR);
-            tile->button->installEventFilter(this);
-            tile->button->setEnabled(true);
-            tile->button->setText("");
-            if (!tile->hidden) {
-                tile->changeHidden();
+bool MinesweeperEngine::resetGame() {
+    if (tiles[0][0].button!=NULL) {
+        for (int i = 0; i < tiles.size(); ++i) {
+            for (int j = 0; j < tiles.size(); ++j) {
+                MinesweeperTile* tile = &tiles[i][j];
+                tile->tileType = (TILE_TYPE::HIDDEN);
+                ColorUtils::changeColor(tile->button, ColorConstants::TILE_DEFAULT_COLOR);
+                tile->button->installEventFilter(this);
+                tile->button->setEnabled(true);
+                tile->button->setText("");
+                if (!tile->hidden) {
+                    tile->changeHidden();
+                }
+                if (tile->flagged) {
+                    tile->changeFlag();
+                }
+                gameActive = false;
             }
-            if (tile->flagged) {
-                tile->changeFlag();
-            }
-            gameActive = false;
         }
+        bombs = bombStartAmount;
+        emit sendStatusLabelUpdate("");
+        emit sendTopRightLabelUpdate("Bombs: " + QString::number(bombs));
+        return true;
     }
-    emit sendStatusLabelUpdate("");
-    bombs = bombStartAmount;
-    emit sendTopRightLabelUpdate("Bombs: " + QString::number(bombs));
+    return false;
 }
 
 void MinesweeperEngine::gameOver(QPushButton* hit) {
