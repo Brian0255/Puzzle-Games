@@ -49,6 +49,15 @@ private slots:
 
     void FillSquaresEngine_startEngine_NULLController();
     void FillSquaresEngine_resetGame_engineNotStarted();
+
+    void BlockFillEngine_startEngine_NULLController();
+    void BlockFillEngine_resetGame_engineNotStarted();
+
+    void CoordinationEngine_startEngine_NULLController();
+    void CoordinationEngine_resetGame_engineNotStarted();
+
+    void BlockSlideEngine_startEngine_NULLController();
+    void BlockSlideEngine_resetGame_engineNotStarted();
 };
 
 Tests::Tests()
@@ -122,6 +131,7 @@ void Tests::BattleshipEngine_resetGame_engineNotStarted() {
     QVERIFY(success == false);
 }
 
+
 void Tests::FillSquaresEngine_startEngine_NULLController() {
     FillSquaresEngine* engine = new FillSquaresEngine(NULL);
     bool success = engine->startEngine();
@@ -131,6 +141,45 @@ void Tests::FillSquaresEngine_startEngine_NULLController() {
 void Tests::FillSquaresEngine_resetGame_engineNotStarted() {
     PuzzleGames controller;
     FillSquaresEngine* engine = new FillSquaresEngine(&controller);
+    bool success = engine->resetGame();
+    QVERIFY(success == false);
+}
+
+void Tests::BlockSlideEngine_startEngine_NULLController() {
+    BlockSlideEngine* engine = new BlockSlideEngine(NULL);
+    bool success = engine->startEngine();
+    QVERIFY(success == false);
+}
+
+void Tests::BlockSlideEngine_resetGame_engineNotStarted() {
+    PuzzleGames controller;
+    BlockSlideEngine* engine = new BlockSlideEngine(&controller);
+    bool success = engine->resetGame();
+    QVERIFY(success == false);
+}
+
+void Tests::BlockFillEngine_startEngine_NULLController() {
+    BlockFillEngine* engine = new BlockFillEngine(NULL);
+    bool success = engine->startEngine();
+    QVERIFY(success == false);
+}
+
+void Tests::BlockFillEngine_resetGame_engineNotStarted() {
+    PuzzleGames controller;
+    BlockFillEngine* engine = new BlockFillEngine(&controller);
+    bool success = engine->resetGame();
+    QVERIFY(success == false);
+}
+
+void Tests::CoordinationEngine_startEngine_NULLController() {
+    CoordinationEngine* engine = new CoordinationEngine(NULL);
+    bool success = engine->startEngine();
+    QVERIFY(success == false);
+}
+
+void Tests::CoordinationEngine_resetGame_engineNotStarted() {
+    PuzzleGames controller;
+    CoordinationEngine* engine = new CoordinationEngine(&controller);
     bool success = engine->resetGame();
     QVERIFY(success == false);
 }
