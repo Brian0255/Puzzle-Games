@@ -8,16 +8,11 @@ void MinesweeperTile::changeHidden() {
     hidden = !hidden;
 }
 
+MinesweeperTile::MinesweeperTile(bool hidden, QPushButton* button, TILE_TYPE tileType, int bombsAround)
+    :button{ button }, hidden{ hidden }, tileType{ tileType }, bombsAround{ bombsAround }, flagged{ false } {};
 
-MinesweeperTile::MinesweeperTile(bool hidden, QPushButton* button, TILE_TYPE tileType, int bombsAround) {
-    this->hidden = hidden;
-    this->button = button;
-    this->tileType = tileType;
-    this->bombsAround = bombsAround;
-    this->flagged = false;
-}
-
-MinesweeperTile::MinesweeperTile() {}
+MinesweeperTile::MinesweeperTile() 
+    :button{ NULL }, hidden{ true }, tileType{ TILE_TYPE::HIDDEN }, bombsAround{ -1 }, flagged{ false } {};
 
 void MinesweeperTile::calculateAndSetBombs(std::array<std::array<MinesweeperTile, 16>, 16>& tiles, std::map<QPushButton*, std::array<int, 2>>& buttonCoords) {
     std::array<int, 2> coords = buttonCoords.at(button);

@@ -1,7 +1,7 @@
 #pragma once
 #include<QPushButton>
 
-enum  TILE_TYPE { HIDDEN, BOMB, SAFE, BOMBS_AROUND };
+enum class TILE_TYPE { HIDDEN, BOMB, SAFE, BOMBS_AROUND };
 
 class MinesweeperTile {
 	friend class MinesweeperEngine;
