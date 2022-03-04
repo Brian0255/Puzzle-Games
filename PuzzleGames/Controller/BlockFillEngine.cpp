@@ -4,6 +4,7 @@
 #include"ArrayUtils.h"
 #include"TileUtils.h"
 #include"ColorConstants.h"
+#include"qframe.h"
 
 const int GRID_SIZE = 16;
 const int BUTTON_SIZE = 30;
@@ -23,10 +24,14 @@ BlockFillEngine::~BlockFillEngine() {
 	}
 }
 
-void BlockFillEngine::startEngine() {
-	controller->changePuzzleGridSpacing(2);
-	setupTiles();
-	startGame();
+bool BlockFillEngine::startEngine() {
+	if (controller != NULL) {
+		controller->changePuzzleGridSpacing(2);
+		setupTiles();
+		startGame();
+		return true;
+	}
+	return false;
 }
 
 void BlockFillEngine::startGame() {
@@ -41,17 +46,21 @@ void BlockFillEngine::resetTiles() {
 	}
 }
 
-void BlockFillEngine::resetGame() {
-	for (BlockFillShape* shape : shapes) {
-		delete shape;
+bool BlockFillEngine::resetGame() {
+	if (tiles[0][0].button!=NULL) {
+		for (BlockFillShape* shape : shapes) {
+			delete shape;
+		}
+		TileUtils::enableButtons(tiles);
+		shapes.clear();
+		resetTiles();
+		dragging = false;
+		currentShape = NULL;
+		emit sendStatusLabelUpdate("");
+		startGame();
+		return true;
 	}
-	TileUtils::enableButtons(tiles);
-	shapes.clear();
-	resetTiles();
-	dragging = false;
-	currentShape = NULL;
-	emit sendStatusLabelUpdate("");
-	startGame();
+	return false;
 }
 
 void BlockFillEngine::checkIfWin() {
