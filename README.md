@@ -2,7 +2,7 @@
 This is a collection of 6 different puzzle/logic games. A few are well known, popular logic games and the rest are my own design. 
 ### Table of Contents
 ---
-### Game List
+### Games
   1. [Minesweeper](#minesweeper)
   2. [Battleship](#battleship)
   3. [Fill the Squares](#fillTheSquares)
@@ -58,7 +58,46 @@ This is a collection of 6 different puzzle/logic games. A few are well known, po
 
 ## 2. Battleship <a name="battleship"/>
 ---
- 
+  I'm sure you've heard of the classic game of Battleship, where you and an opponent are trying to find each other's ships on a board. This is like that, but a much different     twist on it. In this version, you are trying to find ships on a board with a limited amount of clicks. However, clicking a tile instead reveals the number of ship spaces that   are intersecting with it. This allows the game to be more deductive and less about random guessing.
+  
+   <br />
+   
+### General Rules
+---
+  - The tiles of ships are lettered for convenience.
+  - Every click reduces your click counter. If it hits 0, you lose!
+  - Clicking a tile will tell you how many ship tiles intersect with it, if it's not a ship.
+  - If you reveal part of a ship, that tile turns light pink.
+  - Revealing all of a ship will turn all of the ship red, and reduce the ships counter.
+  
+  ---
+  
+  These rules can be seen in this picture:
+  
+  <img src="/Pictures/battleshipTileRevealExample.png" width="400">
+    
+  - You can see how the ships are lettered A ,B, C, ... , etc.  
+  - 3 ships were found, and you can see how they turned completely red. The pink letters E, H, and L are parts of ships that aren't fully uncovered yet.
+  - If you count all the ship pieces intersecting with the "11" tile, it is indeed 11.
+  
+  ---
+  
+  - Squares can also be darkened if you know they can't have a ship. A successful win might look like this, for example:
+  
+  <img src="/Pictures/battleshipWinExample.png" width="400">
+   
+  <br />
+  <br />
+   
+### Controls
+---
+  - Left clicking a tile will reveal it as a ship, or display how many ship tiles intersect with it.
+  - Right clicking will mark/unmark an unrevealed square as a darker color if you know it can't be a ship. This is helpful as the game progresses.
+  
+  These controls are illustrated by the pictures above.
+  
+<br />
+  
 ## 3. Fill the Squares <a name="fillTheSquares"/>
 ---
 ## 4. Block Slide <a name="blockSlide"/>
