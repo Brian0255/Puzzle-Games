@@ -39,10 +39,10 @@ This is a collection of 6 different puzzle/logic games. A few are well known, po
 ### General Rules
 ---
   - The game starts when you click on any tile. That tile will never be a bomb.
+  
+  An example of what a region may look like after you click a tile to start (in this case, the red X was the tile):
 
-    An example of what a region may look like after you click a tile to start (in this case, the red X was the tile):
-
-    ![](/Pictures/minesweeperStartExample.png)
+  ![](/Pictures/minesweeperStartExample.png)
 
   - Tiles will either be blank, a bomb, or have a number on them.
   - Tiles with a number on them tell you how many bombs are around it, and blank tiles have none.
@@ -52,23 +52,13 @@ This is a collection of 6 different puzzle/logic games. A few are well known, po
 
 ### Controls
 ---
-  - Left clicking will reveal the selected tile, as shown below: 
-
-      Before revealing         |  After revealing
-    :-------------------------:|:-------------------------:
-    ![](/Pictures/minesweeperRevealBefore.png)  |  ![](/Pictures/minesweeperRevealAfter.png)
-
-  - Right clicking will flag the selected tile as a bomb. Here's an example:
-
-      Before flagging         |  After flagging
-    :-------------------------:|:-------------------------:
-    ![](/Pictures/minesweeperFlagBefore.png)  |  ![](/Pictures/minesweeperFlagAfter.png)
-    
+  - Left clicking will reveal the selected tile.
+  - Right clicking will flag the selected tile as a bomb.
   - Middle clicking is a nifty tool that will reveal all tiles around a numbered square if all its bombs are flagged. Sound a little confusing? These pictures might help:
 
-     Before middle clicking the "2"       |  After middle clicking the "2"
-    :-------------------------:|:-------------------------:
-    ![](/Pictures/minesweeperShiftClickBefore.png)  |  ![](/Pictures/minesweeperShiftClickAfter.png)
+ Before middle clicking the "2"       |  After middle clicking the "2"
+:-------------------------:|:-------------------------:
+![](/Pictures/minesweeperShiftClickBefore.png)  |  ![](/Pictures/minesweeperShiftClickAfter.png)
      
 <br />
 
@@ -107,8 +97,6 @@ This is a collection of 6 different puzzle/logic games. A few are well known, po
 ---
   - Left clicking a tile will reveal it as a ship, or display how many ship tiles intersect with it.
   - Right clicking will mark/unmark an unrevealed square as a darker color if you know it can't be a ship. This is helpful as the game progresses.
-  
-  These controls are illustrated by the pictures above.
   
 <br />
   
@@ -150,13 +138,65 @@ This is a collection of 6 different puzzle/logic games. A few are well known, po
 
 ### General Rules
 ---
+  - The arrows at the top will navigate between different handmade puzzles. Currently, there are 10. 
+  - You can select any block to highlight all possible moves in light blue.
+  - Clicking a light blue square will slide the currently selected block to its position. 
+  - Barriers and other sliding blocks will stop any block. This is essential to win. 
+  - Once every red X square has a block on it, you win! 
+
+  These rules are shown here:
+  
+  <img src="/Pictures/blockSlideBasicExampleGif.gif" width="250">
 
 <br />
 
 ### Controls
 ---
+  - Left click will select a blue tile. 
+  - Left clicking a highlighted light blue tile will move the currently selected block to it.
+  - Left clicking the arrows above the game will navigate forward or backward through the various puzzles.
+  - Right clicking any tile or pressing the "Reset game" button will both reset the current puzzle.
 
 <br />
 
 ## 5. Block Fill <a name="blockFill"/>
+
+  I think Tetris is a pretty cool game, so I thought of a puzzle game with Tetris shaped pieces. In this game, you have a play area with several blocks. Your goal is to move       all of them into the designated area and fill it completely. You can even rotate blocks as well, making this fairly difficult.
+
+<br />
+
+### General Rules
+---
+  - Blocks in the play area can all be selected for moving. 
+  - Once you have selected a shape for moving, it will snap to any tile your mouse moves onto. 
+  - While dragging a shape, it can be rotated 90 degrees at a time.
+  - Shapes cannot overlap other shapes or black barrier tiles.
+  - To win, you must fill in the highlighted area with shapes.
+
+<br />
+
+### Controls
+---
+  - Left clicking on part of a shape will start the dragging motion.
+  - Left clicking while dragging on a valid spot will place the shape and allow you to select a different one.
+  - Right clicking while dragging will rotate the shape to the right by 90 degrees.
+
+<br />
+
 ## 6. Coordination <a name="coordination"/>
+
+  I'm not really sure the idea for this one came from. I just thought it would be interesting if you could move several things at once, and that's exactly what you do in this     game. Like the block sliding game, there are several X tiles that you have to place blocks on. However, the way you move blocks is completely different in this, and it makes     for a very difficult set of puzzles. 
+
+<br />
+
+### General Rules
+---
+
+<br />
+
+### Controls
+---
+  - Left clicking any pink square will start a dragging operation with it (like the Block Fill game.)
+  - Left clicking again while dragging will place all pink tiles at once.
+
+<br />
