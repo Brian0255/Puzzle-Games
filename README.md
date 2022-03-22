@@ -197,12 +197,24 @@ These rules are shown here:
 
 ### General Rules
 ---
+  - You can click and move ANY of the pink squares.
+  - Moving one pink square will move all of them at once.
+  - Barriers and even other pink squares at times will block movement! This is essential to solving the puzzles.
+  - All tiles with a blue "X" must be covered at the same time for you to win. 
 
+To see what movement looks like, just check out these gifs below:
+  
+  Moving squares around   |  Movement with a barrier      
+:-------------------------:|:-------------------------:
+![](/Pictures/coordinationMoveExample.gif)  |  ![](/Pictures/coordinationBarrierExample.gif) 
+  
 <br />
 
 ### Controls
 ---
   - Left clicking any pink square will start a dragging operation with it (like the Block Fill game.)
   - Left clicking again while dragging will place all pink tiles at once.
+  - Clicking the arrows above the game will change hte current puzzle.
+  - Clicking "Reset game" will reset the position of all pink squares.
 
 <br />
