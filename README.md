@@ -161,7 +161,7 @@ This is a collection of 6 different puzzle/logic games. A few are well known, po
 
 ## 5. Block Fill <a name="blockFill"/>
 
-  I think Tetris is a pretty cool game, so I thought of a puzzle game with Tetris shaped pieces. In this game, you have a play area with several blocks. Your goal is to move       all of them into the designated area and fill it completely. You can even rotate blocks as well, making this fairly difficult.
+  I think Tetris is a pretty cool game, so I thought of a puzzle game with Tetris shaped pieces. In this game, you have a play area with several blocks. Your goal is to move all of them into the designated area and fill it completely. You can even rotate blocks as well, making this fairly difficult.
 
 <br />
 
@@ -181,11 +181,17 @@ This is a collection of 6 different puzzle/logic games. A few are well known, po
   - Left clicking while dragging on a valid spot will place the shape and allow you to select a different one.
   - Right clicking while dragging will rotate the shape to the right by 90 degrees.
 
+These rules are shown here:
+  
+  Moving a shape around    |  Rotating a shape         | Overlapping
+:-------------------------:|:-------------------------:|:-------------------------:
+![](/Pictures/blockFillMoveExample.gif)  |  ![](/Pictures/blockFillRotateExample.gif)  |  ![](/Pictures/blockFillOverlapExample.gif)
+
 <br />
 
 ## 6. Coordination <a name="coordination"/>
 
-  I'm not really sure the idea for this one came from. I just thought it would be interesting if you could move several things at once, and that's exactly what you do in this     game. Like the block sliding game, there are several X tiles that you have to place blocks on. However, the way you move blocks is completely different in this, and it makes     for a very difficult set of puzzles. 
+  I'm not really sure the idea for this one came from. I just thought it would be interesting if you could move several things at once, and that's exactly what you do in this game. Like the block sliding game, there are several X tiles that you have to place blocks on. However, the way you move blocks is completely different in this, and it makes for a very difficult set of puzzles. 
 
 <br />
 
